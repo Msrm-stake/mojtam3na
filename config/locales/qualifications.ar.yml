@@ -1,0 +1,47 @@
+ar:
+  activerecord:
+    attributes:
+      qualification:
+        kind: النوع
+        title: العنوان
+        institution: الجهة المانحة
+        year_obtained: سنة الحصول عليها
+        document: المستند (PDF أو JPG أو PNG)
+    errors:
+      models:
+        qualification:
+          attributes:
+            document:
+              blank: يجب إرفاقه
+              invalid_type: يجب أن يكون ملف PDF أو JPG أو PNG
+              too_large: يجب أن يكون أصغر من 5 ميغابايت
+  qualifications:
+    kinds:
+      ijazah: إجازة
+      degree: شهادة جامعية
+      certificate: شهادة
+      other: أخرى
+    statuses:
+      pending: قيد المراجعة
+      verified: موثّقة
+      rejected: مرفوضة
+    new:
+      title: إضافة مؤهل
+      intro: ارفع صورة أو نسخة ممسوحة من إجازتك أو شهادتك الجامعية أو شهادتك. يراجع فريقنا كل مستند قبل اعتماد ملفك الشخصي.
+      submit: إضافة المؤهل
+      cancel: إلغاء
+    create:
+      created: تمت إضافة المؤهل. سيقوم فريقنا بمراجعته.
+    destroy:
+      destroyed: تم حذف المؤهل.
+      locked: لا يمكن حذف مؤهل موثّق. يرجى التواصل معنا.
+  teacher_profiles:
+    edit:
+      qualifications:
+        title: المؤهلات
+        intro: الإجازات والشهادات التي تثبت تكوينك.
+        empty: لم تضف أي مؤهل بعد.
+        add: إضافة مؤهل
+        view: عرض المستند
+        delete: حذف
+        confirm: هل تريد حذف هذا المؤهل؟

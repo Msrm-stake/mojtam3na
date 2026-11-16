@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        first_name: Имя
+        last_name: Фамилия
+        role: Я
+  users:
+    roles:
+      parent: Родитель
+      teacher: Преподаватель

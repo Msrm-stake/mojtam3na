@@ -1,0 +1,20 @@
+.qualification-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: .75rem;
+}
+
+.qualification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  background: $cream;
+  border: 1px solid rgba($green-deep, .12);
+  border-radius: $border-radius-lg;
+  padding: .9rem 1rem;
+
+  .badge { margin-inline-start: .5rem; }
+}

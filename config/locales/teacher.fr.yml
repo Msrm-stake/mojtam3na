@@ -1,0 +1,37 @@
+fr:
+  activerecord:
+    attributes:
+      teacher_profile:
+        headline: Accroche
+        bio: À propos de vous
+        gender: Genre
+        years_experience: Années d'expérience
+        hourly_rate: Tarif horaire
+        currency: Devise
+        min_age: Âge minimum des élèves
+        max_age: Âge maximum des élèves
+        intro_video_url: Lien de la vidéo de présentation
+        languages: Langues d'enseignement
+        subjects: Matières enseignées
+  shared:
+    navbar:
+      my_profile: Mon profil
+  teacher_profiles:
+    not_a_teacher: Cette page est réservée aux enseignants.
+    genders:
+      female: Femme
+      male: Homme
+    update:
+      updated: Votre profil a été enregistré.
+    edit:
+      title: Mon profil d'enseignant
+      intro: Complétez votre profil pour que notre équipe puisse l'examiner. Seuls les profils approuvés apparaissent dans la recherche.
+      section_about: À propos de vous
+      section_teaching: Votre enseignement
+      rate_hint: Prix d'un cours de 60 minutes.
+      submit: Enregistrer le profil
+      statuses:
+        pending: En cours d'examen. Notre équipe vérifie votre profil et vos qualifications avant sa mise en ligne.
+        approved: Approuvé. Votre profil est visible par les parents.
+        rejected: Votre profil n'a pas été approuvé.
+        suspended: Votre profil est suspendu et masqué aux parents. Contactez-nous.

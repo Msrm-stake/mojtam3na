@@ -1,0 +1,37 @@
+it:
+  activerecord:
+    attributes:
+      teacher_profile:
+        headline: Titolo
+        bio: Presentazione
+        gender: Genere
+        years_experience: Anni di esperienza
+        hourly_rate: Tariffa oraria
+        currency: Valuta
+        min_age: Età minima degli studenti
+        max_age: Età massima degli studenti
+        intro_video_url: Link del video di presentazione
+        languages: Lingue in cui insegni
+        subjects: Materie che insegni
+  shared:
+    navbar:
+      my_profile: Il mio profilo
+  teacher_profiles:
+    not_a_teacher: Questa pagina è riservata agli insegnanti.
+    genders:
+      female: Donna
+      male: Uomo
+    update:
+      updated: Il tuo profilo è stato salvato.
+    edit:
+      title: Il mio profilo da insegnante
+      intro: Completa il tuo profilo per permettere al nostro team di verificarlo. Solo i profili approvati compaiono nella ricerca.
+      section_about: Su di te
+      section_teaching: Il tuo insegnamento
+      rate_hint: Prezzo di una lezione di 60 minuti.
+      submit: Salva profilo
+      statuses:
+        pending: In attesa di verifica. Il nostro team controlla il tuo profilo e le tue qualifiche prima della pubblicazione.
+        approved: Approvato. Il tuo profilo è visibile ai genitori.
+        rejected: Il tuo profilo non è stato approvato.
+        suspended: Il tuo profilo è sospeso e nascosto ai genitori. Contattaci.

@@ -1,0 +1,97 @@
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="auth-card">
+        <h1 class="h3 mb-2"><%= t(".title") %></h1>
+        <p class="mb-4"><%= t(".intro") %></p>
+
+        <% status_style = { "pending" => "warning", "approved" => "success", "rejected" => "danger", "suspended" => "secondary" }[@profile.status] %>
+        <div class="alert alert-<%= status_style %>" role="status">
+          <%= t(".statuses.#{@profile.status}") %>
+          <% if @profile.status_rejected? && @profile.rejection_reason.present? %>
+            <br><%= @profile.rejection_reason %>
+          <% end %>
+        </div>
+
+        <%= simple_form_for @profile, url: teacher_profile_path, method: :patch do |f| %>
+          <%= f.error_notification %>
+
+          <h2 class="h5 mt-4"><%= t(".section_about") %></h2>
+          <%= f.input :headline, required: false %>
+          <%= f.input :bio, as: :text, required: false, input_html: { rows: 6 } %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.input :years_experience, as: :integer, required: false, input_html: { min: 0 } %>
+            </div>
+            <div class="col-sm-6">
+              <%= f.input :gender, required: false, include_blank: true,
+                    collection: [[t("teacher_profiles.genders.female"), "female"], [t("teacher_profiles.genders.male"), "male"]] %>
+            </div>
+          </div>
+          <%= f.input :intro_video_url, as: :url, required: false %>
+
+          <h2 class="h5 mt-4"><%= t(".section_teaching") %></h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.input :hourly_rate, as: :decimal, required: false, hint: t(".rate_hint"),
+                    input_html: { min: 0, step: "0.50", value: format("%.2f", @profile.hourly_rate) } %>
+            </div>
+            <div class="col-sm-6">
+              <%= f.input :currency, collection: TeacherProfile::CURRENCIES, include_blank: false %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6"><%= f.input :min_age, as: :integer, required: false, input_html: { min: 3, max: 18 } %></div>
+            <div class="col-sm-6"><%= f.input :max_age, as: :integer, required: false, input_html: { min: 3, max: 18 } %></div>
+          </div>
+
+          <%= f.association :languages, as: :check_boxes, required: false,
+                collection: Language.alphabetical, label_method: :native_name, value_method: :id %>
+          <%= f.association :subjects, as: :check_boxes, required: false,
+                collection: Subject.order(:id),
+                label_method: ->(subject) { t("pages.home.subjects.items.#{subject.slug}") },
+                value_method: :id %>
+
+          <%= f.button :submit, t(".submit"), class: "btn btn-primary mt-3" %>
+        <% end %>
+
+        <hr class="my-4">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <h2 class="h5 mb-0"><%= t(".qualifications.title") %></h2>
+          <%= link_to t(".qualifications.add"), new_qualification_path, class: "btn btn-outline-primary btn-sm" %>
+        </div>
+        <p class="mt-2 mb-0"><%= t(".qualifications.intro") %></p>
+
+        <% qualifications = @profile.qualifications.with_attached_document.order(:created_at) %>
+        <% if qualifications.empty? %>
+          <p class="text-body-secondary mt-3 mb-0"><%= t(".qualifications.empty") %></p>
+        <% else %>
+          <ul class="qualification-list">
+            <% qualifications.each do |qualification| %>
+              <% badge = { "pending" => "warning", "verified" => "success", "rejected" => "danger" }[qualification.status] %>
+              <li class="qualification-item">
+                <div>
+                  <strong><%= qualification.title %></strong>
+                  <span class="badge text-bg-<%= badge %>"><%= t("qualifications.statuses.#{qualification.status}") %></span>
+                  <div class="small text-body-secondary">
+                    <%= [t("qualifications.kinds.#{qualification.kind}"), qualification.institution, qualification.year_obtained].compact_blank.join(" · ") %>
+                  </div>
+                  <% if qualification.document.attached? %>
+                    <%= link_to t(".qualifications.view"), rails_blob_path(qualification.document, disposition: "inline"),
+                          target: "_blank", rel: "noopener", class: "small" %>
+                  <% end %>
+                </div>
+                <% unless qualification.status_verified? %>
+                  <%= button_to t(".qualifications.delete"), qualification_path(qualification), method: :delete,
+                        class: "btn btn-outline-danger btn-sm",
+                        form: { data: { turbo_confirm: t(".qualifications.confirm") } } %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

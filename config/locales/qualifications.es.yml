@@ -1,0 +1,47 @@
+es:
+  activerecord:
+    attributes:
+      qualification:
+        kind: Tipo
+        title: Título
+        institution: Institución
+        year_obtained: Año de obtención
+        document: Documento (PDF, JPG o PNG)
+    errors:
+      models:
+        qualification:
+          attributes:
+            document:
+              blank: debe adjuntarse
+              invalid_type: debe ser un archivo PDF, JPG o PNG
+              too_large: debe pesar menos de 5 MB
+  qualifications:
+    kinds:
+      ijazah: Ijazah
+      degree: Título universitario
+      certificate: Certificado
+      other: Otro
+    statuses:
+      pending: Pendiente de revisión
+      verified: Verificada
+      rejected: Rechazada
+    new:
+      title: Añadir una cualificación
+      intro: Sube un escaneo o una foto de tu ijazah, título o certificado. Nuestro equipo revisa cada documento antes de poder aprobar tu perfil.
+      submit: Añadir cualificación
+      cancel: Cancelar
+    create:
+      created: Cualificación añadida. Nuestro equipo la revisará.
+    destroy:
+      destroyed: Cualificación eliminada.
+      locked: Una cualificación verificada no se puede eliminar. Ponte en contacto con nosotros.
+  teacher_profiles:
+    edit:
+      qualifications:
+        title: Cualificaciones
+        intro: Ijazas, títulos y certificados que acreditan tu formación.
+        empty: Todavía no has añadido ninguna cualificación.
+        add: Añadir una cualificación
+        view: Ver documento
+        delete: Eliminar
+        confirm: ¿Eliminar esta cualificación?

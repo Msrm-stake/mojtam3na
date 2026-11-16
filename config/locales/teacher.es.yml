@@ -1,0 +1,37 @@
+es:
+  activerecord:
+    attributes:
+      teacher_profile:
+        headline: Titular
+        bio: Sobre ti
+        gender: Género
+        years_experience: Años de experiencia
+        hourly_rate: Tarifa por hora
+        currency: Moneda
+        min_age: Edad mínima de tus alumnos
+        max_age: Edad máxima de tus alumnos
+        intro_video_url: Enlace del vídeo de presentación
+        languages: Idiomas en los que enseñas
+        subjects: Materias que enseñas
+  shared:
+    navbar:
+      my_profile: Mi perfil
+  teacher_profiles:
+    not_a_teacher: Esta página es para profesores.
+    genders:
+      female: Mujer
+      male: Hombre
+    update:
+      updated: Tu perfil se ha guardado.
+    edit:
+      title: Mi perfil de profesor
+      intro: Completa tu perfil para que nuestro equipo pueda revisarlo. Solo los perfiles aprobados aparecen en las búsquedas.
+      section_about: Sobre ti
+      section_teaching: Tu enseñanza
+      rate_hint: Precio de una clase de 60 minutos.
+      submit: Guardar perfil
+      statuses:
+        pending: Pendiente de revisión. Nuestro equipo comprueba tu perfil y tus cualificaciones antes de publicarlo.
+        approved: Aprobado. Los padres pueden ver tu perfil.
+        rejected: Tu perfil no ha sido aprobado.
+        suspended: Tu perfil está suspendido y oculto para los padres. Ponte en contacto con nosotros.

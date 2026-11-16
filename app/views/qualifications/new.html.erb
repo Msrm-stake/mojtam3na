@@ -1,0 +1,28 @@
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="auth-card">
+        <h1 class="h3 mb-2"><%= t(".title") %></h1>
+        <p class="mb-4"><%= t(".intro") %></p>
+
+        <%= simple_form_for @qualification, url: qualifications_path do |f| %>
+          <%= f.error_notification %>
+
+          <%= f.input :kind, required: true, include_blank: false,
+                collection: Qualification.kinds.keys.map { |kind| [t("qualifications.kinds.#{kind}"), kind] } %>
+          <%= f.input :title, required: true %>
+          <%= f.input :institution, required: false %>
+          <%= f.input :year_obtained, as: :integer, required: false,
+                input_html: { min: 1901, max: Date.current.year } %>
+          <%= f.input :document, as: :file, required: true,
+                input_html: { accept: ".pdf,.jpg,.jpeg,.png" } %>
+
+          <div class="d-flex gap-2 mt-3">
+            <%= f.button :submit, t(".submit"), class: "btn btn-primary" %>
+            <%= link_to t(".cancel"), edit_teacher_profile_path, class: "btn btn-outline-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

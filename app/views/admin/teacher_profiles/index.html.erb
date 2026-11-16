@@ -1,0 +1,43 @@
+<div class="container auth-page">
+  <h1 class="h3 mb-3"><%= t(".title") %></h1>
+
+  <ul class="nav nav-pills mb-4">
+    <% TeacherProfile.statuses.each_key do |status| %>
+      <li class="nav-item">
+        <%= link_to admin_root_path(status: status), class: "nav-link #{'active' if status == @status}" do %>
+          <%= t("admin.statuses.#{status}") %>
+          <span class="badge text-bg-light"><%= @counts.fetch(status, 0) %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if @profiles.empty? %>
+    <p class="text-body-secondary"><%= t(".empty") %></p>
+  <% else %>
+    <div class="auth-card p-0 overflow-hidden">
+      <table class="table table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th><%= t(".name") %></th>
+            <th><%= t(".email") %></th>
+            <th><%= t(".joined") %></th>
+            <th><%= t(".qualifications") %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @profiles.each do |profile| %>
+            <tr>
+              <td><%= profile.user.full_name %></td>
+              <td><%= profile.user.email %></td>
+              <td><%= l(profile.created_at.to_date) %></td>
+              <td><%= profile.qualifications.size %></td>
+              <td class="text-end"><%= link_to t(".review"), admin_teacher_profile_path(profile), class: "btn btn-outline-primary btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+es:
+  activerecord:
+    attributes:
+      user:
+        first_name: Nombre
+        last_name: Apellidos
+        role: Soy
+  users:
+    roles:
+      parent: Padre o madre
+      teacher: Profesor o profesora

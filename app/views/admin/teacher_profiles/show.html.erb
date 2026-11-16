@@ -1,0 +1,140 @@
+<% badges = { "pending" => "warning", "approved" => "success", "rejected" => "danger", "suspended" => "secondary" } %>
+<% q_badges = { "pending" => "warning", "verified" => "success", "rejected" => "danger" } %>
+<% blank = "—" %>
+<% user = @profile.user %>
+<% missing = @profile.missing_for_approval %>
+
+<div class="container auth-page">
+  <p class="mb-3"><%= link_to t(".back"), admin_root_path(status: @profile.status) %></p>
+
+  <div class="auth-card mb-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+      <div>
+        <h1 class="h3 mb-0"><%= user.full_name %></h1>
+        <div class="text-body-secondary"><%= user.email %></div>
+      </div>
+      <span class="badge text-bg-<%= badges[@profile.status] %>"><%= t("admin.statuses.#{@profile.status}") %></span>
+    </div>
+
+    <% if @profile.status_rejected? && @profile.rejection_reason.present? %>
+      <div class="alert alert-danger mt-3 mb-0"><%= t(".rejection_shown", reason: @profile.rejection_reason) %></div>
+    <% end %>
+
+    <dl class="row mt-4 mb-0">
+      <dt class="col-sm-4"><%= t(".headline") %></dt>
+      <dd class="col-sm-8"><%= @profile.headline.presence || blank %></dd>
+
+      <dt class="col-sm-4"><%= t(".bio") %></dt>
+      <dd class="col-sm-8"><%= @profile.bio.present? ? simple_format(@profile.bio) : blank %></dd>
+
+      <dt class="col-sm-4"><%= t(".years") %></dt>
+      <dd class="col-sm-8"><%= @profile.years_experience || blank %></dd>
+
+      <dt class="col-sm-4"><%= t(".gender") %></dt>
+      <dd class="col-sm-8"><%= @profile.gender ? t("teacher_profiles.genders.#{@profile.gender}") : blank %></dd>
+
+      <dt class="col-sm-4"><%= t(".rate") %></dt>
+      <dd class="col-sm-8"><%= format("%.2f", @profile.hourly_rate) %> <%= @profile.currency %></dd>
+
+      <dt class="col-sm-4"><%= t(".ages") %></dt>
+      <dd class="col-sm-8"><%= [@profile.min_age, @profile.max_age].all?(&:nil?) ? blank : "#{@profile.min_age || '?'} - #{@profile.max_age || '?'}" %></dd>
+
+      <dt class="col-sm-4"><%= t(".languages") %></dt>
+      <dd class="col-sm-8"><%= @profile.languages.map(&:native_name).to_sentence.presence || blank %></dd>
+
+      <dt class="col-sm-4"><%= t(".subjects") %></dt>
+      <dd class="col-sm-8"><%= @profile.subjects.map(&:name).to_sentence.presence || blank %></dd>
+
+      <dt class="col-sm-4"><%= t(".video") %></dt>
+      <dd class="col-sm-8">
+        <% if @profile.intro_video_url.to_s.match?(%r{\Ahttps?://}i) %>
+          <%= link_to @profile.intro_video_url, @profile.intro_video_url, target: "_blank", rel: "noopener noreferrer" %>
+        <% else %>
+          <%= blank %>
+        <% end %>
+      </dd>
+
+      <dt class="col-sm-4"><%= t(".account") %></dt>
+      <dd class="col-sm-8 mb-0"><%= user.locale %> · <%= user.time_zone %></dd>
+    </dl>
+  </div>
+
+  <div class="auth-card mb-4">
+    <h2 class="h5"><%= t(".review") %></h2>
+
+    <% if missing.any? && !@profile.status_approved? %>
+      <div class="alert alert-warning">
+        <%= t(".missing_intro") %>
+        <ul class="mb-0">
+          <% missing.each do |item| %>
+            <li><%= t("admin.teacher_profiles.missing.#{item}") %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      <% unless @profile.status_approved? %>
+        <%= button_to t(".approve"), approve_admin_teacher_profile_path(@profile), method: :patch,
+              class: "btn btn-primary", disabled: missing.any? %>
+      <% end %>
+      <% if @profile.status_approved? %>
+        <%= button_to t(".suspend"), suspend_admin_teacher_profile_path(@profile), method: :patch,
+              class: "btn btn-outline-secondary",
+              form: { data: { turbo_confirm: t(".confirm_suspend") } } %>
+      <% end %>
+    </div>
+
+    <% unless @profile.status_approved? || @profile.status_rejected? %>
+      <%= form_with url: reject_admin_teacher_profile_path(@profile), method: :patch do %>
+        <label class="form-label" for="rejection_reason"><%= t(".reject_reason") %></label>
+        <%= text_area_tag :rejection_reason, nil, rows: 3, required: true, class: "form-control mb-2" %>
+        <%= submit_tag t(".reject"), class: "btn btn-outline-danger" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="auth-card">
+    <h2 class="h5 mb-3"><%= t(".qualifications_title") %></h2>
+
+    <% if @qualifications.empty? %>
+      <p class="text-body-secondary mb-0"><%= t(".no_qualifications") %></p>
+    <% else %>
+      <ul class="qualification-list">
+        <% @qualifications.each do |qualification| %>
+          <li class="qualification-item flex-column">
+            <div class="w-100">
+              <strong><%= qualification.title %></strong>
+              <span class="badge text-bg-<%= q_badges[qualification.status] %>"><%= t("qualifications.statuses.#{qualification.status}") %></span>
+              <div class="small text-body-secondary">
+                <%= [t("qualifications.kinds.#{qualification.kind}"), qualification.institution, qualification.year_obtained].compact_blank.join(" · ") %>
+              </div>
+              <% if qualification.document.attached? %>
+                <%= link_to t(".view_document"), rails_blob_path(qualification.document, disposition: "inline"),
+                      target: "_blank", rel: "noopener", class: "small" %>
+              <% end %>
+              <% if qualification.admin_notes.present? %>
+                <div class="small mt-1"><%= t(".reviewer_note", note: qualification.admin_notes) %></div>
+              <% end %>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 w-100 mt-2">
+              <% unless qualification.status_verified? %>
+                <%= button_to t(".verify"), verify_admin_qualification_path(qualification), method: :patch,
+                      class: "btn btn-success btn-sm" %>
+              <% end %>
+              <% unless qualification.status_rejected? %>
+                <%= form_with url: reject_admin_qualification_path(qualification), method: :patch,
+                      class: "d-flex gap-2 flex-grow-1" do %>
+                  <%= text_field_tag :admin_notes, nil, required: true, class: "form-control form-control-sm",
+                        placeholder: t(".note_placeholder"), "aria-label": t(".note_placeholder") %>
+                  <%= submit_tag t(".reject_qualification"), class: "btn btn-outline-danger btn-sm" %>
+                <% end %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

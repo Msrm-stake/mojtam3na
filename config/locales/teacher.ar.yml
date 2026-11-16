@@ -1,0 +1,37 @@
+ar:
+  activerecord:
+    attributes:
+      teacher_profile:
+        headline: العنوان التعريفي
+        bio: نبذة عنك
+        gender: الجنس
+        years_experience: سنوات الخبرة
+        hourly_rate: السعر بالساعة
+        currency: العملة
+        min_age: أصغر عمر تدرّسه
+        max_age: أكبر عمر تدرّسه
+        intro_video_url: رابط الفيديو التعريفي
+        languages: اللغات التي تدرّس بها
+        subjects: المواد التي تدرّسها
+  shared:
+    navbar:
+      my_profile: ملفي الشخصي
+  teacher_profiles:
+    not_a_teacher: هذه الصفحة مخصصة للمعلمين.
+    genders:
+      female: أنثى
+      male: ذكر
+    update:
+      updated: تم حفظ ملفك الشخصي.
+    edit:
+      title: ملفي كمعلم
+      intro: أكمل ملفك الشخصي ليتمكن فريقنا من مراجعته. تظهر الملفات المعتمدة فقط في نتائج البحث.
+      section_about: نبذة عنك
+      section_teaching: تدريسك
+      rate_hint: سعر درس مدته 60 دقيقة.
+      submit: حفظ الملف الشخصي
+      statuses:
+        pending: قيد المراجعة. يتحقق فريقنا من ملفك ومؤهلاتك قبل نشره.
+        approved: معتمد. ملفك ظاهر لأولياء الأمور.
+        rejected: لم يتم اعتماد ملفك الشخصي.
+        suspended: ملفك الشخصي معلّق ومخفي عن أولياء الأمور. يرجى التواصل معنا.

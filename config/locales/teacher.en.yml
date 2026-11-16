@@ -1,0 +1,37 @@
+en:
+  activerecord:
+    attributes:
+      teacher_profile:
+        headline: Headline
+        bio: About you
+        gender: Gender
+        years_experience: Years of experience
+        hourly_rate: Hourly rate
+        currency: Currency
+        min_age: Youngest age you teach
+        max_age: Oldest age you teach
+        intro_video_url: Introduction video link
+        languages: Languages you teach in
+        subjects: Subjects you teach
+  shared:
+    navbar:
+      my_profile: My profile
+  teacher_profiles:
+    not_a_teacher: This page is for teachers.
+    genders:
+      female: Female
+      male: Male
+    update:
+      updated: Your profile has been saved.
+    edit:
+      title: My teacher profile
+      intro: Complete your profile so our team can review it. Only approved profiles appear in search.
+      section_about: About you
+      section_teaching: Your teaching
+      rate_hint: Price of a 60-minute lesson.
+      submit: Save profile
+      statuses:
+        pending: Pending review. Our team checks your profile and qualifications before it goes live.
+        approved: Approved. Your profile is visible to parents.
+        rejected: Your profile was not approved.
+        suspended: Your profile is suspended and hidden from parents. Please contact us.

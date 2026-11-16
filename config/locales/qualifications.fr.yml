@@ -1,0 +1,47 @@
+fr:
+  activerecord:
+    attributes:
+      qualification:
+        kind: Type
+        title: Intitulé
+        institution: Établissement
+        year_obtained: Année d'obtention
+        document: Document (PDF, JPG ou PNG)
+    errors:
+      models:
+        qualification:
+          attributes:
+            document:
+              blank: doit être joint
+              invalid_type: doit être un fichier PDF, JPG ou PNG
+              too_large: doit faire moins de 5 Mo
+  qualifications:
+    kinds:
+      ijazah: Ijazah
+      degree: Diplôme
+      certificate: Certificat
+      other: Autre
+    statuses:
+      pending: En cours d'examen
+      verified: Vérifié
+      rejected: Refusé
+    new:
+      title: Ajouter une qualification
+      intro: Téléversez un scan ou une photo de votre ijazah, diplôme ou certificat. Notre équipe examine chaque document avant l'approbation de votre profil.
+      submit: Ajouter la qualification
+      cancel: Annuler
+    create:
+      created: Qualification ajoutée. Notre équipe va l'examiner.
+    destroy:
+      destroyed: Qualification supprimée.
+      locked: Une qualification vérifiée ne peut pas être supprimée. Contactez-nous.
+  teacher_profiles:
+    edit:
+      qualifications:
+        title: Qualifications
+        intro: Ijazas, diplômes et certificats qui attestent de votre formation.
+        empty: Vous n'avez pas encore ajouté de qualification.
+        add: Ajouter une qualification
+        view: Voir le document
+        delete: Supprimer
+        confirm: Supprimer cette qualification ?

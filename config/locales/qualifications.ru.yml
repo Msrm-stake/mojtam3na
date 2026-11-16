@@ -1,0 +1,47 @@
+ru:
+  activerecord:
+    attributes:
+      qualification:
+        kind: Тип
+        title: Название
+        institution: Учебное заведение
+        year_obtained: Год получения
+        document: Документ (PDF, JPG или PNG)
+    errors:
+      models:
+        qualification:
+          attributes:
+            document:
+              blank: необходимо прикрепить
+              invalid_type: должен быть файлом PDF, JPG или PNG
+              too_large: должен быть меньше 5 МБ
+  qualifications:
+    kinds:
+      ijazah: Иджаза
+      degree: Диплом
+      certificate: Сертификат
+      other: Другое
+    statuses:
+      pending: Ожидает проверки
+      verified: Подтверждена
+      rejected: Отклонена
+    new:
+      title: Добавить квалификацию
+      intro: Загрузите скан или фото вашей иджазы, диплома или сертификата. Наша команда проверяет каждый документ до одобрения вашего профиля.
+      submit: Добавить квалификацию
+      cancel: Отмена
+    create:
+      created: Квалификация добавлена. Наша команда её проверит.
+    destroy:
+      destroyed: Квалификация удалена.
+      locked: Подтверждённую квалификацию нельзя удалить. Свяжитесь с нами.
+  teacher_profiles:
+    edit:
+      qualifications:
+        title: Квалификации
+        intro: Иджазы, дипломы и сертификаты, подтверждающие вашу подготовку.
+        empty: Вы ещё не добавили ни одной квалификации.
+        add: Добавить квалификацию
+        view: Открыть документ
+        delete: Удалить
+        confirm: Удалить эту квалификацию?

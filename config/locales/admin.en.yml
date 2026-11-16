@@ -1,0 +1,60 @@
+en:
+  shared:
+    navbar:
+      admin: Admin
+  admin:
+    not_allowed: You are not allowed to open this page.
+    statuses:
+      pending: Pending
+      approved: Approved
+      rejected: Rejected
+      suspended: Suspended
+    teacher_profiles:
+      approved: Profile approved. It is now visible to parents.
+      rejected: Profile rejected. The teacher can see your reason.
+      suspended: Profile suspended and hidden from parents.
+      reason_required: Please write a reason.
+      cannot_approve: "Cannot approve yet. Missing: %{missing}."
+      missing:
+        qualification: at least one verified qualification
+        language: at least one teaching language
+        subject: at least one subject
+      index:
+        title: Teacher profiles
+        name: Teacher
+        email: Email
+        joined: Joined
+        qualifications: Qualifications
+        review: Review
+        empty: No profiles with this status.
+      show:
+        back: Back to the list
+        headline: Headline
+        bio: About
+        years: Years of experience
+        gender: Gender
+        rate: Hourly rate
+        ages: Student ages
+        languages: Teaches in
+        subjects: Subjects
+        video: Intro video
+        account: Account language and time zone
+        rejection_shown: "Rejection reason: %{reason}"
+        review: Review
+        missing_intro: "Before approving, this profile still needs:"
+        approve: Approve profile
+        suspend: Suspend profile
+        confirm_suspend: Suspend this profile? It will be hidden from parents.
+        reject_reason: Reason for rejection (the teacher will see it)
+        reject: Reject profile
+        qualifications_title: Qualifications
+        no_qualifications: No qualification added yet.
+        view_document: View document
+        reviewer_note: "Reviewer note: %{note}"
+        verify: Verify
+        note_placeholder: Reason for rejection
+        reject_qualification: Reject
+    qualifications:
+      verified: Qualification verified.
+      rejected: Qualification rejected.
+      note_required: Please write a note explaining the rejection.

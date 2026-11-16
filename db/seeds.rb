@@ -1,9 +1,29 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+LANGUAGES = [
+  ["en", "English", "English"],        ["fr", "French", "Français"],
+  ["es", "Spanish", "Español"],        ["it", "Italian", "Italiano"],
+  ["ru", "Russian", "Русский"],        ["ar", "Arabic", "العربية"],
+  ["de", "German", "Deutsch"],         ["pt", "Portuguese", "Português"],
+  ["nl", "Dutch", "Nederlands"],       ["tr", "Turkish", "Türkçe"],
+  ["ur", "Urdu", "اردو"],              ["id", "Indonesian", "Bahasa Indonesia"],
+  ["ms", "Malay", "Bahasa Melayu"],    ["bn", "Bengali", "বাংলা"],
+  ["sw", "Swahili", "Kiswahili"]
+].freeze
+
+SUBJECTS = [
+  ["arabic_reading", "Arabic reading and writing"],
+  ["quran_recitation", "Quran recitation"],
+  ["tajweed", "Tajweed"],
+  ["memorization", "Memorization"],
+  ["conversation", "Arabic conversation"]
+].freeze
+
+LANGUAGES.each do |code, name, native_name|
+  Language.find_or_initialize_by(code: code)
+          .update!(name: name, native_name: native_name, rtl: %w[ar ur].include?(code))
+end
+
+SUBJECTS.each do |slug, name|
+  Subject.find_or_initialize_by(slug: slug).update!(name: name)
+end
+
+puts "Seeded #{Language.count} languages and #{Subject.count} subjects"

@@ -1,0 +1,47 @@
+en:
+  activerecord:
+    attributes:
+      qualification:
+        kind: Type
+        title: Title
+        institution: Institution
+        year_obtained: Year obtained
+        document: Document (PDF, JPG or PNG)
+    errors:
+      models:
+        qualification:
+          attributes:
+            document:
+              blank: must be attached
+              invalid_type: must be a PDF, JPG or PNG file
+              too_large: must be smaller than 5 MB
+  qualifications:
+    kinds:
+      ijazah: Ijazah
+      degree: Degree
+      certificate: Certificate
+      other: Other
+    statuses:
+      pending: Pending review
+      verified: Verified
+      rejected: Rejected
+    new:
+      title: Add a qualification
+      intro: Upload a scan or photo of your ijazah, degree or certificate. Our team reviews every document before your profile can be approved.
+      submit: Add qualification
+      cancel: Cancel
+    create:
+      created: Qualification added. Our team will review it.
+    destroy:
+      destroyed: Qualification removed.
+      locked: A verified qualification cannot be removed. Please contact us.
+  teacher_profiles:
+    edit:
+      qualifications:
+        title: Qualifications
+        intro: Ijazahs, degrees and certificates that show your training.
+        empty: You haven't added any qualification yet.
+        add: Add a qualification
+        view: View document
+        delete: Remove
+        confirm: Remove this qualification?

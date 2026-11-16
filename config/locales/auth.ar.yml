@@ -1,0 +1,11 @@
+ar:
+  activerecord:
+    attributes:
+      user:
+        first_name: الاسم الأول
+        last_name: اسم العائلة
+        role: أنا
+  users:
+    roles:
+      parent: ولي أمر
+      teacher: معلم
