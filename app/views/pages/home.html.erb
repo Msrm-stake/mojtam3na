@@ -1,2 +1,104 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="hero-badge"><%= t(".hero.badge") %></span>
+        <h1 class="hero-title"><%= t(".hero.title") %></h1>
+        <p class="hero-subtitle"><%= t(".hero.subtitle") %></p>
+        <div class="d-flex flex-wrap gap-3">
+          <%= link_to t(".hero.find_teacher"), "#", class: "btn btn-primary btn-lg" %>
+          <%= link_to t(".hero.become_teacher"), new_user_registration_path, class: "btn btn-gold btn-lg" %>
+        </div>
+      </div>
+      <div class="col-lg-5" aria-hidden="true">
+        <div class="letter-board" dir="rtl">
+          <% %w[ا ب ت ث ج ح خ د ذ].each do |letter| %>
+            <span class="letter-tile"><%= letter %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="section">
+  <div class="container">
+    <h2 class="section-title text-center"><%= t(".how.title") %></h2>
+    <p class="section-subtitle text-center"><%= t(".how.subtitle") %></p>
+    <div class="row g-4 mt-2">
+      <% %w[choose book learn].each_with_index do |step, index| %>
+        <div class="col-md-4">
+          <div class="step-card">
+            <span class="step-number"><%= index + 1 %></span>
+            <h3 class="h5"><%= t(".how.#{step}.title") %></h3>
+            <p class="mb-0"><%= t(".how.#{step}.text") %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title text-center mb-4"><%= t(".trust.title") %></h2>
+    <div class="row g-4">
+      <% { vetted: "certificate", parents: "user-shield", safety: "eye", language: "language" }.each do |key, icon| %>
+        <div class="col-sm-6 col-lg-3">
+          <div class="trust-card">
+            <span class="trust-icon"><i class="fa-solid fa-<%= icon %>" aria-hidden="true"></i></span>
+            <h3 class="h6"><%= t(".trust.#{key}.title") %></h3>
+            <p class="mb-0"><%= t(".trust.#{key}.text") %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-md-6">
+        <h2 class="section-title"><%= t(".subjects.title") %></h2>
+        <p><%= t(".subjects.text") %></p>
+        <div class="chips">
+          <% %w[arabic_reading quran_recitation tajweed memorization conversation].each do |subject| %>
+            <span class="chip"><%= t(".subjects.items.#{subject}") %></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-title"><%= t(".languages.title") %></h2>
+        <p><%= t(".languages.text") %></p>
+        <div class="chips">
+          <% I18n.available_locales.each do |locale| %>
+            <span class="chip chip-gold"><%= locale_name(locale) %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section section-alt">
+  <div class="container container-narrow">
+    <h2 class="section-title text-center"><%= t(".faq.title") %></h2>
+    <div class="accordion mt-4" id="faqAccordion">
+      <% %w[trial arabic parents tech vetting].each_with_index do |question, index| %>
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button <%= 'collapsed' unless index.zero? %>" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq-<%= question %>"
+                    aria-expanded="<%= index.zero? %>" aria-controls="faq-<%= question %>">
+              <%= t(".faq.#{question}.question") %>
+            </button>
+          </h3>
+          <div id="faq-<%= question %>" class="accordion-collapse collapse <%= 'show' if index.zero? %>" data-bs-parent="#faqAccordion">
+            <div class="accordion-body"><%= t(".faq.#{question}.answer") %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

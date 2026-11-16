@@ -1,0 +1,68 @@
+it:
+  pages:
+    home:
+      hero:
+        badge: Lezioni dal vivo di arabo e Corano
+        title: Arabo e Corano, insegnati dal vivo nella lingua di tuo figlio
+        subtitle: Insegnanti qualificati, lezioni individuali in videochiamata e una dashboard per i genitori per seguire ogni passo dei progressi di tuo figlio.
+        find_teacher: Trova un insegnante
+        become_teacher: Diventa insegnante
+      how:
+        title: Come funziona
+        subtitle: Dalla prima ricerca alla prima lezione in tre semplici passaggi.
+        choose:
+          title: Scegli un insegnante
+          text: Sfoglia gli insegnanti per materia, lingua, prezzo e disponibilità, e consulta le loro qualifiche.
+        book:
+          title: Prenota una lezione di prova
+          text: Scegli un orario adatto alla tua famiglia, nel tuo fuso orario, e conosci il tuo insegnante.
+        learn:
+          title: Impara dal vivo
+          text: Partecipa a lezioni individuali in videochiamata da casa e, come genitore, segui progressi, appunti e compiti.
+      trust:
+        title: Perché i genitori si fidano di Mojtam3na
+        vetted:
+          title: Insegnanti qualificati
+          text: Ogni insegnante presenta le proprie qualifiche, che il nostro team verifica prima della pubblicazione del profilo.
+        parents:
+          title: Account gestiti dai genitori
+          text: Crei tu il profilo di tuo figlio e mantieni il controllo di prenotazioni e pagamenti.
+        safety:
+          title: Aula aperta
+          text: I genitori possono partecipare a qualsiasi lezione.
+        language:
+          title: La lingua di tuo figlio
+          text: Trova insegnanti che spiegano l'arabo e il Corano nella lingua che tuo figlio comprende meglio.
+      subjects:
+        title: Cosa può imparare tuo figlio
+        text: Le lezioni sono adattate all'età e al livello di tuo figlio.
+        items:
+          arabic_reading: Lettura e scrittura in arabo
+          quran_recitation: Recitazione del Corano
+          tajweed: Tajwid
+          memorization: Memorizzazione
+          conversation: Conversazione in arabo
+      languages:
+        title: Disponibile nella tua lingua
+        text: Il sito è disponibile in sei lingue e le lezioni sono spiegate nella lingua parlata da tuo figlio.
+      faq:
+        title: Domande frequenti
+        trial:
+          question: Come funziona una lezione di prova?
+          answer: Prenoti una breve prima lezione con l'insegnante che hai scelto, per capire se è la scelta giusta prima di abbonarti.
+        arabic:
+          question: Mio figlio deve già conoscere l'arabo?
+          answer: No. Gli insegnanti partono dall'alfabeto arabo e adattano il ritmo al livello di tuo figlio.
+        parents:
+          question: Posso seguire le lezioni come genitore?
+          answer: Sì. I genitori possono partecipare a qualsiasi lezione e vedere progressi, appunti e compiti dalla propria dashboard.
+        tech:
+          question: Di cosa abbiamo bisogno per le lezioni?
+          answer: Un computer, un tablet o un telefono con fotocamera, microfono e una connessione internet stabile.
+        vetting:
+          question: Come vengono verificati gli insegnanti?
+          answer: Gli insegnanti caricano qualifiche e certificati, e il nostro team li verifica prima della pubblicazione del profilo.
+  shared:
+    footer:
+      tagline: Lezioni dal vivo di arabo e Corano per bambini di tutto il mondo.
+      rights: Tutti i diritti riservati.

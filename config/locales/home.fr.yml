@@ -1,0 +1,68 @@
+fr:
+  pages:
+    home:
+      hero:
+        badge: Cours d'arabe et de Coran en direct
+        title: L'arabe et le Coran, enseignés en direct dans la langue de votre enfant
+        subtitle: Des enseignants qualifiés, des cours individuels en visioconférence et un tableau de bord pour suivre chaque étape des progrès de votre enfant.
+        find_teacher: Trouver un enseignant
+        become_teacher: Devenir enseignant
+      how:
+        title: Comment ça marche
+        subtitle: De la première recherche au premier cours en trois étapes simples.
+        choose:
+          title: Choisissez un enseignant
+          text: Parcourez les enseignants par matière, langue, prix et disponibilités, et consultez leurs qualifications.
+        book:
+          title: Réservez un cours d'essai
+          text: Choisissez un horaire qui convient à votre famille, dans votre fuseau horaire, et rencontrez votre enseignant.
+        learn:
+          title: Apprenez en direct
+          text: Suivez des cours individuels en visioconférence depuis chez vous et, en tant que parent, suivez les progrès, les notes et les devoirs.
+      trust:
+        title: Pourquoi les parents font confiance à Mojtam3na
+        vetted:
+          title: Des enseignants qualifiés
+          text: Chaque enseignant fournit ses qualifications, que notre équipe examine avant la mise en ligne de son profil.
+        parents:
+          title: Comptes gérés par les parents
+          text: Vous créez le profil de votre enfant et gardez le contrôle des réservations et des paiements.
+        safety:
+          title: Classe ouverte
+          text: Les parents sont les bienvenus à chaque cours.
+        language:
+          title: La langue de votre enfant
+          text: Trouvez des enseignants qui expliquent l'arabe et le Coran dans la langue que votre enfant comprend le mieux.
+      subjects:
+        title: Ce que votre enfant peut apprendre
+        text: Les cours sont adaptés à l'âge et au niveau de votre enfant.
+        items:
+          arabic_reading: Lecture et écriture de l'arabe
+          quran_recitation: Récitation du Coran
+          tajweed: Tajwid
+          memorization: Mémorisation
+          conversation: Conversation en arabe
+      languages:
+        title: Disponible dans votre langue
+        text: Le site est disponible en six langues, et les cours sont expliqués dans la langue de votre enfant.
+      faq:
+        title: Questions fréquentes
+        trial:
+          question: Comment se déroule un cours d'essai ?
+          answer: Vous réservez un premier cours court avec l'enseignant que vous avez choisi, afin de voir si cela convient avant de vous abonner.
+        arabic:
+          question: Mon enfant doit-il déjà connaître l'arabe ?
+          answer: Non. Les enseignants commencent par l'alphabet arabe et adaptent le rythme au niveau de votre enfant.
+        parents:
+          question: Puis-je suivre les cours en tant que parent ?
+          answer: Oui. Les parents peuvent assister à chaque cours et consulter les progrès, les notes et les devoirs depuis leur tableau de bord.
+        tech:
+          question: De quoi avons-nous besoin pour les cours ?
+          answer: Un ordinateur, une tablette ou un téléphone avec caméra, microphone et connexion internet stable.
+        vetting:
+          question: Comment les enseignants sont-ils vérifiés ?
+          answer: Les enseignants téléversent leurs qualifications et certificats, et notre équipe les examine avant la publication du profil.
+  shared:
+    footer:
+      tagline: Des cours d'arabe et de Coran en direct pour les enfants du monde entier.
+      rights: Tous droits réservés.

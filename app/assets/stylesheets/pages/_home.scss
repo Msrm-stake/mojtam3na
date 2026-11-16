@@ -1,1 +1,154 @@
-// Specific CSS for your home-page
+// Hero
+.hero { padding: 4rem 0 3rem; }
+
+.hero-badge {
+  display: inline-block;
+  background: $gold-light;
+  color: $green-dark;
+  font-size: .85rem;
+  font-weight: 600;
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: $green-deep;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.btn-gold {
+  background: $gold;
+  border-color: $gold;
+  color: $green-dark;
+  font-weight: 700;
+
+  &:hover, &:focus {
+    background: darken($gold, 6%);
+    border-color: darken($gold, 6%);
+    color: $green-dark;
+  }
+}
+
+.letter-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  background: $green-deep;
+  padding: 1.25rem;
+  border-radius: $border-radius-xxl;
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+.letter-tile {
+  background: $cream;
+  color: $green-deep;
+  font-family: "Cairo", sans-serif;
+  font-size: 2.5rem;
+  line-height: 1.5;
+  text-align: center;
+  border-radius: $border-radius-lg;
+
+  &:nth-child(5) {
+    background: $gold;
+    color: $green-dark;
+  }
+}
+
+// Sections
+.section { padding: 4rem 0; }
+.section-alt { background: #fff; }
+.container-narrow { max-width: 46rem; }
+
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: $green-deep;
+  margin-bottom: .75rem;
+}
+
+.section-subtitle {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Cards
+.step-card,
+.trust-card {
+  background: #fff;
+  border: 1px solid rgba($green-deep, .1);
+  border-radius: $border-radius-xl;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.section-alt .trust-card { background: $cream; }
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: $green-deep;
+  color: $cream;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.trust-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: $border-radius-lg;
+  background: $gold-light;
+  color: $green-dark;
+  font-size: 1.25rem;
+  margin-bottom: .75rem;
+}
+
+// Chips
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.chip {
+  background: #fff;
+  border: 1px solid rgba($green-deep, .2);
+  color: $green-dark;
+  padding: .4rem .9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+.chip-gold {
+  background: $gold-light;
+  border-color: transparent;
+}
+
+// FAQ
+.accordion-button:not(.collapsed) {
+  background: $gold-light;
+  color: $green-dark;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 .2rem rgba($green-deep, .2);
+}

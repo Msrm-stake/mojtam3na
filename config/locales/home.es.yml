@@ -1,0 +1,68 @@
+es:
+  pages:
+    home:
+      hero:
+        badge: Clases en vivo de árabe y Corán
+        title: Árabe y Corán, enseñados en vivo en el idioma de tu hijo
+        subtitle: Profesores cualificados, clases individuales por videollamada y un panel para padres para seguir cada paso del progreso de tu hijo.
+        find_teacher: Encontrar un profesor
+        become_teacher: Ser profesor
+      how:
+        title: Cómo funciona
+        subtitle: De la primera búsqueda a la primera clase en tres sencillos pasos.
+        choose:
+          title: Elige un profesor
+          text: Explora profesores por materia, idioma, precio y disponibilidad, y consulta sus cualificaciones.
+        book:
+          title: Reserva una clase de prueba
+          text: Elige un horario que se adapte a tu familia, en tu zona horaria, y conoce a tu profesor.
+        learn:
+          title: Aprende en vivo
+          text: Únete a clases individuales por videollamada desde casa y, como padre o madre, sigue el progreso, las notas y las tareas.
+      trust:
+        title: Por qué los padres confían en Mojtam3na
+        vetted:
+          title: Profesores cualificados
+          text: Cada profesor presenta sus cualificaciones, que nuestro equipo revisa antes de publicar su perfil.
+        parents:
+          title: Cuentas gestionadas por los padres
+          text: Tú creas el perfil de tu hijo y mantienes el control de las reservas y los pagos.
+        safety:
+          title: Aula abierta
+          text: Los padres pueden unirse a cualquier clase.
+        language:
+          title: El idioma de tu hijo
+          text: Encuentra profesores que explican el árabe y el Corán en el idioma que mejor entiende tu hijo.
+      subjects:
+        title: Lo que tu hijo puede aprender
+        text: Las clases se adaptan a la edad y al nivel de tu hijo.
+        items:
+          arabic_reading: Lectura y escritura en árabe
+          quran_recitation: Recitación del Corán
+          tajweed: Tajwid
+          memorization: Memorización
+          conversation: Conversación en árabe
+      languages:
+        title: Disponible en tu idioma
+        text: El sitio web está disponible en seis idiomas y las clases se explican en el idioma que habla tu hijo.
+      faq:
+        title: Preguntas frecuentes
+        trial:
+          question: ¿Cómo funciona una clase de prueba?
+          answer: Reservas una primera clase corta con el profesor que elegiste, para comprobar si es una buena opción antes de suscribirte.
+        arabic:
+          question: ¿Mi hijo necesita saber árabe de antemano?
+          answer: No. Los profesores empiezan por el alfabeto árabe y adaptan el ritmo al nivel de tu hijo.
+        parents:
+          question: ¿Puedo seguir las clases como padre?
+          answer: Sí. Los padres pueden unirse a cualquier clase y ver el progreso, las notas y las tareas desde su panel.
+        tech:
+          question: ¿Qué necesitamos para las clases?
+          answer: Un ordenador, tableta o teléfono con cámara, micrófono y una conexión a internet estable.
+        vetting:
+          question: ¿Cómo se verifica a los profesores?
+          answer: Los profesores suben sus cualificaciones y certificados, y nuestro equipo los revisa antes de publicar el perfil.
+  shared:
+    footer:
+      tagline: Clases en vivo de árabe y Corán para niños de todo el mundo.
+      rights: Todos los derechos reservados.

@@ -1,0 +1,68 @@
+en:
+  pages:
+    home:
+      hero:
+        badge: Live Arabic and Quran lessons
+        title: Arabic and Quran, taught live in your child's language
+        subtitle: Qualified teachers, one-to-one video lessons and a parent dashboard to follow every step of your child's progress.
+        find_teacher: Find a teacher
+        become_teacher: Become a teacher
+      how:
+        title: How it works
+        subtitle: From first search to first lesson in three simple steps.
+        choose:
+          title: Choose a teacher
+          text: Browse teachers by subject, language, price and availability, and read their qualifications.
+        book:
+          title: Book a trial lesson
+          text: Pick a time that suits your family, in your own time zone, and meet your teacher.
+        learn:
+          title: Learn live
+          text: Join one-to-one video lessons from home, and follow progress, notes and homework as a parent.
+      trust:
+        title: Why parents trust Mojtam3na
+        vetted:
+          title: Qualified teachers
+          text: Every teacher submits their qualifications, which our team reviews before their profile goes live.
+        parents:
+          title: Parent-managed accounts
+          text: You create your child's profile and stay in control of bookings and payments.
+        safety:
+          title: Open classroom
+          text: Parents are welcome to join any lesson.
+        language:
+          title: Your child's language
+          text: Find teachers who explain Arabic and the Quran in the language your child understands best.
+      subjects:
+        title: What your child can learn
+        text: Lessons are adapted to your child's age and level.
+        items:
+          arabic_reading: Arabic reading and writing
+          quran_recitation: Quran recitation
+          tajweed: Tajweed
+          memorization: Memorization
+          conversation: Arabic conversation
+      languages:
+        title: Available in your language
+        text: The website is available in six languages, and lessons are explained in the language your child speaks.
+      faq:
+        title: Frequently asked questions
+        trial:
+          question: How does a trial lesson work?
+          answer: You book a short first lesson with the teacher you chose, so you and your child can see whether it is a good fit before subscribing.
+        arabic:
+          question: Does my child need to know Arabic already?
+          answer: No. Teachers start from the Arabic alphabet and adapt the pace to your child's level.
+        parents:
+          question: Can I follow the lessons as a parent?
+          answer: Yes. Parents can join any lesson and see progress, notes and homework from their dashboard.
+        tech:
+          question: What do we need for the lessons?
+          answer: A computer, tablet or phone with a camera, a microphone and a stable internet connection.
+        vetting:
+          question: How are teachers checked?
+          answer: Teachers upload their qualifications and certificates, and our team reviews them before the profile is published.
+  shared:
+    footer:
+      tagline: Live Arabic and Quran lessons for children around the world.
+      rights: All rights reserved.

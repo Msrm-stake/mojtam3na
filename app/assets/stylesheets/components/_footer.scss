@@ -1,0 +1,46 @@
+// Keep the footer at the bottom of short pages
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer {
+  margin-top: auto;
+  background: $green-dark;
+  color: rgba($cream, .85);
+  padding: 2.5rem 0 1.5rem;
+
+  a {
+    color: $cream;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.footer-brand {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: $cream;
+  margin-bottom: .35rem;
+}
+
+.footer-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.25rem;
+  justify-content: flex-end;
+}
+
+.footer-copy {
+  margin: 1.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba($cream, .15);
+  font-size: .875rem;
+}
+
+@media (max-width: 767.98px) {
+  .footer-langs { justify-content: flex-start; }
+}

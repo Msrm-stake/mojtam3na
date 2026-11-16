@@ -1,0 +1,16 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <span class="footer-brand"><%= t("shared.navbar.brand") %></span>
+        <p class="mb-0"><%= t("shared.footer.tagline") %></p>
+      </div>
+      <div class="col-md-6 footer-langs">
+        <% I18n.available_locales.each do |locale| %>
+          <%= link_to locale_name(locale), url_for(locale: locale) %>
+        <% end %>
+      </div>
+    </div>
+    <p class="footer-copy">© <%= Date.current.year %> <%= t("shared.navbar.brand") %>. <%= t("shared.footer.rights") %></p>
+  </div>
+</footer>
