@@ -1,36 +1,40 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+<nav class="navbar navbar-expand-lg navbar-mojtam3na">
+  <div class="container">
+    <%= link_to t(".brand"), root_path, class: "navbar-brand" %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="<%= t('.toggle') %>">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><%= link_to t(".find_teacher"), "#", class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to t(".how_it_works"), "#how-it-works", class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to t(".become_teacher"), "#", class: "nav-link" %></li>
+      </ul>
+
+      <ul class="navbar-nav align-items-lg-center gap-lg-2">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-globe"></i> <%= locale_name(I18n.locale) %>
           </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <% I18n.available_locales.each do |locale| %>
+              <li>
+                <%= link_to locale_name(locale), url_for(locale: locale),
+                      class: "dropdown-item #{'active' if locale == I18n.locale}" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to t(".log_out"), destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          <li class="nav-item"><%= link_to t(".log_in"), new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to t(".sign_up"), new_user_registration_path, class: "btn btn-primary" %></li>
         <% end %>
       </ul>
     </div>

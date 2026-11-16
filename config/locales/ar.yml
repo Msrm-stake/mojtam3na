@@ -1,0 +1,11 @@
+ar:
+  shared:
+    navbar:
+      brand: Mojtam3na
+      toggle: تبديل التنقل
+      find_teacher: ابحث عن معلم
+      how_it_works: كيف يعمل
+      become_teacher: كن معلمًا
+      log_in: تسجيل الدخول
+      sign_up: إنشاء حساب
+      log_out: تسجيل الخروج

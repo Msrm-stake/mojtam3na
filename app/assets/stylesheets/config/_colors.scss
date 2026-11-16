@@ -1,10 +1,15 @@
-// Define variables for your color scheme
+// Brand palette: deep green, warm gold, cream
+$green-deep: #0B5D4B;
+$green-dark: #084538;
+$gold:       #C9A227;
+$gold-light: #F3E7BD;
+$cream:      #FBF7EE;
 
-// For example:
-$red: #FD1015;
-$blue: #0D6EFD;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// Template variables (kept so existing partials keep working)
+$red:        #C0392B;
+$blue:       #2C6E91;
+$yellow:     $gold;
+$orange:     #E67E22;
+$green:      #2E9E6B;
+$gray:       #1F2A27;
+$light-gray: $cream;

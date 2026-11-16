@@ -1,0 +1,11 @@
+es:
+  shared:
+    navbar:
+      brand: Mojtam3na
+      toggle: Mostrar navegación
+      find_teacher: Encontrar un profesor
+      how_it_works: Cómo funciona
+      become_teacher: Ser profesor
+      log_in: Iniciar sesión
+      sign_up: Registrarse
+      log_out: Cerrar sesión

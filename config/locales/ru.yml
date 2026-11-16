@@ -1,0 +1,11 @@
+ru:
+  shared:
+    navbar:
+      brand: Mojtam3na
+      toggle: Показать навигацию
+      find_teacher: Найти преподавателя
+      how_it_works: Как это работает
+      become_teacher: Стать преподавателем
+      log_in: Войти
+      sign_up: Регистрация
+      log_out: Выйти

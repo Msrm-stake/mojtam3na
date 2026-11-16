@@ -74,3 +74,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 4.7"
+gem "json", "< 3"
+
+gem "rails-i18n", "~> 7.0"
+gem "devise-i18n", "~> 1.16"

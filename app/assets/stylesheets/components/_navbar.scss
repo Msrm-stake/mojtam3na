@@ -1,12 +1,26 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+.navbar-mojtam3na {
+  background: #fff;
+  border-bottom: 1px solid rgba($green-deep, .12);
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-brand {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: $green-deep;
+    letter-spacing: -.01em;
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .nav-link {
+    color: $gray;
+    font-weight: 600;
+
+    &:hover { color: $green-deep; }
+  }
+
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: $green-deep;
+    color: #fff;
+  }
 }
