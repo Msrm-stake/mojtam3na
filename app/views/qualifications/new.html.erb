@@ -8,7 +8,7 @@
         <%= simple_form_for @qualification, url: qualifications_path do |f| %>
           <%= f.error_notification %>
 
-          <%= f.input :kind, required: true, include_blank: false,
+          <%= f.input :kind, required: false, include_blank: false,
                 collection: Qualification.kinds.keys.map { |kind| [t("qualifications.kinds.#{kind}"), kind] } %>
           <%= f.input :title, required: true %>
           <%= f.input :institution, required: false %>
