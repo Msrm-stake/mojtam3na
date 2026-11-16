@@ -1,0 +1,35 @@
+<div class="container auth-page">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <h1 class="h3 mb-0"><%= t(".title") %></h1>
+    <%= link_to t(".add"), new_student_path, class: "btn btn-primary" %>
+  </div>
+  <p class="mt-2 mb-0"><%= t(".intro") %></p>
+
+  <% if @students.empty? %>
+    <p class="text-body-secondary mt-4"><%= t(".empty") %></p>
+  <% else %>
+    <ul class="child-list">
+      <% @students.each do |student| %>
+        <li class="child-card">
+          <div>
+            <div class="child-name"><%= student.first_name %></div>
+            <div class="child-meta"><%= t(".age", age: student.age) %></div>
+            <% if student.native_language %>
+              <div class="child-meta"><%= t(".speaks") %>: <%= student.native_language.native_name %></div>
+            <% end %>
+            <div class="chips mt-2">
+              <span class="chip"><%= t(".arabic") %>: <%= t("students.levels.#{student.arabic_level}") %></span>
+              <span class="chip chip-gold"><%= t(".quran") %>: <%= t("students.levels.#{student.quran_level}") %></span>
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <%= link_to t(".edit"), edit_student_path(student), class: "btn btn-outline-primary btn-sm" %>
+            <%= button_to t(".delete"), student_path(student), method: :delete,
+                  class: "btn btn-outline-danger btn-sm",
+                  form: { data: { turbo_confirm: t(".confirm") } } %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

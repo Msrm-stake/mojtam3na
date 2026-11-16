@@ -1,0 +1,40 @@
+<%= simple_form_for student do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :first_name, required: true, autofocus: true %>
+  <%= f.input :birth_date, as: :date, html5: true, required: true,
+        input_html: { max: Date.current.iso8601 } %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :gender, required: false, include_blank: true,
+            collection: [[t("students.genders.female"), "female"], [t("students.genders.male"), "male"]] %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.input :native_language_id, required: false, include_blank: true,
+            collection: Language.alphabetical, label_method: :native_name, value_method: :id %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :arabic_level, required: false, include_blank: false,
+            collection: Student::LEVELS.map { |level| [t("students.levels.#{level}"), level] } %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.input :quran_level, required: false, include_blank: false,
+            collection: Student::LEVELS.map { |level| [t("students.levels.#{level}"), level] } %>
+    </div>
+  </div>
+
+  <%= f.input :learning_goals, as: :text, required: false, input_html: { rows: 3 } %>
+
+  <% if with_consent %>
+    <%= f.input :guardian_consent, as: :boolean, required: true %>
+  <% end %>
+
+  <div class="d-flex gap-2 mt-3">
+    <%= f.button :submit, submit, class: "btn btn-primary" %>
+    <%= link_to cancel, students_path, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

@@ -1,0 +1,60 @@
+es:
+  activerecord:
+    attributes:
+      student:
+        first_name: Nombre
+        birth_date: Fecha de nacimiento
+        gender: Género
+        native_language_id: Lengua materna
+        arabic_level: Nivel de árabe
+        quran_level: Nivel de Corán
+        learning_goals: Objetivos de aprendizaje
+        guardian_consent: "Soy el padre, la madre o el tutor legal de este niño y acepto que Mojtam3na use la información de mi hijo para organizar las clases."
+    errors:
+      models:
+        student:
+          attributes:
+            birth_date:
+              age_range: "debe corresponder a una edad entre %{min} y %{max} años"
+            guardian_consent:
+              accepted: debe aceptarse
+  shared:
+    navbar:
+      my_children: Mis hijos
+  students:
+    parents_only: Esta página es para padres.
+    levels:
+      beginner: Principiante
+      intermediate: Intermedio
+      advanced: Avanzado
+    genders:
+      female: Niña
+      male: Niño
+    create:
+      created: Hijo añadido.
+    update:
+      updated: Hijo actualizado.
+    destroy:
+      destroyed: Hijo eliminado.
+    index:
+      title: Mis hijos
+      intro: Añade un perfil por cada niño que tomará clases. Los profesores solo ven lo que introduces aquí.
+      add: Añadir un hijo
+      empty: Todavía no has añadido ningún hijo.
+      age: "Edad: %{age}"
+      speaks: Lengua materna
+      arabic: Árabe
+      quran: Corán
+      edit: Editar
+      delete: Eliminar
+      confirm: "¿Eliminar a este niño? Se borrará su perfil."
+    new:
+      title: Añadir un hijo
+      intro: Cuéntanos un poco sobre tu hijo para que los profesores adapten las clases.
+      privacy_note: "Solo pedimos lo que los profesores necesitan: un nombre, una fecha de nacimiento y un nivel. Por favor, no introduzcas apellidos, dirección ni fotos."
+      submit: Añadir hijo
+      cancel: Cancelar
+    edit:
+      title: Editar hijo
+      submit: Guardar
+      cancel: Cancelar

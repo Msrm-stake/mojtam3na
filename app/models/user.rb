@@ -10,6 +10,8 @@ class User < ApplicationRecord
   enum :role, { parent: "parent", teacher: "teacher", admin: "admin" }, prefix: true
 
   has_one :teacher_profile, dependent: :destroy
+  has_many :students, foreign_key: :parent_id, inverse_of: :parent, dependent: :destroy
+  has_many :consents, dependent: :destroy
 
   # Every new teacher starts with a pending profile, reviewed before going live.
   after_create :create_teacher_profile!, if: :role_teacher?

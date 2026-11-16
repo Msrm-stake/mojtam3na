@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_16_054900) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_16_200555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,19 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_16_054900) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "consents", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "student_id"
+    t.string "kind", null: false
+    t.string "ip_address"
+    t.datetime "accepted_at", null: false
+    t.datetime "revoked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_consents_on_student_id"
+    t.index ["user_id"], name: "index_consents_on_user_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "code", limit: 8, null: false
     t.string "name", null: false
@@ -67,6 +80,21 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_16_054900) do
     t.index ["status"], name: "index_qualifications_on_status"
     t.index ["teacher_profile_id"], name: "index_qualifications_on_teacher_profile_id"
     t.index ["verified_by_id"], name: "index_qualifications_on_verified_by_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.bigint "parent_id", null: false
+    t.string "first_name", null: false
+    t.date "birth_date", null: false
+    t.string "gender"
+    t.bigint "native_language_id"
+    t.string "arabic_level", default: "beginner", null: false
+    t.string "quran_level", default: "beginner", null: false
+    t.text "learning_goals"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["native_language_id"], name: "index_students_on_native_language_id"
+    t.index ["parent_id"], name: "index_students_on_parent_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -151,8 +179,12 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_16_054900) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "consents", "students"
+  add_foreign_key "consents", "users"
   add_foreign_key "qualifications", "teacher_profiles"
   add_foreign_key "qualifications", "users", column: "verified_by_id"
+  add_foreign_key "students", "languages", column: "native_language_id"
+  add_foreign_key "students", "users", column: "parent_id"
   add_foreign_key "teacher_languages", "languages"
   add_foreign_key "teacher_languages", "teacher_profiles"
   add_foreign_key "teacher_profiles", "users"

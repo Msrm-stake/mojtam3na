@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
     resource :teacher_profile, path: "teacher/profile", only: %i[edit update]
     resources :qualifications, path: "teacher/qualifications", only: %i[new create destroy]
+    resources :students, path: "children", except: :show
 
     namespace :admin do
       root "teacher_profiles#index"

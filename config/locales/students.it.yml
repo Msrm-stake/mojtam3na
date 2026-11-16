@@ -1,0 +1,60 @@
+it:
+  activerecord:
+    attributes:
+      student:
+        first_name: Nome
+        birth_date: Data di nascita
+        gender: Genere
+        native_language_id: Lingua madre
+        arabic_level: Livello di arabo
+        quran_level: Livello di Corano
+        learning_goals: Obiettivi di apprendimento
+        guardian_consent: "Sono il genitore o il tutore legale di questo bambino e accetto che Mojtam3na utilizzi le informazioni di mio figlio per organizzare le lezioni."
+    errors:
+      models:
+        student:
+          attributes:
+            birth_date:
+              age_range: "deve corrispondere a un'età tra %{min} e %{max} anni"
+            guardian_consent:
+              accepted: deve essere accettato
+  shared:
+    navbar:
+      my_children: I miei figli
+  students:
+    parents_only: Questa pagina è riservata ai genitori.
+    levels:
+      beginner: Principiante
+      intermediate: Intermedio
+      advanced: Avanzato
+    genders:
+      female: Bambina
+      male: Bambino
+    create:
+      created: Figlio aggiunto.
+    update:
+      updated: Figlio aggiornato.
+    destroy:
+      destroyed: Figlio rimosso.
+    index:
+      title: I miei figli
+      intro: Aggiungi un profilo per ogni bambino che seguirà le lezioni. Gli insegnanti vedono solo ciò che inserisci qui.
+      add: Aggiungi un figlio
+      empty: Non hai ancora aggiunto nessun figlio.
+      age: "Età: %{age}"
+      speaks: Lingua madre
+      arabic: Arabo
+      quran: Corano
+      edit: Modifica
+      delete: Rimuovi
+      confirm: "Rimuovere questo bambino? Il suo profilo verrà eliminato."
+    new:
+      title: Aggiungi un figlio
+      intro: Raccontaci qualcosa di tuo figlio, così gli insegnanti possono adattare le lezioni.
+      privacy_note: "Chiediamo solo ciò che serve agli insegnanti: un nome, una data di nascita e un livello. Non inserire cognome, indirizzo o foto."
+      submit: Aggiungi figlio
+      cancel: Annulla
+    edit:
+      title: Modifica figlio
+      submit: Salva
+      cancel: Annulla

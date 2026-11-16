@@ -1,0 +1,60 @@
+en:
+  activerecord:
+    attributes:
+      student:
+        first_name: First name
+        birth_date: Date of birth
+        gender: Gender
+        native_language_id: Native language
+        arabic_level: Arabic level
+        quran_level: Quran level
+        learning_goals: Learning goals
+        guardian_consent: "I am this child's parent or legal guardian, and I agree that Mojtam3na uses my child's information to organise lessons."
+    errors:
+      models:
+        student:
+          attributes:
+            birth_date:
+              age_range: "must correspond to an age between %{min} and %{max}"
+            guardian_consent:
+              accepted: must be accepted
+  shared:
+    navbar:
+      my_children: My children
+  students:
+    parents_only: This page is for parents.
+    levels:
+      beginner: Beginner
+      intermediate: Intermediate
+      advanced: Advanced
+    genders:
+      female: Girl
+      male: Boy
+    create:
+      created: Child added.
+    update:
+      updated: Child updated.
+    destroy:
+      destroyed: Child removed.
+    index:
+      title: My children
+      intro: Add a profile for each child who will take lessons. Teachers only see what you enter here.
+      add: Add a child
+      empty: You haven't added a child yet.
+      age: "Age: %{age}"
+      speaks: Native language
+      arabic: Arabic
+      quran: Quran
+      edit: Edit
+      delete: Remove
+      confirm: "Remove this child? Their profile will be deleted."
+    new:
+      title: Add a child
+      intro: Tell us a little about your child so teachers can adapt the lessons.
+      privacy_note: "We only ask for what teachers need: a first name, a date of birth and a learning level. Please do not enter a surname, address or photo."
+      submit: Add child
+      cancel: Cancel
+    edit:
+      title: Edit child
+      submit: Save
+      cancel: Cancel

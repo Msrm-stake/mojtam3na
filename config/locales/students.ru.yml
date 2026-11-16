@@ -1,0 +1,60 @@
+ru:
+  activerecord:
+    attributes:
+      student:
+        first_name: Имя
+        birth_date: Дата рождения
+        gender: Пол
+        native_language_id: Родной язык
+        arabic_level: Уровень арабского
+        quran_level: Уровень знания Корана
+        learning_goals: Цели обучения
+        guardian_consent: "Я являюсь родителем или законным представителем этого ребёнка и согласен(на), чтобы Mojtam3na использовала данные моего ребёнка для организации уроков."
+    errors:
+      models:
+        student:
+          attributes:
+            birth_date:
+              age_range: "должна соответствовать возрасту от %{min} до %{max} лет"
+            guardian_consent:
+              accepted: необходимо принять
+  shared:
+    navbar:
+      my_children: Мои дети
+  students:
+    parents_only: Эта страница предназначена для родителей.
+    levels:
+      beginner: Начальный
+      intermediate: Средний
+      advanced: Продвинутый
+    genders:
+      female: Девочка
+      male: Мальчик
+    create:
+      created: Ребёнок добавлен.
+    update:
+      updated: Данные ребёнка обновлены.
+    destroy:
+      destroyed: Ребёнок удалён.
+    index:
+      title: Мои дети
+      intro: Добавьте профиль для каждого ребёнка, который будет заниматься. Преподаватели видят только то, что вы здесь укажете.
+      add: Добавить ребёнка
+      empty: Вы ещё не добавили ни одного ребёнка.
+      age: "Возраст: %{age}"
+      speaks: Родной язык
+      arabic: Арабский
+      quran: Коран
+      edit: Изменить
+      delete: Удалить
+      confirm: "Удалить этого ребёнка? Его профиль будет удалён."
+    new:
+      title: Добавить ребёнка
+      intro: Расскажите немного о вашем ребёнке, чтобы преподаватели могли подстроить уроки.
+      privacy_note: "Мы запрашиваем только то, что нужно преподавателям: имя, дату рождения и уровень. Пожалуйста, не указывайте фамилию, адрес и фото."
+      submit: Добавить ребёнка
+      cancel: Отмена
+    edit:
+      title: Изменить данные ребёнка
+      submit: Сохранить
+      cancel: Отмена

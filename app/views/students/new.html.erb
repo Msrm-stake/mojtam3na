@@ -1,0 +1,12 @@
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="auth-card">
+        <h1 class="h3 mb-2"><%= t(".title") %></h1>
+        <p class="mb-2"><%= t(".intro") %></p>
+        <p class="small text-body-secondary mb-4"><%= t(".privacy_note") %></p>
+        <%= render "form", student: @student, submit: t(".submit"), cancel: t(".cancel"), with_consent: true %>
+      </div>
+    </div>
+  </div>
+</div>

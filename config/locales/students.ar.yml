@@ -1,0 +1,60 @@
+ar:
+  activerecord:
+    attributes:
+      student:
+        first_name: الاسم الأول
+        birth_date: تاريخ الميلاد
+        gender: الجنس
+        native_language_id: اللغة الأم
+        arabic_level: مستوى العربية
+        quran_level: مستوى القرآن
+        learning_goals: أهداف التعلم
+        guardian_consent: "أنا والد هذا الطفل أو وصيّه القانوني، وأوافق على أن يستخدم موقع Mojtam3na معلومات طفلي لتنظيم الدروس."
+    errors:
+      models:
+        student:
+          attributes:
+            birth_date:
+              age_range: "يجب أن يقابل عمرًا بين %{min} و%{max} سنة"
+            guardian_consent:
+              accepted: يجب الموافقة عليه
+  shared:
+    navbar:
+      my_children: أطفالي
+  students:
+    parents_only: هذه الصفحة مخصصة لأولياء الأمور.
+    levels:
+      beginner: مبتدئ
+      intermediate: متوسط
+      advanced: متقدم
+    genders:
+      female: بنت
+      male: ولد
+    create:
+      created: تمت إضافة الطفل.
+    update:
+      updated: تم تحديث بيانات الطفل.
+    destroy:
+      destroyed: تم حذف الطفل.
+    index:
+      title: أطفالي
+      intro: أضف ملفًا لكل طفل سيحضر الدروس. لا يرى المعلمون إلا ما تدخله هنا.
+      add: إضافة طفل
+      empty: لم تضف أي طفل بعد.
+      age: "العمر: %{age}"
+      speaks: اللغة الأم
+      arabic: العربية
+      quran: القرآن
+      edit: تعديل
+      delete: حذف
+      confirm: "هل تريد حذف هذا الطفل؟ سيتم حذف ملفه."
+    new:
+      title: إضافة طفل
+      intro: أخبرنا قليلًا عن طفلك ليتمكن المعلمون من تكييف الدروس.
+      privacy_note: "نطلب فقط ما يحتاجه المعلمون: الاسم الأول وتاريخ الميلاد والمستوى. يرجى عدم إدخال اسم العائلة أو العنوان أو صورة."
+      submit: إضافة الطفل
+      cancel: إلغاء
+    edit:
+      title: تعديل بيانات الطفل
+      submit: حفظ
+      cancel: إلغاء

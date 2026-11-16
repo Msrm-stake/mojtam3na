@@ -1,0 +1,60 @@
+fr:
+  activerecord:
+    attributes:
+      student:
+        first_name: Prénom
+        birth_date: Date de naissance
+        gender: Genre
+        native_language_id: Langue maternelle
+        arabic_level: Niveau d'arabe
+        quran_level: Niveau de Coran
+        learning_goals: Objectifs d'apprentissage
+        guardian_consent: "Je suis le parent ou le représentant légal de cet enfant et j'accepte que Mojtam3na utilise les informations de mon enfant pour organiser les cours."
+    errors:
+      models:
+        student:
+          attributes:
+            birth_date:
+              age_range: "doit correspondre à un âge compris entre %{min} et %{max} ans"
+            guardian_consent:
+              accepted: doit être accepté
+  shared:
+    navbar:
+      my_children: Mes enfants
+  students:
+    parents_only: Cette page est réservée aux parents.
+    levels:
+      beginner: Débutant
+      intermediate: Intermédiaire
+      advanced: Avancé
+    genders:
+      female: Fille
+      male: Garçon
+    create:
+      created: Enfant ajouté.
+    update:
+      updated: Enfant mis à jour.
+    destroy:
+      destroyed: Enfant supprimé.
+    index:
+      title: Mes enfants
+      intro: Ajoutez un profil pour chaque enfant qui suivra des cours. Les enseignants ne voient que ce que vous saisissez ici.
+      add: Ajouter un enfant
+      empty: Vous n'avez pas encore ajouté d'enfant.
+      age: "Âge : %{age}"
+      speaks: Langue maternelle
+      arabic: Arabe
+      quran: Coran
+      edit: Modifier
+      delete: Supprimer
+      confirm: "Supprimer cet enfant ? Son profil sera effacé."
+    new:
+      title: Ajouter un enfant
+      intro: Parlez-nous un peu de votre enfant pour que les enseignants adaptent les cours.
+      privacy_note: "Nous ne demandons que ce dont les enseignants ont besoin : un prénom, une date de naissance et un niveau. Merci de ne pas saisir de nom de famille, d'adresse ni de photo."
+      submit: Ajouter l'enfant
+      cancel: Annuler
+    edit:
+      title: Modifier l'enfant
+      submit: Enregistrer
+      cancel: Annuler
