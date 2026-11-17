@@ -4,6 +4,7 @@
       <div class="auth-card">
         <h1 class="h3 mb-2"><%= t(".title") %></h1>
         <p class="mb-4"><%= t(".intro") %></p>
+        <%= link_to t(".availability_link"), availability_slots_path, class: "btn btn-outline-primary btn-sm mb-3" %>
 
         <% status_style = { "pending" => "warning", "approved" => "success", "rejected" => "danger", "suspended" => "secondary" }[@profile.status] %>
         <div class="alert alert-<%= status_style %>" role="status">

@@ -1,0 +1,82 @@
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <p class="mb-3"><%= link_to t(".back"), edit_teacher_profile_path %></p>
+
+      <div class="auth-card mb-4">
+        <h1 class="h3 mb-2"><%= t(".title") %></h1>
+        <p class="mb-0"><%= t(".intro") %></p>
+      </div>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5"><%= t(".zone_title") %></h2>
+        <p><%= t(".zone_hint") %></p>
+        <%= form_with url: update_time_zone_availability_slots_path, method: :patch, class: "d-flex gap-2 flex-wrap" do %>
+          <%= select_tag :time_zone, time_zone_options_for_select(current_user.time_zone),
+                class: "form-select w-auto", "aria-label": t(".zone_title") %>
+          <%= submit_tag t(".zone_save"), class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5 mb-3"><%= t(".schedule_title") %></h2>
+        <div>
+          <% weekday_order.each do |wday| %>
+            <div class="day-row">
+              <div class="day-name"><%= weekday_name(wday) %></div>
+              <div class="day-slots">
+                <% slots = @slots_by_day.fetch(wday, []) %>
+                <% if slots.empty? %>
+                  <span class="text-body-secondary">—</span>
+                <% else %>
+                  <% slots.each do |slot| %>
+                    <span class="slot-pill">
+                      <bdi dir="ltr"><%= format_minutes(slot.start_minute) %> – <%= format_minutes(slot.end_minute) %></bdi>
+                      <%= button_to availability_slot_path(slot), method: :delete, class: "slot-remove",
+                            form: { data: { turbo_confirm: t(".confirm") } }, "aria-label": t(".remove") do %>
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                      <% end %>
+                    </span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="auth-card">
+        <h2 class="h5 mb-3"><%= t(".add_title") %></h2>
+        <%= form_with model: @slot, url: availability_slots_path, class: "row g-3 align-items-end" do |f| %>
+          <% if @slot.errors.any? %>
+            <div class="col-12">
+              <div class="alert alert-danger mb-0">
+                <ul class="mb-0">
+                  <% @slot.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="col-sm-4">
+            <label class="form-label" for="availability_slot_weekday"><%= t(".day") %></label>
+            <%= f.select :weekday, weekday_order.map { |day| [weekday_name(day), day] }, {}, class: "form-select" %>
+          </div>
+          <div class="col-6 col-sm-3">
+            <label class="form-label" for="availability_slot_start_minute"><%= t(".from") %></label>
+            <%= f.select :start_minute, (0..1410).step(30).map { |m| [format_minutes(m), m] }, {}, class: "form-select" %>
+          </div>
+          <div class="col-6 col-sm-3">
+            <label class="form-label" for="availability_slot_end_minute"><%= t(".to") %></label>
+            <%= f.select :end_minute, (30..1440).step(30).map { |m| [format_minutes(m), m] }, {}, class: "form-select" %>
+          </div>
+          <div class="col-sm-2">
+            <%= f.submit t(".add"), class: "btn btn-primary w-100" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

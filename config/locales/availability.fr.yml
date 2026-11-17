@@ -1,0 +1,45 @@
+fr:
+  activerecord:
+    attributes:
+      availability_slot:
+        weekday: Jour
+        start_minute: Heure de début
+        end_minute: Heure de fin
+    errors:
+      models:
+        availability_slot:
+          overlap: Ce créneau chevauche un autre créneau du même jour.
+          attributes:
+            end_minute:
+              too_early: doit être au moins 30 minutes après l'heure de début
+  availability_slots:
+    create:
+      created: Créneau ajouté.
+    destroy:
+      destroyed: Créneau supprimé.
+    update_time_zone:
+      saved: Fuseau horaire enregistré.
+      invalid: Ce fuseau horaire n'est pas valide.
+    index:
+      title: Mes disponibilités hebdomadaires
+      intro: Choisissez les horaires où vous pouvez enseigner chaque semaine. Les parents les verront sur votre profil public.
+      back: Retour à mon profil
+      zone_title: Votre fuseau horaire
+      zone_hint: Tous vos horaires utilisent ce fuseau horaire. Réglez-le d'abord, puis ajoutez vos créneaux.
+      zone_save: Enregistrer le fuseau horaire
+      schedule_title: Planning hebdomadaire
+      add_title: Ajouter un créneau
+      day: Jour
+      from: De
+      to: À
+      add: Ajouter le créneau
+      remove: Supprimer
+      confirm: Supprimer ce créneau ?
+  teachers:
+    availability:
+      title: Disponibilités hebdomadaires
+      zone_note: "Les horaires sont affichés dans le fuseau horaire de l'enseignant : %{zone}."
+      none: Cet enseignant n'a pas encore indiqué d'horaires hebdomadaires.
+  teacher_profiles:
+    edit:
+      availability_link: Définir mes disponibilités hebdomadaires

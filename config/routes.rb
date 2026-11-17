@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
     resource :teacher_profile, path: "teacher/profile", only: %i[edit update]
     resources :qualifications, path: "teacher/qualifications", only: %i[new create destroy]
+    resources :availability_slots, path: "teacher/availability", only: %i[index create destroy] do
+      collection { patch :update_time_zone }
+    end
     resources :students, path: "children", except: :show
 
     namespace :admin do

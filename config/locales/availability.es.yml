@@ -1,0 +1,45 @@
+es:
+  activerecord:
+    attributes:
+      availability_slot:
+        weekday: Día
+        start_minute: Hora de inicio
+        end_minute: Hora de fin
+    errors:
+      models:
+        availability_slot:
+          overlap: Este horario se solapa con otro horario del mismo día.
+          attributes:
+            end_minute:
+              too_early: debe ser al menos 30 minutos posterior a la hora de inicio
+  availability_slots:
+    create:
+      created: Horario añadido.
+    destroy:
+      destroyed: Horario eliminado.
+    update_time_zone:
+      saved: Zona horaria guardada.
+      invalid: Esta zona horaria no es válida.
+    index:
+      title: Mi disponibilidad semanal
+      intro: Elige los horarios en los que puedes dar clase cada semana. Los padres los verán en tu perfil público.
+      back: Volver a mi perfil
+      zone_title: Tu zona horaria
+      zone_hint: Todos tus horarios usan esta zona horaria. Configúrala primero y luego añade tus horarios.
+      zone_save: Guardar zona horaria
+      schedule_title: Horario semanal
+      add_title: Añadir un horario
+      day: Día
+      from: De
+      to: A
+      add: Añadir horario
+      remove: Eliminar
+      confirm: "¿Eliminar este horario?"
+  teachers:
+    availability:
+      title: Disponibilidad semanal
+      zone_note: "Los horarios se muestran en la zona horaria del profesor: %{zone}."
+      none: Este profesor todavía no ha indicado horarios semanales.
+  teacher_profiles:
+    edit:
+      availability_link: Configurar mi disponibilidad semanal

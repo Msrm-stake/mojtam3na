@@ -6,6 +6,9 @@ module ApplicationHelper
 
   RTL_LOCALES = %i[ar].freeze
 
+  # Monday first; 0 is Sunday (Ruby's wday)
+  WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0].freeze
+
   def locale_name(locale)
     LOCALE_NAMES.fetch(locale.to_sym)
   end
@@ -33,5 +36,22 @@ module ApplicationHelper
     return t("teachers.price_not_set") if profile.hourly_rate_cents.zero?
 
     "#{format('%.2f', profile.hourly_rate)} #{profile.currency}"
+  end
+
+  def weekday_order
+    WEEKDAY_ORDER
+  end
+
+  def weekday_name(wday)
+    I18n.t("date.day_names")[wday].to_s.capitalize
+  end
+
+  # 570 => "09:30" (1440 => "24:00")
+  def format_minutes(minutes)
+    format("%02d:%02d", minutes / 60, minutes % 60)
+  end
+
+  def time_zone_label(name)
+    ActiveSupport::TimeZone[name.to_s]&.to_s || name.to_s
   end
 end

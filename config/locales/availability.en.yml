@@ -1,0 +1,45 @@
+en:
+  activerecord:
+    attributes:
+      availability_slot:
+        weekday: Day
+        start_minute: Start time
+        end_minute: End time
+    errors:
+      models:
+        availability_slot:
+          overlap: This time overlaps with another time slot on the same day.
+          attributes:
+            end_minute:
+              too_early: must be at least 30 minutes after the start time
+  availability_slots:
+    create:
+      created: Time slot added.
+    destroy:
+      destroyed: Time slot removed.
+    update_time_zone:
+      saved: Time zone saved.
+      invalid: This time zone is not valid.
+    index:
+      title: My weekly availability
+      intro: Choose the times you can teach each week. Parents will see them on your public profile.
+      back: Back to my profile
+      zone_title: Your time zone
+      zone_hint: All your times use this time zone. Set it first, then add your times.
+      zone_save: Save time zone
+      schedule_title: Weekly schedule
+      add_title: Add a time slot
+      day: Day
+      from: From
+      to: To
+      add: Add time slot
+      remove: Remove
+      confirm: Remove this time slot?
+  teachers:
+    availability:
+      title: Weekly availability
+      zone_note: "Times are shown in the teacher's time zone: %{zone}."
+      none: This teacher hasn't added weekly times yet.
+  teacher_profiles:
+    edit:
+      availability_link: Set my weekly availability

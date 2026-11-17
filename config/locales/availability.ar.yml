@@ -1,0 +1,45 @@
+ar:
+  activerecord:
+    attributes:
+      availability_slot:
+        weekday: اليوم
+        start_minute: وقت البدء
+        end_minute: وقت الانتهاء
+    errors:
+      models:
+        availability_slot:
+          overlap: يتداخل هذا الوقت مع فترة أخرى في اليوم نفسه.
+          attributes:
+            end_minute:
+              too_early: يجب أن يكون بعد وقت البدء بـ 30 دقيقة على الأقل
+  availability_slots:
+    create:
+      created: تمت إضافة الفترة.
+    destroy:
+      destroyed: تم حذف الفترة.
+    update_time_zone:
+      saved: تم حفظ المنطقة الزمنية.
+      invalid: هذه المنطقة الزمنية غير صالحة.
+    index:
+      title: مواعيدي الأسبوعية
+      intro: اختر الأوقات التي يمكنك التدريس فيها كل أسبوع. سيراها أولياء الأمور في ملفك العام.
+      back: العودة إلى ملفي
+      zone_title: منطقتك الزمنية
+      zone_hint: تعتمد كل أوقاتك هذه المنطقة الزمنية. اضبطها أولًا ثم أضف أوقاتك.
+      zone_save: حفظ المنطقة الزمنية
+      schedule_title: الجدول الأسبوعي
+      add_title: إضافة فترة
+      day: اليوم
+      from: من
+      to: إلى
+      add: إضافة الفترة
+      remove: حذف
+      confirm: هل تريد حذف هذه الفترة؟
+  teachers:
+    availability:
+      title: المواعيد الأسبوعية
+      zone_note: "تُعرض الأوقات بالمنطقة الزمنية للمعلم: %{zone}."
+      none: لم يضف هذا المعلم مواعيد أسبوعية بعد.
+  teacher_profiles:
+    edit:
+      availability_link: ضبط مواعيدي الأسبوعية

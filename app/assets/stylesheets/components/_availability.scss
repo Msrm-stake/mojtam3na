@@ -1,0 +1,47 @@
+.day-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: .75rem 0;
+  border-top: 1px solid rgba($green-deep, .1);
+
+  &:first-of-type { border-top: 0; }
+}
+
+.day-name {
+  width: 8rem;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: $green-deep;
+}
+
+.day-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: center;
+}
+
+.slot-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: #fff;
+  border: 1px solid rgba($green-deep, .2);
+  color: $green-dark;
+  padding: .25rem .5rem .25rem .8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+
+  form { margin: 0; }
+}
+
+.slot-remove {
+  border: 0;
+  background: transparent;
+  color: $red;
+  padding: 0 .25rem;
+  line-height: 1;
+  cursor: pointer;
+}

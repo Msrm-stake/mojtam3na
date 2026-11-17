@@ -1,0 +1,23 @@
+<% slots = profile.availability_slots.order(:start_minute).group_by(&:weekday) %>
+<h2 class="h5 mt-4"><%= t(".title") %></h2>
+<% if slots.empty? %>
+  <p class="text-body-secondary"><%= t(".none") %></p>
+<% else %>
+  <p class="small text-body-secondary"><%= t(".zone_note", zone: time_zone_label(profile.user.time_zone)) %></p>
+  <div>
+    <% weekday_order.each do |wday| %>
+      <% day_slots = slots[wday] %>
+      <% next if day_slots.blank? %>
+      <div class="day-row">
+        <div class="day-name"><%= weekday_name(wday) %></div>
+        <div class="day-slots">
+          <% day_slots.each do |slot| %>
+            <span class="slot-pill">
+              <bdi dir="ltr"><%= format_minutes(slot.start_minute) %> – <%= format_minutes(slot.end_minute) %></bdi>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

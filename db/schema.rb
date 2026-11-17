@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_16_200555) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_17_050039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,19 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_16_200555) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "availability_slots", force: :cascade do |t|
+    t.bigint "teacher_profile_id", null: false
+    t.integer "weekday", null: false
+    t.integer "start_minute", null: false
+    t.integer "end_minute", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_profile_id", "weekday", "start_minute"], name: "idx_on_teacher_profile_id_weekday_start_minute_68c43fd71f"
+    t.index ["teacher_profile_id"], name: "index_availability_slots_on_teacher_profile_id"
+    t.check_constraint "start_minute >= 0 AND end_minute <= 1440 AND start_minute < end_minute", name: "availability_slots_minutes_range"
+    t.check_constraint "weekday >= 0 AND weekday <= 6", name: "availability_slots_weekday_range"
   end
 
   create_table "consents", force: :cascade do |t|
@@ -179,6 +192,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_16_200555) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "availability_slots", "teacher_profiles"
   add_foreign_key "consents", "students"
   add_foreign_key "consents", "users"
   add_foreign_key "qualifications", "teacher_profiles"

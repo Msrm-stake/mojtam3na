@@ -19,6 +19,7 @@
           <%= simple_format(@profile.bio) %>
         <% end %>
 
+        <%= render "availability", profile: @profile %>
         <h2 class="h5 mt-4"><%= t(".qualifications") %></h2>
         <ul class="qualification-list">
           <% @qualifications.each do |qualification| %>

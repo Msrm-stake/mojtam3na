@@ -1,0 +1,45 @@
+it:
+  activerecord:
+    attributes:
+      availability_slot:
+        weekday: Giorno
+        start_minute: Ora di inizio
+        end_minute: Ora di fine
+    errors:
+      models:
+        availability_slot:
+          overlap: Questo orario si sovrappone a un altro orario dello stesso giorno.
+          attributes:
+            end_minute:
+              too_early: deve essere almeno 30 minuti dopo l'ora di inizio
+  availability_slots:
+    create:
+      created: Fascia oraria aggiunta.
+    destroy:
+      destroyed: Fascia oraria rimossa.
+    update_time_zone:
+      saved: Fuso orario salvato.
+      invalid: Questo fuso orario non è valido.
+    index:
+      title: La mia disponibilità settimanale
+      intro: Scegli gli orari in cui puoi insegnare ogni settimana. I genitori li vedranno sul tuo profilo pubblico.
+      back: Torna al mio profilo
+      zone_title: Il tuo fuso orario
+      zone_hint: Tutti i tuoi orari usano questo fuso orario. Impostalo prima, poi aggiungi i tuoi orari.
+      zone_save: Salva fuso orario
+      schedule_title: Programma settimanale
+      add_title: Aggiungi una fascia oraria
+      day: Giorno
+      from: Dalle
+      to: Alle
+      add: Aggiungi fascia oraria
+      remove: Rimuovi
+      confirm: Rimuovere questa fascia oraria?
+  teachers:
+    availability:
+      title: Disponibilità settimanale
+      zone_note: "Gli orari sono mostrati nel fuso orario dell'insegnante: %{zone}."
+      none: Questo insegnante non ha ancora indicato orari settimanali.
+  teacher_profiles:
+    edit:
+      availability_link: Imposta la mia disponibilità settimanale

@@ -9,6 +9,7 @@ class TeacherProfile < ApplicationRecord
   has_many :teacher_subjects, dependent: :destroy
   has_many :subjects, through: :teacher_subjects
   has_many :qualifications, dependent: :destroy
+  has_many :availability_slots, dependent: :destroy
 
   # Only approved profiles appear in search.
   enum :status, { pending: "pending", approved: "approved", rejected: "rejected", suspended: "suspended" }, prefix: true

@@ -1,0 +1,45 @@
+ru:
+  activerecord:
+    attributes:
+      availability_slot:
+        weekday: День
+        start_minute: Время начала
+        end_minute: Время окончания
+    errors:
+      models:
+        availability_slot:
+          overlap: Это время пересекается с другим интервалом в тот же день.
+          attributes:
+            end_minute:
+              too_early: должно быть не меньше чем на 30 минут позже времени начала
+  availability_slots:
+    create:
+      created: Интервал добавлен.
+    destroy:
+      destroyed: Интервал удалён.
+    update_time_zone:
+      saved: Часовой пояс сохранён.
+      invalid: Недопустимый часовой пояс.
+    index:
+      title: Моя недельная доступность
+      intro: Выберите время, когда вы можете проводить уроки каждую неделю. Родители увидят его в вашем публичном профиле.
+      back: Назад к моему профилю
+      zone_title: Ваш часовой пояс
+      zone_hint: Всё ваше время указывается в этом часовом поясе. Сначала настройте его, затем добавляйте интервалы.
+      zone_save: Сохранить часовой пояс
+      schedule_title: Недельное расписание
+      add_title: Добавить интервал
+      day: День
+      from: С
+      to: До
+      add: Добавить интервал
+      remove: Удалить
+      confirm: Удалить этот интервал?
+  teachers:
+    availability:
+      title: Недельная доступность
+      zone_note: "Время указано в часовом поясе преподавателя: %{zone}."
+      none: Преподаватель ещё не указал недельное расписание.
+  teacher_profiles:
+    edit:
+      availability_link: Указать недельную доступность
