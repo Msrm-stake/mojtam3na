@@ -1,0 +1,2 @@
+<a href="<%= room_lesson_url(@lesson, locale: I18n.locale) %>" style="display:inline-block;background:#C9A227;color:#084538;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:8px;font-size:15px;"><%= t("lesson_mailer.common.join_lesson") %></a>
+<p style="margin:10px 0 0;font-size:13px;line-height:1.5;color:#4F5E59;"><%= t("lesson_mailer.reminder.join_note", minutes: (Lesson::JOIN_OPENS / 1.minute).to_i) %></p>

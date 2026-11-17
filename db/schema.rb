@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_17_052342) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_17_192505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,6 +93,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_17_052342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "reminder_sent_at"
+    t.string "video_room_name"
+    t.string "video_room_url"
     t.index ["booked_by_id"], name: "index_lessons_on_booked_by_id"
     t.index ["cancelled_by_id"], name: "index_lessons_on_cancelled_by_id"
     t.index ["student_id", "starts_at"], name: "index_lessons_on_student_id_and_starts_at"
@@ -101,6 +103,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_17_052342) do
     t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_on_teacher_profile_id_and_starts_at"
     t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_one_scheduled_per_teacher_slot", unique: true, where: "((status)::text = 'scheduled'::text)"
     t.index ["teacher_profile_id"], name: "index_lessons_on_teacher_profile_id"
+    t.index ["video_room_name"], name: "index_lessons_on_video_room_name", unique: true
     t.check_constraint "starts_at < ends_at", name: "lessons_start_before_end"
   end
 

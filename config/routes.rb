@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     end
 
     resources :lessons, only: :index do
-      member { patch :cancel }
+      member do
+        patch :cancel
+        get :room
+      end
     end
 
     resource :time_zone, only: :update

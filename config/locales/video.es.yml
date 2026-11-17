@@ -1,0 +1,20 @@
+es:
+  lesson_mailer:
+    common:
+      join_lesson: Unirse a la clase
+    reminder:
+      join_note: "El botón funciona desde %{minutes} minutos antes del inicio de la clase."
+  lessons:
+    lesson:
+      join: Unirse a la clase
+      join_hint: "Puedes unirte %{minutes} minutos antes del inicio."
+    room:
+      not_open: "Esta clase aún no está abierta. Puedes unirte desde %{minutes} minutos antes del inicio."
+      closed: Esta clase ya no está disponible.
+      unavailable: La sala de vídeo no está disponible en este momento. Inténtalo de nuevo en un momento.
+      title_parent: "Clase con %{teacher}"
+      title_teacher: "Clase con %{child}"
+      back: Volver a mis clases
+      tips: Permite el acceso a la cámara y al micrófono cuando el navegador lo pida. Unos auriculares ayudan.
+      parent_note: Los padres pueden quedarse en la sala durante la clase.
+      problem: "¿No ves el vídeo? Recarga la página o prueba con Chrome, Safari o Edge."

@@ -52,9 +52,7 @@ class LessonsController < ApplicationController
   end
 
   def cancel
-    lesson = Lesson.where(booked_by_id: current_user.id)
-                   .or(Lesson.where(teacher_profile_id: current_user.teacher_profile&.id))
-                   .find(params[:id])
+    lesson = own_lessons.find(params[:id])
 
     if lesson.cancellable_by?(current_user)
       lesson.cancel!(current_user)
@@ -65,7 +63,31 @@ class LessonsController < ApplicationController
     end
   end
 
+  # The video room. Only the parent who booked and the teacher can open it, and only around the lesson time.
+  def room
+    @lesson = own_lessons.includes(:student, teacher_profile: :user).find(params[:id])
+
+    unless @lesson.status_scheduled? && Time.current <= @lesson.ends_at + Lesson::JOIN_CLOSES
+      return redirect_to(lessons_path, alert: t(".closed"), status: :see_other)
+    end
+
+    unless @lesson.join_open?
+      return redirect_to(lessons_path, status: :see_other,
+                         alert: t(".not_open", minutes: (Lesson::JOIN_OPENS / 1.minute).to_i))
+    end
+
+    @join_url = @lesson.join_url_for(current_user)
+  rescue DailyClient::Error => e
+    Rails.logger.error("Video room error for lesson #{params[:id]}: #{e.message}")
+    redirect_to lessons_path, alert: t("lessons.room.unavailable"), status: :see_other
+  end
+
   private
+
+  def own_lessons
+    Lesson.where(booked_by_id: current_user.id)
+          .or(Lesson.where(teacher_profile_id: current_user.teacher_profile&.id))
+  end
 
   # Only approved teachers can be booked; anything else is a 404.
   def set_teacher

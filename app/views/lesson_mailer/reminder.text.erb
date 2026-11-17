@@ -3,4 +3,5 @@
 <%= t(".intro.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name) %>
 
 <%= render "details" %>
-<%= t("lesson_mailer.common.view_lessons") %>: <%= lessons_url(locale: I18n.locale) %>
+<%= t("lesson_mailer.common.join_lesson") %>: <%= room_lesson_url(@lesson, locale: I18n.locale) %>
+(<%= t("lesson_mailer.reminder.join_note", minutes: (Lesson::JOIN_OPENS / 1.minute).to_i) %>)

@@ -1,0 +1,20 @@
+en:
+  lesson_mailer:
+    common:
+      join_lesson: Join the lesson
+    reminder:
+      join_note: "The button works from %{minutes} minutes before the lesson starts."
+  lessons:
+    lesson:
+      join: Join lesson
+      join_hint: "You can join %{minutes} minutes before the start."
+    room:
+      not_open: "This lesson is not open yet. You can join from %{minutes} minutes before the start."
+      closed: This lesson is not available any more.
+      unavailable: The video room is not available right now. Please try again in a moment.
+      title_parent: "Lesson with %{teacher}"
+      title_teacher: "Lesson with %{child}"
+      back: Back to my lessons
+      tips: Allow your camera and microphone when your browser asks. Headphones help.
+      parent_note: Parents are welcome to stay in the room during the lesson.
+      problem: "Can't see the video? Reload the page, or try Chrome, Safari or Edge."

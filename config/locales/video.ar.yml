@@ -1,0 +1,20 @@
+ar:
+  lesson_mailer:
+    common:
+      join_lesson: انضم إلى الدرس
+    reminder:
+      join_note: "يعمل الزر قبل بدء الدرس بـ %{minutes} دقائق."
+  lessons:
+    lesson:
+      join: انضم إلى الدرس
+      join_hint: "يمكنك الانضمام قبل البدء بـ %{minutes} دقائق."
+    room:
+      not_open: "هذا الدرس لم يُفتح بعد. يمكنك الانضمام قبل البدء بـ %{minutes} دقائق."
+      closed: لم يعد هذا الدرس متاحًا.
+      unavailable: غرفة الفيديو غير متاحة حاليًا. يرجى المحاولة بعد قليل.
+      title_parent: "درس مع %{teacher}"
+      title_teacher: "درس مع %{child}"
+      back: العودة إلى دروسي
+      tips: اسمح باستخدام الكاميرا والميكروفون عندما يطلب المتصفح ذلك. سماعات الرأس تساعد.
+      parent_note: يمكن لأولياء الأمور البقاء في الغرفة أثناء الدرس.
+      problem: "لا ترى الفيديو؟ أعد تحميل الصفحة أو جرّب Chrome أو Safari أو Edge."

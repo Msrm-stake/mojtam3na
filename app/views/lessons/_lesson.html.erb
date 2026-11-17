@@ -17,11 +17,19 @@
       <% end %>
       <span class="chip"><%= t("lessons.statuses.#{lesson.display_status}") %></span>
     </div>
+    <% if lesson.status_scheduled? && !lesson.join_open? && lesson.starts_at > Time.current %>
+      <div class="small text-body-secondary mt-2"><%= t(".join_hint", minutes: (Lesson::JOIN_OPENS / 1.minute).to_i) %></div>
+    <% end %>
   </div>
 
-  <% if lesson.cancellable_by?(current_user) %>
-    <%= button_to t(".cancel"), cancel_lesson_path(lesson), method: :patch,
-          class: "btn btn-outline-danger btn-sm",
-          form: { data: { turbo_confirm: t(".confirm") } } %>
-  <% end %>
+  <div class="d-flex gap-2 flex-wrap">
+    <% if lesson.join_open? %>
+      <%= link_to t(".join"), room_lesson_path(lesson), class: "btn btn-primary btn-sm" %>
+    <% end %>
+    <% if lesson.cancellable_by?(current_user) %>
+      <%= button_to t(".cancel"), cancel_lesson_path(lesson), method: :patch,
+            class: "btn btn-outline-danger btn-sm",
+            form: { data: { turbo_confirm: t(".confirm") } } %>
+    <% end %>
+  </div>
 </li>

@@ -1,0 +1,20 @@
+it:
+  lesson_mailer:
+    common:
+      join_lesson: Partecipa alla lezione
+    reminder:
+      join_note: "Il pulsante funziona da %{minutes} minuti prima dell'inizio della lezione."
+  lessons:
+    lesson:
+      join: Partecipa alla lezione
+      join_hint: "Puoi partecipare %{minutes} minuti prima dell'inizio."
+    room:
+      not_open: "Questa lezione non è ancora aperta. Puoi partecipare da %{minutes} minuti prima dell'inizio."
+      closed: Questa lezione non è più disponibile.
+      unavailable: La stanza video non è disponibile al momento. Riprova tra poco.
+      title_parent: "Lezione con %{teacher}"
+      title_teacher: "Lezione con %{child}"
+      back: Torna alle mie lezioni
+      tips: Consenti l'accesso a fotocamera e microfono quando il browser lo chiede. Le cuffie aiutano.
+      parent_note: I genitori sono i benvenuti nella stanza durante la lezione.
+      problem: "Non vedi il video? Ricarica la pagina o prova con Chrome, Safari o Edge."

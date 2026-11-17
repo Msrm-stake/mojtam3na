@@ -1,0 +1,20 @@
+fr:
+  lesson_mailer:
+    common:
+      join_lesson: Rejoindre le cours
+    reminder:
+      join_note: "Le bouton fonctionne à partir de %{minutes} minutes avant le début du cours."
+  lessons:
+    lesson:
+      join: Rejoindre le cours
+      join_hint: "Vous pouvez rejoindre %{minutes} minutes avant le début."
+    room:
+      not_open: "Ce cours n'est pas encore ouvert. Vous pouvez le rejoindre à partir de %{minutes} minutes avant le début."
+      closed: Ce cours n'est plus disponible.
+      unavailable: La salle vidéo n'est pas disponible pour le moment. Veuillez réessayer dans un instant.
+      title_parent: "Cours avec %{teacher}"
+      title_teacher: "Cours avec %{child}"
+      back: Retour à mes cours
+      tips: Autorisez la caméra et le micro quand votre navigateur le demande. Un casque aide.
+      parent_note: Les parents sont les bienvenus dans la salle pendant le cours.
+      problem: "Vous ne voyez pas la vidéo ? Rechargez la page ou essayez Chrome, Safari ou Edge."

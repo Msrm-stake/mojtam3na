@@ -4,6 +4,8 @@ class Lesson < ApplicationRecord
   CANCEL_NOTICE = 6.hours
   REMINDER_WINDOW = 1.hour
   BOOKING_WINDOW_DAYS = 14
+  JOIN_OPENS = 5.minutes
+  JOIN_CLOSES = 10.minutes
 
   belongs_to :teacher_profile
   belongs_to :student
@@ -49,7 +51,61 @@ class Lesson < ApplicationRecord
     update!(status: "cancelled", cancelled_by: user, cancelled_at: Time.current)
   end
 
+  def participant?(user)
+    user.present? && [booked_by_id, teacher_profile.user_id].include?(user.id)
+  end
+
+  # The video room can be entered from 5 minutes before the start until 10 minutes after the end.
+  def join_open?(now = Time.current)
+    status_scheduled? && now >= starts_at - JOIN_OPENS && now <= ends_at + JOIN_CLOSES
+  end
+
+  # The private room is created the first time someone joins (never for cancelled lessons).
+  # The row is locked, so two people joining at the same moment cannot create two rooms.
+  def ensure_video_room!(client: nil)
+    return if video_room_url.present?
+
+    client ||= DailyClient.new
+    with_lock do
+      next if video_room_url.present?
+
+      update!(video_room_name: "lesson-#{id}-#{SecureRandom.hex(8)}") if video_room_name.blank?
+      room = client.create_room(name: video_room_name, starts_at: starts_at, ends_at: ends_at)
+      url = room["url"].to_s
+      raise DailyClient::Error, "Unexpected room address" unless url.start_with?("https://")
+
+      update!(video_room_url: url)
+    end
+  end
+
+  # The address to put in the page for this person: the room plus a personal token.
+  def join_url_for(user, client: nil)
+    raise ArgumentError, "not a participant" unless participant?(user)
+
+    client ||= DailyClient.new
+    ensure_video_room!(client: client)
+
+    teacher = user.id == teacher_profile.user_id
+    token = client.create_token(
+      room_name: video_room_name,
+      user_name: join_display_name(user, teacher),
+      owner: teacher,
+      starts_at: starts_at,
+      ends_at: ends_at,
+      lang: user.locale
+    )
+    "#{video_room_url}?t=#{CGI.escape(token)}"
+  end
+
   private
+
+  # First names only. Teachers appear as "Firstname L." like on their public profile.
+  def join_display_name(user, teacher)
+    return user.first_name.to_s unless teacher
+
+    initial = user.last_name.to_s.strip[0]
+    [user.first_name, initial && "#{initial}."].compact_blank.join(" ")
+  end
 
   def set_end_time
     self.ends_at = starts_at + TRIAL_MINUTES.minutes if starts_at && ends_at.nil?
