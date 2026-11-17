@@ -45,7 +45,7 @@
             <span class="fs-6 fw-normal"><%= t(".per_hour") %></span>
           <% end %>
         </div>
-        <button class="btn btn-gold w-100 mt-3" type="button" disabled><%= t(".book_soon") %></button>
+        <%= link_to t(".book_trial"), new_teacher_lesson_path(@profile), class: "btn btn-gold w-100 mt-3" %>
 
         <hr>
 

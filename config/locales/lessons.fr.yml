@@ -1,0 +1,64 @@
+fr:
+  activerecord:
+    attributes:
+      lesson:
+        starts_at: Horaire
+        student: Enfant
+    errors:
+      models:
+        lesson:
+          student_busy: Votre enfant a déjà un cours à cet horaire.
+          trial_already_booked: Votre enfant a déjà réservé un cours d'essai avec cet enseignant.
+          slot_taken: Désolé, cet horaire vient d'être réservé par quelqu'un d'autre. Veuillez en choisir un autre.
+          attributes:
+            starts_at:
+              not_available: n'est plus disponible
+  shared:
+    navbar:
+      my_lessons: Mes cours
+  time_zones:
+    update:
+      saved: Fuseau horaire enregistré.
+      invalid: Ce fuseau horaire n'est pas valide.
+  teachers:
+    show:
+      book_trial: Réserver un cours d'essai
+  lessons:
+    parents_only: Seuls les parents peuvent réserver des cours.
+    statuses:
+      scheduled: Prévu
+      past: Passé
+      cancelled: Annulé
+      completed: Terminé
+    new:
+      add_child_first: Veuillez d'abord ajouter le profil de votre enfant avant de réserver un cours.
+      back: Retour à l'enseignant
+      title: "Réserver un cours d'essai avec %{teacher}"
+      intro: "Un cours d'essai dure %{minutes} minutes, pour que votre enfant et l'enseignant fassent connaissance."
+      zone_title: Votre fuseau horaire
+      zone_hint: Les horaires ci-dessous sont affichés dans ce fuseau horaire. Vérifiez-le avant de réserver.
+      zone_save: Enregistrer le fuseau horaire
+      child: Enfant
+      lesson_for: "Cours pour %{child}"
+      choose_time: Choisissez un horaire
+      no_times: Aucun horaire libre dans les deux prochaines semaines. Revenez plus tard.
+      submit: Réserver ce cours
+    create:
+      booked: Cours d'essai réservé.
+    cancel:
+      cancelled: Cours annulé.
+      too_late: Ce cours ne peut plus être annulé en ligne. Veuillez nous contacter.
+    index:
+      title: Mes cours
+      zone_note: "Les horaires sont affichés dans votre fuseau horaire : %{zone}."
+      upcoming: Cours à venir
+      none_upcoming: Vous n'avez aucun cours à venir.
+      find_teacher: Trouver un enseignant
+      history: Cours passés et annulés
+    lesson:
+      minutes: "%{minutes} min"
+      trial: Cours d'essai
+      with_teacher: "Avec %{teacher}"
+      child_line: "%{child}, %{age} ans"
+      cancel: Annuler le cours
+      confirm: Annuler ce cours ?

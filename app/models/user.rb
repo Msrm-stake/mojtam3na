@@ -24,6 +24,11 @@ class User < ApplicationRecord
     [first_name, last_name].compact_blank.join(" ")
   end
 
+  # The person's own time zone (falls back to UTC).
+  def zone
+    ActiveSupport::TimeZone[time_zone.to_s] || ActiveSupport::TimeZone["UTC"]
+  end
+
   private
 
   def time_zone_must_exist

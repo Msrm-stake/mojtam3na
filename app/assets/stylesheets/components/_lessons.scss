@@ -1,0 +1,30 @@
+.time-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: .75rem;
+}
+
+.lesson-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid rgba($green-deep, .1);
+  border-radius: $border-radius-xl;
+  padding: 1.1rem 1.25rem;
+}
+
+.lesson-time {
+  font-weight: 800;
+  color: $green-deep;
+}

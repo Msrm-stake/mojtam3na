@@ -1,0 +1,28 @@
+<% zone = current_user.zone %>
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="h3 mb-1"><%= t(".title") %></h1>
+      <p class="text-body-secondary"><%= t(".zone_note", zone: time_zone_label(current_user.time_zone)) %></p>
+
+      <h2 class="h5 mt-4"><%= t(".upcoming") %></h2>
+      <% if @upcoming.empty? %>
+        <p class="text-body-secondary"><%= t(".none_upcoming") %></p>
+        <% if current_user.role_parent? %>
+          <%= link_to t(".find_teacher"), teachers_path, class: "btn btn-primary btn-sm" %>
+        <% end %>
+      <% else %>
+        <ul class="lesson-list">
+          <%= render partial: "lesson", collection: @upcoming, as: :lesson, locals: { zone: zone } %>
+        </ul>
+      <% end %>
+
+      <% if @history.any? %>
+        <h2 class="h5 mt-5"><%= t(".history") %></h2>
+        <ul class="lesson-list">
+          <%= render partial: "lesson", collection: @history, as: :lesson, locals: { zone: zone } %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

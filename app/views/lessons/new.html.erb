@@ -1,0 +1,66 @@
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <p class="mb-3"><%= link_to t(".back"), teacher_path(@profile) %></p>
+
+      <div class="auth-card mb-4">
+        <h1 class="h3 mb-2"><%= t(".title", teacher: public_name(@profile.user)) %></h1>
+        <p class="mb-0"><%= t(".intro", minutes: Lesson::TRIAL_MINUTES) %></p>
+      </div>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5"><%= t(".zone_title") %></h2>
+        <p><%= t(".zone_hint") %></p>
+        <%= form_with url: time_zone_path, method: :patch, class: "d-flex gap-2 flex-wrap" do %>
+          <%= select_tag :time_zone, time_zone_options_for_select(current_user.time_zone),
+                class: "form-select w-auto", "aria-label": t(".zone_title") %>
+          <%= submit_tag t(".zone_save"), class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+
+      <div class="auth-card">
+        <%= form_with url: teacher_lessons_path(@profile), method: :post do %>
+          <% if @lesson&.errors&.any? %>
+            <div class="alert alert-danger">
+              <ul class="mb-0">
+                <% @lesson.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <% if @students.size > 1 %>
+            <label class="form-label" for="lesson_student_id"><%= t(".child") %></label>
+            <%= select_tag "lesson[student_id]",
+                  options_for_select(@students.map { |student| [student.first_name, student.id] }, @student_id),
+                  id: "lesson_student_id", class: "form-select mb-3" %>
+          <% else %>
+            <%= hidden_field_tag "lesson[student_id]", @student_id %>
+            <p class="fw-bold"><%= t(".lesson_for", child: @students.first.first_name) %></p>
+          <% end %>
+
+          <h2 class="h5"><%= t(".choose_time") %></h2>
+          <% if @days.empty? %>
+            <p class="text-body-secondary mb-0"><%= t(".no_times") %></p>
+          <% else %>
+            <% @days.each do |date, times| %>
+              <h3 class="h6 mt-3"><%= l(date, format: "%A %-d %B") %></h3>
+              <div class="time-grid">
+                <% times.each do |time| %>
+                  <% field_id = "slot_#{time.to_i}" %>
+                  <%= radio_button_tag "lesson[starts_at]", time.utc.iso8601, false,
+                        id: field_id, class: "btn-check", required: true %>
+                  <label class="btn btn-outline-primary btn-sm" for="<%= field_id %>">
+                    <bdi dir="ltr"><%= time.in_time_zone(@zone).strftime("%H:%M") %></bdi>
+                  </label>
+                <% end %>
+              </div>
+            <% end %>
+            <%= submit_tag t(".submit"), class: "btn btn-primary mt-4" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+it:
+  activerecord:
+    attributes:
+      lesson:
+        starts_at: Orario
+        student: Figlio
+    errors:
+      models:
+        lesson:
+          student_busy: Tuo figlio ha già una lezione a quest'ora.
+          trial_already_booked: Tuo figlio ha già prenotato una lezione di prova con questo insegnante.
+          slot_taken: Spiacenti, questo orario è appena stato prenotato da qualcun altro. Scegline un altro.
+          attributes:
+            starts_at:
+              not_available: non è più disponibile
+  shared:
+    navbar:
+      my_lessons: Le mie lezioni
+  time_zones:
+    update:
+      saved: Fuso orario salvato.
+      invalid: Questo fuso orario non è valido.
+  teachers:
+    show:
+      book_trial: Prenota una lezione di prova
+  lessons:
+    parents_only: Solo i genitori possono prenotare lezioni.
+    statuses:
+      scheduled: Programmata
+      past: Passata
+      cancelled: Annullata
+      completed: Completata
+    new:
+      add_child_first: Aggiungi prima il profilo di tuo figlio per poter prenotare una lezione.
+      back: Torna all'insegnante
+      title: "Prenota una lezione di prova con %{teacher}"
+      intro: "Una lezione di prova dura %{minutes} minuti, così tuo figlio e l'insegnante possono conoscersi."
+      zone_title: Il tuo fuso orario
+      zone_hint: Gli orari qui sotto sono mostrati in questo fuso orario. Controllalo prima di prenotare.
+      zone_save: Salva fuso orario
+      child: Figlio
+      lesson_for: "Lezione per %{child}"
+      choose_time: Scegli un orario
+      no_times: Nessun orario libero nelle prossime due settimane. Riprova più tardi.
+      submit: Prenota questa lezione
+    create:
+      booked: Lezione di prova prenotata.
+    cancel:
+      cancelled: Lezione annullata.
+      too_late: Questa lezione non può più essere annullata online. Contattaci.
+    index:
+      title: Le mie lezioni
+      zone_note: "Gli orari sono mostrati nel tuo fuso orario: %{zone}."
+      upcoming: Prossime lezioni
+      none_upcoming: Non hai lezioni in programma.
+      find_teacher: Trova un insegnante
+      history: Lezioni passate e annullate
+    lesson:
+      minutes: "%{minutes} min"
+      trial: Lezione di prova
+      with_teacher: "Con %{teacher}"
+      child_line: "%{child}, %{age} anni"
+      cancel: Annulla lezione
+      confirm: "Annullare questa lezione?"

@@ -1,0 +1,27 @@
+<li class="lesson-item">
+  <div>
+    <div class="lesson-time">
+      <%= format_lesson_time(lesson.starts_at, zone) %>
+      <span class="small fw-normal text-body-secondary"><bdi dir="ltr"><%= t(".minutes", minutes: lesson.duration_minutes) %></bdi></span>
+    </div>
+    <div>
+      <% if current_user.role_teacher? %>
+        <%= t(".child_line", child: lesson.student.first_name, age: lesson.student.age) %>
+      <% else %>
+        <%= t(".with_teacher", teacher: public_name(lesson.teacher_profile.user)) %> · <%= lesson.student.first_name %>
+      <% end %>
+    </div>
+    <div class="chips mt-2">
+      <% if lesson.trial? %>
+        <span class="chip chip-gold"><%= t(".trial") %></span>
+      <% end %>
+      <span class="chip"><%= t("lessons.statuses.#{lesson.display_status}") %></span>
+    </div>
+  </div>
+
+  <% if lesson.cancellable_by?(current_user) %>
+    <%= button_to t(".cancel"), cancel_lesson_path(lesson), method: :patch,
+          class: "btn btn-outline-danger btn-sm",
+          form: { data: { turbo_confirm: t(".confirm") } } %>
+  <% end %>
+</li>

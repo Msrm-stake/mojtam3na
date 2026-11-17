@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_17_050039) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_17_051358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,31 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_17_050039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_languages_on_code", unique: true
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "teacher_profile_id", null: false
+    t.bigint "student_id", null: false
+    t.bigint "booked_by_id", null: false
+    t.bigint "cancelled_by_id"
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.string "status", default: "scheduled", null: false
+    t.boolean "trial", default: false, null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "currency", limit: 3, default: "EUR", null: false
+    t.datetime "cancelled_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booked_by_id"], name: "index_lessons_on_booked_by_id"
+    t.index ["cancelled_by_id"], name: "index_lessons_on_cancelled_by_id"
+    t.index ["student_id", "starts_at"], name: "index_lessons_on_student_id_and_starts_at"
+    t.index ["student_id", "starts_at"], name: "index_lessons_one_scheduled_per_student_slot", unique: true, where: "((status)::text = 'scheduled'::text)"
+    t.index ["student_id"], name: "index_lessons_on_student_id"
+    t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_on_teacher_profile_id_and_starts_at"
+    t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_one_scheduled_per_teacher_slot", unique: true, where: "((status)::text = 'scheduled'::text)"
+    t.index ["teacher_profile_id"], name: "index_lessons_on_teacher_profile_id"
+    t.check_constraint "starts_at < ends_at", name: "lessons_start_before_end"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -195,6 +220,10 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_17_050039) do
   add_foreign_key "availability_slots", "teacher_profiles"
   add_foreign_key "consents", "students"
   add_foreign_key "consents", "users"
+  add_foreign_key "lessons", "students"
+  add_foreign_key "lessons", "teacher_profiles"
+  add_foreign_key "lessons", "users", column: "booked_by_id"
+  add_foreign_key "lessons", "users", column: "cancelled_by_id"
   add_foreign_key "qualifications", "teacher_profiles"
   add_foreign_key "qualifications", "users", column: "verified_by_id"
   add_foreign_key "students", "languages", column: "native_language_id"

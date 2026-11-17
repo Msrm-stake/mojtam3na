@@ -10,6 +10,7 @@ class TeacherProfile < ApplicationRecord
   has_many :subjects, through: :teacher_subjects
   has_many :qualifications, dependent: :destroy
   has_many :availability_slots, dependent: :destroy
+  has_many :lessons, dependent: :destroy
 
   # Only approved profiles appear in search.
   enum :status, { pending: "pending", approved: "approved", rejected: "rejected", suspended: "suspended" }, prefix: true
@@ -57,6 +58,35 @@ class TeacherProfile < ApplicationRecord
 
   def suspend!
     update!(status: "suspended")
+  end
+
+  # Start times (as moments in time) when a lesson of this length can be booked, soonest first.
+  # Weekly availability is read in the teacher's own time zone; times already taken are removed.
+  def bookable_starts(minutes: Lesson::TRIAL_MINUTES, days: Lesson::BOOKING_WINDOW_DAYS)
+    zone = user.zone
+    now = Time.current
+    earliest = now + Lesson::MIN_NOTICE
+    latest = now + days.days
+    length = minutes.minutes
+
+    busy = lessons.status_scheduled
+                  .where("ends_at > ? AND starts_at < ?", earliest, latest + length)
+                  .pluck(:starts_at, :ends_at)
+    by_weekday = availability_slots.group_by(&:weekday)
+
+    starts = []
+    (earliest.in_time_zone(zone).to_date..latest.in_time_zone(zone).to_date).each do |date|
+      (by_weekday[date.wday] || []).each do |slot|
+        minute = slot.start_minute
+        while minute + minutes <= slot.end_minute
+          start = zone.local(date.year, date.month, date.day, minute / 60, minute % 60)
+          free = busy.none? { |from, to| from < start + length && to > start }
+          starts << start if start >= earliest && start <= latest && free
+          minute += AvailabilitySlot::STEP
+        end
+      end
+    end
+    starts.sort
   end
 
   private

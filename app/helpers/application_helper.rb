@@ -54,4 +54,9 @@ module ApplicationHelper
   def time_zone_label(name)
     ActiveSupport::TimeZone[name.to_s]&.to_s || name.to_s
   end
+
+  # A moment in time, written in the viewer's time zone and language
+  def format_lesson_time(time, zone)
+    l(time.in_time_zone(zone), format: "%A %-d %B, %H:%M")
+  end
 end

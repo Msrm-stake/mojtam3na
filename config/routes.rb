@@ -3,7 +3,15 @@ Rails.application.routes.draw do
     devise_for :users
     root to: "pages#home"
 
-    resources :teachers, only: %i[index show]
+    resources :teachers, only: %i[index show] do
+      resources :lessons, only: %i[new create]
+    end
+
+    resources :lessons, only: :index do
+      member { patch :cancel }
+    end
+
+    resource :time_zone, only: :update
 
     resource :teacher_profile, path: "teacher/profile", only: %i[edit update]
     resources :qualifications, path: "teacher/qualifications", only: %i[new create destroy]

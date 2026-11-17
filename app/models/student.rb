@@ -7,6 +7,7 @@ class Student < ApplicationRecord
   belongs_to :native_language, class_name: "Language", optional: true
   # The consent record is kept as evidence even if the child profile is deleted.
   has_many :consents, dependent: :nullify
+  has_many :lessons, dependent: :destroy
 
   enum :arabic_level, LEVELS.index_with(&:itself), prefix: :arabic, validate: true
   enum :quran_level, LEVELS.index_with(&:itself), prefix: :quran, validate: true

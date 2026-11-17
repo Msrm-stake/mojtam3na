@@ -1,0 +1,64 @@
+en:
+  activerecord:
+    attributes:
+      lesson:
+        starts_at: Time
+        student: Child
+    errors:
+      models:
+        lesson:
+          student_busy: Your child already has a lesson at this time.
+          trial_already_booked: Your child has already booked a trial lesson with this teacher.
+          slot_taken: Sorry, this time was just booked by someone else. Please choose another time.
+          attributes:
+            starts_at:
+              not_available: is no longer available
+  shared:
+    navbar:
+      my_lessons: My lessons
+  time_zones:
+    update:
+      saved: Time zone saved.
+      invalid: This time zone is not valid.
+  teachers:
+    show:
+      book_trial: Book a trial lesson
+  lessons:
+    parents_only: Only parents can book lessons.
+    statuses:
+      scheduled: Scheduled
+      past: Past
+      cancelled: Cancelled
+      completed: Completed
+    new:
+      add_child_first: Please add your child's profile before booking a lesson.
+      back: Back to the teacher
+      title: "Book a trial lesson with %{teacher}"
+      intro: "A trial lesson lasts %{minutes} minutes, so your child and the teacher can get to know each other."
+      zone_title: Your time zone
+      zone_hint: Times below are shown in this time zone. Check it before you book.
+      zone_save: Save time zone
+      child: Child
+      lesson_for: "Lesson for %{child}"
+      choose_time: Choose a time
+      no_times: No free times in the next two weeks. Please check again later.
+      submit: Book this lesson
+    create:
+      booked: Trial lesson booked.
+    cancel:
+      cancelled: Lesson cancelled.
+      too_late: This lesson can no longer be cancelled online. Please contact us.
+    index:
+      title: My lessons
+      zone_note: "Times are shown in your time zone: %{zone}."
+      upcoming: Upcoming lessons
+      none_upcoming: You have no upcoming lessons.
+      find_teacher: Find a teacher
+      history: Past and cancelled lessons
+    lesson:
+      minutes: "%{minutes} min"
+      trial: Trial lesson
+      with_teacher: "With %{teacher}"
+      child_line: "%{child}, age %{age}"
+      cancel: Cancel lesson
+      confirm: Cancel this lesson?

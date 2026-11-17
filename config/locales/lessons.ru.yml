@@ -1,0 +1,64 @@
+ru:
+  activerecord:
+    attributes:
+      lesson:
+        starts_at: Время
+        student: Ребёнок
+    errors:
+      models:
+        lesson:
+          student_busy: У вашего ребёнка уже есть урок в это время.
+          trial_already_booked: Ваш ребёнок уже записан на пробный урок к этому преподавателю.
+          slot_taken: К сожалению, это время только что занял другой человек. Пожалуйста, выберите другое.
+          attributes:
+            starts_at:
+              not_available: больше недоступно
+  shared:
+    navbar:
+      my_lessons: Мои уроки
+  time_zones:
+    update:
+      saved: Часовой пояс сохранён.
+      invalid: Недопустимый часовой пояс.
+  teachers:
+    show:
+      book_trial: Записаться на пробный урок
+  lessons:
+    parents_only: Записываться на уроки могут только родители.
+    statuses:
+      scheduled: Запланирован
+      past: Прошёл
+      cancelled: Отменён
+      completed: Завершён
+    new:
+      add_child_first: Сначала добавьте профиль ребёнка, затем запишитесь на урок.
+      back: Назад к преподавателю
+      title: "Пробный урок с преподавателем: %{teacher}"
+      intro: "Пробный урок длится %{minutes} минут, чтобы ребёнок и преподаватель познакомились."
+      zone_title: Ваш часовой пояс
+      zone_hint: Время ниже указано в этом часовом поясе. Проверьте его перед записью.
+      zone_save: Сохранить часовой пояс
+      child: Ребёнок
+      lesson_for: "Урок для ребёнка: %{child}"
+      choose_time: Выберите время
+      no_times: В ближайшие две недели свободного времени нет. Загляните позже.
+      submit: Записаться на урок
+    create:
+      booked: Вы записаны на пробный урок.
+    cancel:
+      cancelled: Урок отменён.
+      too_late: Этот урок уже нельзя отменить онлайн. Пожалуйста, свяжитесь с нами.
+    index:
+      title: Мои уроки
+      zone_note: "Время указано в вашем часовом поясе: %{zone}."
+      upcoming: Ближайшие уроки
+      none_upcoming: У вас нет предстоящих уроков.
+      find_teacher: Найти преподавателя
+      history: Прошедшие и отменённые уроки
+    lesson:
+      minutes: "%{minutes} мин"
+      trial: Пробный урок
+      with_teacher: "Преподаватель: %{teacher}"
+      child_line: "%{child}, возраст: %{age}"
+      cancel: Отменить урок
+      confirm: Отменить этот урок?

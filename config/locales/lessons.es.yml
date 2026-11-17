@@ -1,0 +1,64 @@
+es:
+  activerecord:
+    attributes:
+      lesson:
+        starts_at: Hora
+        student: Hijo
+    errors:
+      models:
+        lesson:
+          student_busy: Tu hijo ya tiene una clase a esta hora.
+          trial_already_booked: Tu hijo ya ha reservado una clase de prueba con este profesor.
+          slot_taken: Lo sentimos, alguien acaba de reservar esta hora. Elige otra.
+          attributes:
+            starts_at:
+              not_available: ya no está disponible
+  shared:
+    navbar:
+      my_lessons: Mis clases
+  time_zones:
+    update:
+      saved: Zona horaria guardada.
+      invalid: Esta zona horaria no es válida.
+  teachers:
+    show:
+      book_trial: Reservar una clase de prueba
+  lessons:
+    parents_only: Solo los padres pueden reservar clases.
+    statuses:
+      scheduled: Programada
+      past: Pasada
+      cancelled: Cancelada
+      completed: Completada
+    new:
+      add_child_first: Añade primero el perfil de tu hijo antes de reservar una clase.
+      back: Volver al profesor
+      title: "Reservar una clase de prueba con %{teacher}"
+      intro: "Una clase de prueba dura %{minutes} minutos, para que tu hijo y el profesor se conozcan."
+      zone_title: Tu zona horaria
+      zone_hint: Las horas de abajo se muestran en esta zona horaria. Compruébala antes de reservar.
+      zone_save: Guardar zona horaria
+      child: Hijo
+      lesson_for: "Clase para %{child}"
+      choose_time: Elige una hora
+      no_times: No hay horas libres en las próximas dos semanas. Vuelve a comprobarlo más tarde.
+      submit: Reservar esta clase
+    create:
+      booked: Clase de prueba reservada.
+    cancel:
+      cancelled: Clase cancelada.
+      too_late: Esta clase ya no se puede cancelar en línea. Ponte en contacto con nosotros.
+    index:
+      title: Mis clases
+      zone_note: "Las horas se muestran en tu zona horaria: %{zone}."
+      upcoming: Próximas clases
+      none_upcoming: No tienes clases próximas.
+      find_teacher: Encontrar un profesor
+      history: Clases pasadas y canceladas
+    lesson:
+      minutes: "%{minutes} min"
+      trial: Clase de prueba
+      with_teacher: "Con %{teacher}"
+      child_line: "%{child}, %{age} años"
+      cancel: Cancelar clase
+      confirm: "¿Cancelar esta clase?"

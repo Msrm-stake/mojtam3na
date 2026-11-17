@@ -1,0 +1,64 @@
+ar:
+  activerecord:
+    attributes:
+      lesson:
+        starts_at: الوقت
+        student: الطفل
+    errors:
+      models:
+        lesson:
+          student_busy: لدى طفلك درس آخر في هذا الوقت.
+          trial_already_booked: حجز طفلك درسًا تجريبيًا مع هذا المعلم من قبل.
+          slot_taken: عذرًا، حجز شخص آخر هذا الوقت للتو. يرجى اختيار وقت آخر.
+          attributes:
+            starts_at:
+              not_available: لم يعد متاحًا
+  shared:
+    navbar:
+      my_lessons: دروسي
+  time_zones:
+    update:
+      saved: تم حفظ المنطقة الزمنية.
+      invalid: هذه المنطقة الزمنية غير صالحة.
+  teachers:
+    show:
+      book_trial: احجز درسًا تجريبيًا
+  lessons:
+    parents_only: يمكن لأولياء الأمور فقط حجز الدروس.
+    statuses:
+      scheduled: مجدول
+      past: منتهٍ
+      cancelled: ملغى
+      completed: مكتمل
+    new:
+      add_child_first: يرجى إضافة ملف طفلك قبل حجز درس.
+      back: العودة إلى المعلم
+      title: "احجز درسًا تجريبيًا مع %{teacher}"
+      intro: "يستغرق الدرس التجريبي %{minutes} دقيقة ليتعرف الطفل والمعلم على بعضهما."
+      zone_title: منطقتك الزمنية
+      zone_hint: الأوقات أدناه معروضة بهذه المنطقة الزمنية. تحقق منها قبل الحجز.
+      zone_save: حفظ المنطقة الزمنية
+      child: الطفل
+      lesson_for: "الدرس للطفل: %{child}"
+      choose_time: اختر وقتًا
+      no_times: لا توجد أوقات متاحة خلال الأسبوعين القادمين. يرجى المحاولة لاحقًا.
+      submit: احجز هذا الدرس
+    create:
+      booked: تم حجز الدرس التجريبي.
+    cancel:
+      cancelled: تم إلغاء الدرس.
+      too_late: لم يعد بالإمكان إلغاء هذا الدرس عبر الإنترنت. يرجى التواصل معنا.
+    index:
+      title: دروسي
+      zone_note: "تُعرض الأوقات بمنطقتك الزمنية: %{zone}."
+      upcoming: الدروس القادمة
+      none_upcoming: ليس لديك دروس قادمة.
+      find_teacher: ابحث عن معلم
+      history: الدروس السابقة والملغاة
+    lesson:
+      minutes: "%{minutes} د"
+      trial: درس تجريبي
+      with_teacher: "مع %{teacher}"
+      child_line: "%{child}، العمر: %{age}"
+      cancel: إلغاء الدرس
+      confirm: هل تريد إلغاء هذا الدرس؟
