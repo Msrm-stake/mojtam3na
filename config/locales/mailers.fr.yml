@@ -1,0 +1,40 @@
+fr:
+  mailers:
+    footer: Vous recevez cet e-mail parce que vous avez un compte sur Mojtam3na.
+  lesson_mailer:
+    common:
+      view_lessons: Voir mes cours
+    details:
+      when: Quand
+      length: Durée
+      minutes: "%{minutes} min"
+      type: Type
+      trial: Cours d'essai
+      teacher: Enseignant
+      child: Enfant
+      child_with_age: "%{child}, %{age} ans"
+      zone: Fuseau horaire
+    booked:
+      subject:
+        parent: "Cours d'essai réservé avec %{teacher}"
+        teacher: "Nouveau cours d'essai avec %{child}"
+      heading:
+        parent: Votre cours d'essai est réservé
+        teacher: Vous avez un nouveau cours d'essai
+      intro:
+        parent: "Le cours d'essai de %{child} avec %{teacher} est confirmé."
+        teacher: "%{child} a réservé un cours d'essai avec vous."
+      note: "Vous pouvez annuler jusqu'à %{hours} heures avant le cours depuis la page « Mes cours »."
+    cancelled:
+      subject: Cours annulé
+      heading: Cours annulé
+      intro:
+        by_you: Vous avez annulé ce cours.
+        by_parent: Ce cours a été annulé par le parent.
+        by_teacher: Ce cours a été annulé par l'enseignant.
+    reminder:
+      subject: Votre cours commence bientôt
+      heading: Votre cours commence bientôt
+      intro:
+        parent: "Le cours de %{child} avec %{teacher} commence dans moins d'une heure."
+        teacher: "Votre cours avec %{child} commence dans moins d'une heure."

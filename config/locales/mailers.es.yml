@@ -1,0 +1,40 @@
+es:
+  mailers:
+    footer: Recibes este correo porque tienes una cuenta en Mojtam3na.
+  lesson_mailer:
+    common:
+      view_lessons: Ver mis clases
+    details:
+      when: Cuándo
+      length: Duración
+      minutes: "%{minutes} min"
+      type: Tipo
+      trial: Clase de prueba
+      teacher: Profesor
+      child: Hijo
+      child_with_age: "%{child}, %{age} años"
+      zone: Zona horaria
+    booked:
+      subject:
+        parent: "Clase de prueba reservada con %{teacher}"
+        teacher: "Nueva clase de prueba con %{child}"
+      heading:
+        parent: Tu clase de prueba está reservada
+        teacher: Tienes una nueva clase de prueba
+      intro:
+        parent: "La clase de prueba de %{child} con %{teacher} está confirmada."
+        teacher: "%{child} ha reservado una clase de prueba contigo."
+      note: "Puedes cancelarla hasta %{hours} horas antes de la clase desde la página «Mis clases»."
+    cancelled:
+      subject: Clase cancelada
+      heading: Clase cancelada
+      intro:
+        by_you: Has cancelado esta clase.
+        by_parent: Esta clase fue cancelada por el padre o la madre.
+        by_teacher: Esta clase fue cancelada por el profesor.
+    reminder:
+      subject: Tu clase empieza pronto
+      heading: Tu clase empieza pronto
+      intro:
+        parent: "La clase de %{child} con %{teacher} empieza en menos de una hora."
+        teacher: "Tu clase con %{child} empieza en menos de una hora."

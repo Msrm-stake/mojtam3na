@@ -43,6 +43,7 @@ class LessonsController < ApplicationController
       end
 
     if saved
+      notify(@lesson, :booked)
       redirect_to lessons_path, notice: t(".booked"), status: :see_other
     else
       prepare_booking_page
@@ -57,6 +58,7 @@ class LessonsController < ApplicationController
 
     if lesson.cancellable_by?(current_user)
       lesson.cancel!(current_user)
+      notify(lesson, :cancelled, cancelled_by: lesson.booked_by_id == current_user.id ? "parent" : "teacher")
       redirect_to lessons_path, notice: t(".cancelled"), status: :see_other
     else
       redirect_to lessons_path, alert: t(".too_late"), status: :see_other
@@ -90,5 +92,15 @@ class LessonsController < ApplicationController
     chosen = (params.dig(:lesson, :student_id) || params[:student_id]).to_i
     @student_id = @students.exists?(id: chosen) ? chosen : @students.first&.id
     @days = @profile.bookable_starts.group_by { |time| time.in_time_zone(@zone).to_date }
+  end
+
+  # Emails are queued in the background; a mail problem must never undo or block a booking.
+  def notify(lesson, kind, cancelled_by: nil)
+    [[lesson.booked_by, "parent"], [lesson.teacher_profile.user, "teacher"]].each do |recipient, role|
+      LessonMailer.with(lesson: lesson, recipient: recipient, role: role, cancelled_by: cancelled_by)
+                  .public_send(kind).deliver_later
+    end
+  rescue StandardError => e
+    Rails.logger.error("Lesson email (#{kind}) could not be queued: #{e.class}: #{e.message}")
   end
 end

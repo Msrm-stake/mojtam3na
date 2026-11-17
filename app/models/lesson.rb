@@ -2,6 +2,7 @@ class Lesson < ApplicationRecord
   TRIAL_MINUTES = 30
   MIN_NOTICE = 12.hours
   CANCEL_NOTICE = 6.hours
+  REMINDER_WINDOW = 1.hour
   BOOKING_WINDOW_DAYS = 14
 
   belongs_to :teacher_profile
@@ -13,6 +14,11 @@ class Lesson < ApplicationRecord
 
   scope :upcoming, -> { status_scheduled.where("ends_at > ?", Time.current) }
   scope :history, -> { where("status <> 'scheduled' OR ends_at <= ?", Time.current) }
+  # Lessons starting within the next hour that nobody has been reminded about yet.
+  scope :needing_reminder, lambda {
+    status_scheduled.where(reminder_sent_at: nil)
+                    .where(starts_at: Time.current..(Time.current + REMINDER_WINDOW))
+  }
 
   before_validation :set_end_time, on: :create
 

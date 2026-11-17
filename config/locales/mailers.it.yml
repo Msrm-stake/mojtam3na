@@ -1,0 +1,40 @@
+it:
+  mailers:
+    footer: Ricevi questa email perché hai un account su Mojtam3na.
+  lesson_mailer:
+    common:
+      view_lessons: Vedi le mie lezioni
+    details:
+      when: Quando
+      length: Durata
+      minutes: "%{minutes} min"
+      type: Tipo
+      trial: Lezione di prova
+      teacher: Insegnante
+      child: Figlio
+      child_with_age: "%{child}, %{age} anni"
+      zone: Fuso orario
+    booked:
+      subject:
+        parent: "Lezione di prova prenotata con %{teacher}"
+        teacher: "Nuova lezione di prova con %{child}"
+      heading:
+        parent: La tua lezione di prova è prenotata
+        teacher: Hai una nuova lezione di prova
+      intro:
+        parent: "La lezione di prova di %{child} con %{teacher} è confermata."
+        teacher: "%{child} ha prenotato una lezione di prova con te."
+      note: "Puoi annullare fino a %{hours} ore prima della lezione dalla pagina «Le mie lezioni»."
+    cancelled:
+      subject: Lezione annullata
+      heading: Lezione annullata
+      intro:
+        by_you: Hai annullato questa lezione.
+        by_parent: Questa lezione è stata annullata dal genitore.
+        by_teacher: Questa lezione è stata annullata dall'insegnante.
+    reminder:
+      subject: La tua lezione inizia presto
+      heading: La tua lezione inizia presto
+      intro:
+        parent: "La lezione di %{child} con %{teacher} inizia tra meno di un'ora."
+        teacher: "La tua lezione con %{child} inizia tra meno di un'ora."

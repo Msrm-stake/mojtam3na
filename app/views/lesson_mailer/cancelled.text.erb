@@ -1,0 +1,6 @@
+<%= t(".heading") %>
+
+<%= t(".intro.#{@intro_key}") %>
+
+<%= render "details" %>
+<%= t("lesson_mailer.common.view_lessons") %>: <%= lessons_url(locale: I18n.locale) %>

@@ -1,0 +1,6 @@
+<%= t(".heading") %>
+
+<%= t(".intro.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name) %>
+
+<%= render "details" %>
+<%= t("lesson_mailer.common.view_lessons") %>: <%= lessons_url(locale: I18n.locale) %>

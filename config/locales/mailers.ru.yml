@@ -1,0 +1,40 @@
+ru:
+  mailers:
+    footer: Вы получили это письмо, потому что у вас есть аккаунт на Mojtam3na.
+  lesson_mailer:
+    common:
+      view_lessons: Мои уроки
+    details:
+      when: Когда
+      length: Длительность
+      minutes: "%{minutes} мин"
+      type: Тип
+      trial: Пробный урок
+      teacher: Преподаватель
+      child: Ребёнок
+      child_with_age: "%{child}, возраст: %{age}"
+      zone: Часовой пояс
+    booked:
+      subject:
+        parent: "Пробный урок забронирован: %{teacher}"
+        teacher: "Новый пробный урок: %{child}"
+      heading:
+        parent: Ваш пробный урок забронирован
+        teacher: У вас новый пробный урок
+      intro:
+        parent: "Пробный урок ребёнка (%{child}) с преподавателем %{teacher} подтверждён."
+        teacher: "Ребёнок %{child} записан на пробный урок к вам."
+      note: "Вы можете отменить урок не позднее чем за %{hours} ч. до начала на странице «Мои уроки»."
+    cancelled:
+      subject: Урок отменён
+      heading: Урок отменён
+      intro:
+        by_you: Вы отменили этот урок.
+        by_parent: Этот урок отменил родитель.
+        by_teacher: Этот урок отменил преподаватель.
+    reminder:
+      subject: Ваш урок скоро начнётся
+      heading: Ваш урок скоро начнётся
+      intro:
+        parent: "Урок ребёнка (%{child}) с преподавателем %{teacher} начнётся менее чем через час."
+        teacher: "Ваш урок с учеником (%{child}) начнётся менее чем через час."

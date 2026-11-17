@@ -1,0 +1,40 @@
+ar:
+  mailers:
+    footer: وصلتك هذه الرسالة لأن لديك حسابًا على Mojtam3na.
+  lesson_mailer:
+    common:
+      view_lessons: عرض دروسي
+    details:
+      when: الموعد
+      length: المدة
+      minutes: "%{minutes} د"
+      type: النوع
+      trial: درس تجريبي
+      teacher: المعلم
+      child: الطفل
+      child_with_age: "%{child}، العمر: %{age}"
+      zone: المنطقة الزمنية
+    booked:
+      subject:
+        parent: "تم حجز درس تجريبي مع %{teacher}"
+        teacher: "درس تجريبي جديد مع %{child}"
+      heading:
+        parent: تم حجز درسك التجريبي
+        teacher: لديك درس تجريبي جديد
+      intro:
+        parent: "تم تأكيد الدرس التجريبي للطفل %{child} مع %{teacher}."
+        teacher: "حجز الطفل %{child} درسًا تجريبيًا معك."
+      note: "يمكنك الإلغاء قبل موعد الدرس بـ %{hours} ساعات على الأقل من صفحة «دروسي»."
+    cancelled:
+      subject: تم إلغاء الدرس
+      heading: تم إلغاء الدرس
+      intro:
+        by_you: لقد ألغيت هذا الدرس.
+        by_parent: ألغى ولي الأمر هذا الدرس.
+        by_teacher: ألغى المعلم هذا الدرس.
+    reminder:
+      subject: درسك يبدأ قريبًا
+      heading: درسك يبدأ قريبًا
+      intro:
+        parent: "يبدأ درس الطفل %{child} مع %{teacher} بعد أقل من ساعة."
+        teacher: "يبدأ درسك مع الطفل %{child} بعد أقل من ساعة."

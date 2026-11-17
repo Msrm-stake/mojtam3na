@@ -1,0 +1,40 @@
+en:
+  mailers:
+    footer: You receive this email because you have an account on Mojtam3na.
+  lesson_mailer:
+    common:
+      view_lessons: View my lessons
+    details:
+      when: When
+      length: Length
+      minutes: "%{minutes} min"
+      type: Type
+      trial: Trial lesson
+      teacher: Teacher
+      child: Child
+      child_with_age: "%{child}, age %{age}"
+      zone: Time zone
+    booked:
+      subject:
+        parent: "Trial lesson booked with %{teacher}"
+        teacher: "New trial lesson with %{child}"
+      heading:
+        parent: Your trial lesson is booked
+        teacher: You have a new trial lesson
+      intro:
+        parent: "%{child}'s trial lesson with %{teacher} is confirmed."
+        teacher: "%{child} has booked a trial lesson with you."
+      note: "You can cancel up to %{hours} hours before the lesson from the My lessons page."
+    cancelled:
+      subject: Lesson cancelled
+      heading: Lesson cancelled
+      intro:
+        by_you: You cancelled this lesson.
+        by_parent: This lesson was cancelled by the parent.
+        by_teacher: This lesson was cancelled by the teacher.
+    reminder:
+      subject: Your lesson starts soon
+      heading: Your lesson starts soon
+      intro:
+        parent: "%{child}'s lesson with %{teacher} starts in less than an hour."
+        teacher: "Your lesson with %{child} starts in less than an hour."

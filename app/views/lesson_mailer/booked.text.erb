@@ -1,0 +1,8 @@
+<%= t(".heading.#{@role}") %>
+
+<%= t(".intro.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name) %>
+
+<%= render "details" %>
+<%= t(".note", hours: (Lesson::CANCEL_NOTICE / 1.hour).to_i) %>
+
+<%= t("lesson_mailer.common.view_lessons") %>: <%= lessons_url(locale: I18n.locale) %>
