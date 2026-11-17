@@ -1,0 +1,71 @@
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  align-items: end;
+  background: #fff;
+  border: 1px solid rgba($green-deep, .1);
+  border-radius: $border-radius-xl;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.teacher-card {
+  display: block;
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgba($green-deep, .1);
+  border-radius: $border-radius-xl;
+  padding: 1.5rem;
+  color: $gray;
+  text-decoration: none;
+  transition: border-color .15s, box-shadow .15s;
+
+  &:hover {
+    color: $gray;
+    border-color: rgba($green-deep, .35);
+    box-shadow: 0 6px 18px rgba($green-deep, .08);
+  }
+}
+
+.teacher-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: $green-deep;
+  color: $cream;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: .75rem;
+}
+
+.teacher-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: $green-deep;
+}
+
+.teacher-headline { font-size: .95rem; margin-top: .15rem; }
+
+.teacher-price {
+  margin-top: .9rem;
+  font-weight: 700;
+  color: $green-dark;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  width: 5rem;
+  height: 5rem;
+  font-size: 2rem;
+  margin-bottom: 0;
+}

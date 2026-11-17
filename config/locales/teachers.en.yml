@@ -1,0 +1,32 @@
+en:
+  teachers:
+    price_not_set: Price not set
+    index:
+      title: Find a teacher
+      intro: Browse qualified Arabic and Quran teachers, and choose the one who speaks your child's language.
+      subject: Subject
+      language: Teaches in
+      sort_by: Sort by
+      any_subject: All subjects
+      any_language: All languages
+      search: Search
+      clear: Clear filters
+      results: "Teachers found: %{count}"
+      empty: No teacher matches these filters yet. Try removing one.
+      no_headline: Arabic and Quran teacher
+      per_hour: per hour
+      sorts:
+        newest: Newest
+        price_asc: "Price: low to high"
+        price_desc: "Price: high to low"
+    show:
+      back: Back to all teachers
+      per_hour: per hour
+      about: About
+      teaches_in: Teaches in
+      subjects: Subjects
+      experience: "Years of experience: %{years}"
+      ages: "Students aged %{min} to %{max}"
+      video: Introduction video
+      qualifications: Verified qualifications
+      book_soon: Booking opens soon

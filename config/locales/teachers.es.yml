@@ -1,0 +1,32 @@
+es:
+  teachers:
+    price_not_set: Precio no indicado
+    index:
+      title: Encontrar un profesor
+      intro: Explora profesores cualificados de árabe y Corán y elige al que hable el idioma de tu hijo.
+      subject: Materia
+      language: Enseña en
+      sort_by: Ordenar por
+      any_subject: Todas las materias
+      any_language: Todos los idiomas
+      search: Buscar
+      clear: Borrar filtros
+      results: "Profesores encontrados: %{count}"
+      empty: Ningún profesor coincide todavía con estos filtros. Prueba a quitar alguno.
+      no_headline: Profesor de árabe y Corán
+      per_hour: por hora
+      sorts:
+        newest: Más recientes
+        price_asc: Precio de menor a mayor
+        price_desc: Precio de mayor a menor
+    show:
+      back: Volver a todos los profesores
+      per_hour: por hora
+      about: Sobre el profesor
+      teaches_in: Enseña en
+      subjects: Materias
+      experience: "Años de experiencia: %{years}"
+      ages: "Alumnos de %{min} a %{max} años"
+      video: Vídeo de presentación
+      qualifications: Cualificaciones verificadas
+      book_soon: La reserva estará disponible pronto

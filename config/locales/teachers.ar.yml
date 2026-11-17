@@ -1,0 +1,32 @@
+ar:
+  teachers:
+    price_not_set: السعر غير محدد
+    index:
+      title: ابحث عن معلم
+      intro: تصفح معلمي العربية والقرآن المؤهلين، واختر من يتحدث بلغة طفلك.
+      subject: المادة
+      language: يدرّس بـ
+      sort_by: ترتيب حسب
+      any_subject: كل المواد
+      any_language: كل اللغات
+      search: بحث
+      clear: مسح التصفية
+      results: "عدد المعلمين: %{count}"
+      empty: لا يوجد معلم يطابق هذه الفلاتر بعد. جرّب إزالة أحدها.
+      no_headline: معلم عربية وقرآن
+      per_hour: في الساعة
+      sorts:
+        newest: الأحدث
+        price_asc: السعر من الأقل إلى الأعلى
+        price_desc: السعر من الأعلى إلى الأقل
+    show:
+      back: العودة إلى كل المعلمين
+      per_hour: في الساعة
+      about: نبذة
+      teaches_in: يدرّس بـ
+      subjects: المواد
+      experience: "سنوات الخبرة: %{years}"
+      ages: "طلاب من عمر %{min} إلى %{max} سنة"
+      video: الفيديو التعريفي
+      qualifications: مؤهلات موثّقة
+      book_soon: الحجز سيتوفر قريبًا

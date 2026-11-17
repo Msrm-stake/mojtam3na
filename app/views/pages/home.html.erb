@@ -6,7 +6,7 @@
         <h1 class="hero-title"><%= t(".hero.title") %></h1>
         <p class="hero-subtitle"><%= t(".hero.subtitle") %></p>
         <div class="d-flex flex-wrap gap-3">
-          <%= link_to t(".hero.find_teacher"), "#", class: "btn btn-primary btn-lg" %>
+          <%= link_to t(".hero.find_teacher"), teachers_path, class: "btn btn-primary btn-lg" %>
           <%= link_to t(".hero.become_teacher"), new_user_registration_path, class: "btn btn-gold btn-lg" %>
         </div>
       </div>

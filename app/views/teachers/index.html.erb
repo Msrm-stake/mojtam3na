@@ -1,0 +1,58 @@
+<div class="container auth-page">
+  <h1 class="h3 mb-1"><%= t(".title") %></h1>
+  <p class="mb-4"><%= t(".intro") %></p>
+
+  <%= form_with url: teachers_path, method: :get, class: "filter-bar" do %>
+    <div>
+      <label class="form-label" for="subject"><%= t(".subject") %></label>
+      <%= select_tag :subject,
+            options_for_select(@subjects.map { |s| [t("pages.home.subjects.items.#{s.slug}", default: s.name), s.id.to_s] }, params[:subject].to_s),
+            include_blank: t(".any_subject"), class: "form-select" %>
+    </div>
+    <div>
+      <label class="form-label" for="language"><%= t(".language") %></label>
+      <%= select_tag :language,
+            options_for_select(@languages.map { |l| [l.native_name, l.id.to_s] }, params[:language].to_s),
+            include_blank: t(".any_language"), class: "form-select" %>
+    </div>
+    <div>
+      <label class="form-label" for="sort"><%= t(".sort_by") %></label>
+      <%= select_tag :sort,
+            options_for_select(TeachersController::SORTS.map { |s| [t(".sorts.#{s}"), s] }, @sort),
+            class: "form-select" %>
+    </div>
+    <div class="d-flex gap-2">
+      <%= submit_tag t(".search"), name: nil, class: "btn btn-primary" %>
+      <%= link_to t(".clear"), teachers_path, class: "btn btn-outline-secondary" %>
+    </div>
+  <% end %>
+
+  <p class="text-body-secondary"><%= t(".results", count: @profiles.size) %></p>
+
+  <% if @profiles.empty? %>
+    <div class="auth-card"><%= t(".empty") %></div>
+  <% else %>
+    <div class="row g-4">
+      <% @profiles.each do |profile| %>
+        <div class="col-md-6 col-lg-4">
+          <%= link_to teacher_path(profile), class: "teacher-card" do %>
+            <div class="teacher-avatar" aria-hidden="true"><%= profile.user.first_name.to_s[0].to_s.upcase %></div>
+            <div class="teacher-name"><%= public_name(profile.user) %></div>
+            <div class="teacher-headline"><%= profile.headline.presence || t(".no_headline") %></div>
+            <div class="chips mt-3">
+              <% profile.languages.first(3).each do |language| %>
+                <span class="chip chip-gold"><%= language.native_name %></span>
+              <% end %>
+            </div>
+            <div class="teacher-price">
+              <%= teacher_price(profile) %>
+              <% unless profile.hourly_rate_cents.zero? %>
+                <span class="small fw-normal"><%= t(".per_hour") %></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -22,4 +22,16 @@ module ApplicationHelper
   def main_stylesheet
     rtl? ? "application.rtl" : "application"
   end
+
+  # Teachers are shown publicly as "Firstname L."
+  def public_name(user)
+    initial = user.last_name.to_s.strip[0]
+    [user.first_name, initial && "#{initial}."].compact_blank.join(" ")
+  end
+
+  def teacher_price(profile)
+    return t("teachers.price_not_set") if profile.hourly_rate_cents.zero?
+
+    "#{format('%.2f', profile.hourly_rate)} #{profile.currency}"
+  end
 end

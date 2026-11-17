@@ -1,0 +1,32 @@
+it:
+  teachers:
+    price_not_set: Prezzo non indicato
+    index:
+      title: Trova un insegnante
+      intro: Sfoglia insegnanti qualificati di arabo e Corano e scegli quello che parla la lingua di tuo figlio.
+      subject: Materia
+      language: Insegna in
+      sort_by: Ordina per
+      any_subject: Tutte le materie
+      any_language: Tutte le lingue
+      search: Cerca
+      clear: Cancella filtri
+      results: "Insegnanti trovati: %{count}"
+      empty: Nessun insegnante corrisponde ancora a questi filtri. Prova a toglierne uno.
+      no_headline: Insegnante di arabo e Corano
+      per_hour: all'ora
+      sorts:
+        newest: Più recenti
+        price_asc: Prezzo crescente
+        price_desc: Prezzo decrescente
+    show:
+      back: Torna a tutti gli insegnanti
+      per_hour: all'ora
+      about: Presentazione
+      teaches_in: Insegna in
+      subjects: Materie
+      experience: "Anni di esperienza: %{years}"
+      ages: "Studenti da %{min} a %{max} anni"
+      video: Video di presentazione
+      qualifications: Qualifiche verificate
+      book_soon: La prenotazione sarà presto disponibile
