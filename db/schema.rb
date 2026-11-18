@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_17_192505) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_18_055708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,16 +95,40 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_17_192505) do
     t.datetime "reminder_sent_at"
     t.string "video_room_name"
     t.string "video_room_url"
+    t.datetime "hold_expires_at"
     t.index ["booked_by_id"], name: "index_lessons_on_booked_by_id"
     t.index ["cancelled_by_id"], name: "index_lessons_on_cancelled_by_id"
     t.index ["student_id", "starts_at"], name: "index_lessons_on_student_id_and_starts_at"
-    t.index ["student_id", "starts_at"], name: "index_lessons_one_scheduled_per_student_slot", unique: true, where: "((status)::text = 'scheduled'::text)"
+    t.index ["student_id", "starts_at"], name: "index_lessons_one_active_per_student_slot", unique: true, where: "((status)::text = ANY ((ARRAY['scheduled'::character varying, 'pending_payment'::character varying])::text[]))"
     t.index ["student_id"], name: "index_lessons_on_student_id"
     t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_on_teacher_profile_id_and_starts_at"
-    t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_one_scheduled_per_teacher_slot", unique: true, where: "((status)::text = 'scheduled'::text)"
+    t.index ["teacher_profile_id", "starts_at"], name: "index_lessons_one_active_per_teacher_slot", unique: true, where: "((status)::text = ANY ((ARRAY['scheduled'::character varying, 'pending_payment'::character varying])::text[]))"
     t.index ["teacher_profile_id"], name: "index_lessons_on_teacher_profile_id"
     t.index ["video_room_name"], name: "index_lessons_on_video_room_name", unique: true
     t.check_constraint "starts_at < ends_at", name: "lessons_start_before_end"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "parent_id", null: false
+    t.integer "amount_cents", null: false
+    t.integer "commission_cents", null: false
+    t.integer "teacher_amount_cents", null: false
+    t.string "currency", limit: 3, default: "EUR", null: false
+    t.string "status", default: "pending", null: false
+    t.string "stripe_checkout_session_id"
+    t.string "stripe_payment_intent_id"
+    t.string "stripe_refund_id"
+    t.datetime "paid_at"
+    t.datetime "refunded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_orders_on_lesson_id", unique: true
+    t.index ["parent_id"], name: "index_orders_on_parent_id"
+    t.index ["status"], name: "index_orders_on_status"
+    t.index ["stripe_checkout_session_id"], name: "index_orders_on_stripe_checkout_session_id", unique: true
+    t.index ["stripe_payment_intent_id"], name: "index_orders_on_stripe_payment_intent_id", unique: true
+    t.check_constraint "amount_cents > 0 AND commission_cents >= 0 AND teacher_amount_cents >= 0 AND (commission_cents + teacher_amount_cents) = amount_cents", name: "orders_amounts_consistent"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -228,6 +252,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_17_192505) do
   add_foreign_key "lessons", "teacher_profiles"
   add_foreign_key "lessons", "users", column: "booked_by_id"
   add_foreign_key "lessons", "users", column: "cancelled_by_id"
+  add_foreign_key "orders", "lessons"
+  add_foreign_key "orders", "users", column: "parent_id"
   add_foreign_key "qualifications", "teacher_profiles"
   add_foreign_key "qualifications", "users", column: "verified_by_id"
   add_foreign_key "students", "languages", column: "native_language_id"

@@ -69,7 +69,7 @@ class TeacherProfile < ApplicationRecord
     latest = now + days.days
     length = minutes.minutes
 
-    busy = lessons.status_scheduled
+    busy = lessons.active
                   .where("ends_at > ? AND starts_at < ?", earliest, latest + length)
                   .pluck(:starts_at, :ends_at)
     by_weekday = availability_slots.group_by(&:weekday)
