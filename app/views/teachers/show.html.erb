@@ -46,6 +46,7 @@
           <% end %>
         </div>
         <%= link_to t(".book_trial"), new_teacher_lesson_path(@profile), class: "btn btn-gold w-100 mt-3" %>
+        <% if lesson_payable?(@profile) %><%= link_to t(".book_lesson"), new_teacher_lesson_path(@profile, kind: "paid"), class: "btn btn-primary w-100 mt-2" %><% end %>
 
         <hr>
 

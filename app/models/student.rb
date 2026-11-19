@@ -9,6 +9,9 @@ class Student < ApplicationRecord
   has_many :consents, dependent: :nullify
   has_many :lessons, dependent: :destroy
 
+  # Runs before the lessons are removed: payment records are never deleted.
+  before_destroy :keep_children_with_payments, prepend: true
+
   enum :arabic_level, LEVELS.index_with(&:itself), prefix: :arabic, validate: true
   enum :quran_level, LEVELS.index_with(&:itself), prefix: :quran, validate: true
 
@@ -45,5 +48,17 @@ class Student < ApplicationRecord
     return unless birth_date
 
     errors.add(:birth_date, :age_range, min: MIN_AGE, max: MAX_AGE) unless age.between?(MIN_AGE, MAX_AGE)
+  end
+
+  # A child with paid lessons is kept. Orders that were never paid carry no money and are removed with the child.
+  def keep_children_with_payments
+    records = Order.where(lesson_id: lessons.select(:id))
+
+    if records.where.not(status: "expired").exists?
+      errors.add(:base, :has_payments)
+      throw :abort
+    end
+
+    records.delete_all
   end
 end

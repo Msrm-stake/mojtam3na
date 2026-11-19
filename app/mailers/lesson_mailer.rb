@@ -5,8 +5,9 @@ class LessonMailer < ApplicationMailer
   around_action :in_recipient_locale
 
   def booked
+    key = @lesson.trial? ? "subject" : "subject_paid"
     mail(to: @recipient.email,
-         subject: t(".subject.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name))
+         subject: t(".#{key}.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name))
   end
 
   def cancelled

@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_teacher, only: %i[new create]
   before_action :require_parent!, only: %i[new create]
+  before_action :set_kind, only: %i[new create]
 
   def index
     scope =
@@ -12,7 +13,7 @@ class LessonsController < ApplicationController
         Lesson.none
       end
 
-    scope = scope.includes(:student, teacher_profile: :user)
+    scope = scope.includes(:student, :order, teacher_profile: :user)
     @upcoming = scope.upcoming.order(:starts_at)
     @history = scope.history.order(starts_at: :desc).limit(50)
   end
@@ -24,31 +25,8 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(
-      teacher_profile: @profile,
-      booked_by: current_user,
-      student: current_user.students.find_by(id: lesson_params[:student_id]),
-      starts_at: parse_time(lesson_params[:starts_at]),
-      trial: true,
-      currency: @profile.currency
-    )
-
-    saved =
-      begin
-        @lesson.save
-      rescue ActiveRecord::RecordNotUnique
-        # Someone else booked this exact time a moment ago.
-        @lesson.errors.add(:base, :slot_taken)
-        false
-      end
-
-    if saved
-      notify(@lesson, :booked)
-      redirect_to lessons_path, notice: t(".booked"), status: :see_other
-    else
-      prepare_booking_page
-      render :new, status: :unprocessable_entity
-    end
+    Lesson.release_expired_holds!
+    @paid ? create_paid : create_trial
   end
 
   def cancel
@@ -56,8 +34,15 @@ class LessonsController < ApplicationController
 
     if lesson.cancellable_by?(current_user)
       lesson.cancel!(current_user)
-      notify(lesson, :cancelled, cancelled_by: lesson.booked_by_id == current_user.id ? "parent" : "teacher")
-      redirect_to lessons_path, notice: t(".cancelled"), status: :see_other
+      lesson.notify_participants(:cancelled, cancelled_by: lesson.booked_by_id == current_user.id ? "parent" : "teacher")
+
+      order = lesson.reload.order
+      message =
+        if order.nil? then t(".cancelled")
+        elsif order.refund! then t(".cancelled_refunded")
+        else t(".cancelled_refund_pending")
+        end
+      redirect_to lessons_path, notice: message, status: :see_other
     else
       redirect_to lessons_path, alert: t(".too_late"), status: :see_other
     end
@@ -98,6 +83,14 @@ class LessonsController < ApplicationController
     redirect_to root_path, alert: t("lessons.parents_only") unless current_user.role_parent?
   end
 
+  # "trial" (free, 30 minutes) or "paid" (60 minutes at the teacher's price, only if a euro price is set).
+  def set_kind
+    @paid = params[:kind] == "paid"
+    return unless @paid && !helpers.lesson_payable?(@profile)
+
+    redirect_to new_teacher_lesson_path(@profile, kind: "trial"), alert: t("lessons.new.no_price")
+  end
+
   def lesson_params
     params.fetch(:lesson, {}).permit(:student_id, :starts_at)
   end
@@ -108,21 +101,101 @@ class LessonsController < ApplicationController
     nil
   end
 
+  def create_trial
+    @lesson = Lesson.new(
+      teacher_profile: @profile,
+      booked_by: current_user,
+      student: current_user.students.find_by(id: lesson_params[:student_id]),
+      starts_at: parse_time(lesson_params[:starts_at]),
+      trial: true,
+      currency: @profile.currency
+    )
+
+    if save_lesson(@lesson)
+      @lesson.notify_participants(:booked)
+      redirect_to lessons_path, notice: t(".booked"), status: :see_other
+    else
+      prepare_booking_page
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  # The time is held while the parent pays on Stripe's page; the lesson is booked when the payment is confirmed.
+  def create_paid
+    starts = parse_time(lesson_params[:starts_at])
+    @lesson = Lesson.new(
+      teacher_profile: @profile,
+      booked_by: current_user,
+      student: current_user.students.find_by(id: lesson_params[:student_id]),
+      starts_at: starts,
+      ends_at: starts && starts + Lesson::PAID_MINUTES.minutes,
+      trial: false,
+      status: "pending_payment",
+      hold_expires_at: Lesson::HOLD_MINUTES.minutes.from_now,
+      price_cents: @profile.hourly_rate_cents,
+      currency: "EUR"
+    )
+
+    order = nil
+    saved =
+      begin
+        Lesson.transaction do
+          @lesson.save!
+          order = Order.for_lesson(@lesson)
+          order.save!
+        end
+        true
+      rescue ActiveRecord::RecordInvalid
+        false
+      rescue ActiveRecord::RecordNotUnique
+        @lesson.errors.add(:base, :slot_taken)
+        false
+      end
+
+    return start_checkout(order) if saved
+
+    prepare_booking_page
+    render :new, status: :unprocessable_entity
+  end
+
+  def start_checkout(order)
+    session = StripeClient.new.create_checkout_session(
+      order_id: order.id,
+      lesson_id: @lesson.id,
+      amount_cents: order.amount_cents,
+      currency: order.currency,
+      product_name: t("lessons.checkout.product", teacher: helpers.public_name(@profile.user)),
+      email: current_user.email,
+      success_url: paid_order_url(order),
+      cancel_url: abandon_order_url(order),
+      expires_at: Lesson::SESSION_MINUTES.minutes.from_now,
+      locale: I18n.locale
+    )
+    order.update!(stripe_checkout_session_id: session["id"])
+    redirect_to session["url"], allow_other_host: true, status: :see_other
+  rescue StripeClient::Error => e
+    Rails.logger.error("Could not start checkout for order #{order.id}: #{e.message}")
+    order.abandon!
+    @lesson.errors.add(:base, :payment_unavailable)
+    prepare_booking_page
+    render :new, status: :unprocessable_entity
+  end
+
+  def save_lesson(lesson)
+    lesson.save
+  rescue ActiveRecord::RecordNotUnique
+    # Someone else booked this exact time a moment ago.
+    lesson.errors.add(:base, :slot_taken)
+    false
+  end
+
   def prepare_booking_page
+    Lesson.release_expired_holds!
     @students = current_user.students.order(:first_name)
     @zone = current_user.zone
     chosen = (params.dig(:lesson, :student_id) || params[:student_id]).to_i
     @student_id = @students.exists?(id: chosen) ? chosen : @students.first&.id
-    @days = @profile.bookable_starts.group_by { |time| time.in_time_zone(@zone).to_date }
-  end
-
-  # Emails are queued in the background; a mail problem must never undo or block a booking.
-  def notify(lesson, kind, cancelled_by: nil)
-    [[lesson.booked_by, "parent"], [lesson.teacher_profile.user, "teacher"]].each do |recipient, role|
-      LessonMailer.with(lesson: lesson, recipient: recipient, role: role, cancelled_by: cancelled_by)
-                  .public_send(kind).deliver_later
-    end
-  rescue StandardError => e
-    Rails.logger.error("Lesson email (#{kind}) could not be queued: #{e.class}: #{e.message}")
+    minutes = @paid ? Lesson::PAID_MINUTES : Lesson::TRIAL_MINUTES
+    @days = @profile.bookable_starts(minutes: minutes).group_by { |time| time.in_time_zone(@zone).to_date }
   end
 end

@@ -16,6 +16,16 @@
         <span class="chip chip-gold"><%= t(".trial") %></span>
       <% end %>
       <span class="chip"><%= t("lessons.statuses.#{lesson.display_status}") %></span>
+      <% if lesson.order && current_user.id == lesson.booked_by_id %>
+        <% order = lesson.order %>
+        <% if order.status_paid? %>
+          <span class="chip chip-gold"><%= t(".paid", amount: "#{format('%.2f', order.amount_cents / 100.0)} #{order.currency}") %></span>
+        <% elsif order.status_refund_pending? %>
+          <span class="chip chip-gold"><%= t(".refund_pending") %></span>
+        <% elsif order.status_refunded? %>
+          <span class="chip chip-gold"><%= t(".refunded") %></span>
+        <% end %>
+      <% end %>
     </div>
     <% if lesson.status_scheduled? && !lesson.join_open? && lesson.starts_at > Time.current %>
       <div class="small text-body-secondary mt-2"><%= t(".join_hint", minutes: (Lesson::JOIN_OPENS / 1.minute).to_i) %></div>

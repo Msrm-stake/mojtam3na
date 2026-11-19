@@ -31,8 +31,11 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student.destroy
-    redirect_to students_path, notice: t(".destroyed"), status: :see_other
+    if @student.destroy
+      redirect_to students_path, notice: t(".destroyed"), status: :see_other
+    else
+      redirect_to students_path, alert: @student.errors.full_messages.to_sentence, status: :see_other
+    end
   end
 
   private
@@ -51,7 +54,7 @@ class StudentsController < ApplicationController
       :first_name, :birth_date, :gender, :native_language_id,
       :arabic_level, :quran_level, :learning_goals, :guardian_consent
     )
-end
+  end
 
   # The child and the proof of the parent's consent are saved together or not at all.
   def save_with_consent(student)

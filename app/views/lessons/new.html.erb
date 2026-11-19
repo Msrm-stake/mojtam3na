@@ -1,12 +1,32 @@
+<% teacher_name = public_name(@profile.user) %>
 <div class="container auth-page">
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <p class="mb-3"><%= link_to t(".back"), teacher_path(@profile) %></p>
 
       <div class="auth-card mb-4">
-        <h1 class="h3 mb-2"><%= t(".title", teacher: public_name(@profile.user)) %></h1>
-        <p class="mb-0"><%= t(".intro", minutes: Lesson::TRIAL_MINUTES) %></p>
+        <h1 class="h3 mb-2"><%= @paid ? t(".title_paid", teacher: teacher_name) : t(".title", teacher: teacher_name) %></h1>
+        <p class="mb-0">
+          <% if @paid %>
+            <%= t(".intro_paid", minutes: Lesson::PAID_MINUTES, price: teacher_price(@profile)) %>
+          <% else %>
+            <%= t(".intro", minutes: Lesson::TRIAL_MINUTES) %>
+          <% end %>
+        </p>
       </div>
+
+      <ul class="nav nav-pills mb-4">
+        <li class="nav-item">
+          <%= link_to t(".tab_trial"), new_teacher_lesson_path(@profile, kind: "trial", student_id: @student_id),
+                class: "nav-link #{'active' unless @paid}" %>
+        </li>
+        <% if lesson_payable?(@profile) %>
+          <li class="nav-item">
+            <%= link_to t(".tab_paid"), new_teacher_lesson_path(@profile, kind: "paid", student_id: @student_id),
+                  class: "nav-link #{'active' if @paid}" %>
+          </li>
+        <% end %>
+      </ul>
 
       <div class="auth-card mb-4">
         <h2 class="h5"><%= t(".zone_title") %></h2>
@@ -19,7 +39,9 @@
       </div>
 
       <div class="auth-card">
-        <%= form_with url: teacher_lessons_path(@profile), method: :post do %>
+        <%= form_with url: teacher_lessons_path(@profile), method: :post, data: { turbo: false } do %>
+          <%= hidden_field_tag :kind, @paid ? "paid" : "trial" %>
+
           <% if @lesson&.errors&.any? %>
             <div class="alert alert-danger">
               <ul class="mb-0">
@@ -57,7 +79,11 @@
                 <% end %>
               </div>
             <% end %>
-            <%= submit_tag t(".submit"), class: "btn btn-primary mt-4" %>
+
+            <%= submit_tag(@paid ? t(".submit_paid") : t(".submit"), class: "btn btn-primary mt-4") %>
+            <% if @paid %>
+              <p class="small text-body-secondary mt-3 mb-0"><%= t(".pay_note", hours: (Lesson::CANCEL_NOTICE / 1.hour).to_i) %></p>
+            <% end %>
           <% end %>
         <% end %>
       </div>

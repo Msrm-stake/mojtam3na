@@ -1,0 +1,56 @@
+it:
+  activerecord:
+    errors:
+      models:
+        lesson:
+          payment_unavailable: Non siamo riusciti ad avviare il pagamento. Riprova tra poco.
+        student:
+          attributes:
+            base:
+              has_payments: Questo figlio ha lezioni con pagamenti registrati e non può essere rimosso. Contattaci.
+  teachers:
+    show:
+      book_lesson: Prenota una lezione
+  lessons:
+    checkout:
+      product: "Lezione di arabo e Corano con %{teacher} (60 minuti)"
+    new:
+      title_paid: "Prenota una lezione con %{teacher}"
+      intro_paid: "Una lezione dura %{minutes} minuti e costa %{price}."
+      tab_trial: Prova gratuita
+      tab_paid: Lezione a pagamento
+      pay_note: "Paghi sulla pagina sicura di Stripe. Annulla almeno %{hours} ore prima della lezione per un rimborso completo."
+      submit_paid: Continua al pagamento
+      no_price: Questo insegnante non ha ancora impostato un prezzo in euro, quindi è disponibile solo la prova gratuita.
+    lesson:
+      paid: "Pagato: %{amount}"
+      refund_pending: Rimborso in corso
+      refunded: Rimborsato
+    cancel:
+      cancelled_refunded: Lezione annullata. Il tuo pagamento è stato rimborsato.
+      cancelled_refund_pending: Lezione annullata. Il rimborso è in elaborazione.
+  orders:
+    paid:
+      confirmed: Pagamento ricevuto. La tua lezione è prenotata.
+      processing: Il tuo pagamento è in fase di conferma. Controlla «Le mie lezioni» tra poco.
+      refunded_slot: L'orario è stato liberato prima dell'arrivo del tuo pagamento, quindi sei stato rimborsato. Scegli un altro orario.
+      unavailable: Non siamo riusciti a verificare il pagamento in questo momento. Se ti è stato addebitato, la lezione comparirà a breve.
+    abandon:
+      released: Pagamento annullato. L'orario è stato liberato.
+  lesson_mailer:
+    details:
+      regular: Lezione
+      price: Prezzo
+    booked:
+      subject_paid:
+        parent: "Lezione prenotata con %{teacher}"
+        teacher: "Nuova lezione prenotata con %{child}"
+      heading_paid:
+        parent: La tua lezione è prenotata e pagata
+        teacher: Hai una nuova lezione
+      intro_paid:
+        parent: "La lezione di %{child} con %{teacher} è confermata e pagata."
+        teacher: "%{child} ha prenotato una lezione con te."
+      note_paid: "Puoi annullare fino a %{hours} ore prima della lezione dalla pagina «Le mie lezioni» per un rimborso completo."
+    cancelled:
+      refund_note: Il tuo pagamento verrà rimborsato per intero. La tua banca può impiegare alcuni giorni per mostrarlo.

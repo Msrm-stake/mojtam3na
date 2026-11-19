@@ -1,5 +1,5 @@
 class TeacherProfile < ApplicationRecord
-  CURRENCIES = %w[EUR USD GBP].freeze
+  CURRENCIES = %w[EUR].freeze
 
   belongs_to :user
   belongs_to :approved_by, class_name: "User", optional: true

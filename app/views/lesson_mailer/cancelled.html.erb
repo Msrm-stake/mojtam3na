@@ -1,4 +1,7 @@
 <h1 style="font-size:22px;line-height:1.3;color:#0B5D4B;margin:0 0 12px;"><%= t(".heading") %></h1>
 <p style="margin:0;font-size:16px;line-height:1.5;"><%= t(".intro.#{@intro_key}") %></p>
 <%= render "details" %>
+<% if @role == "parent" && @lesson.order.present? %>
+  <p style="margin:0 0 20px;font-size:14px;line-height:1.5;color:#4F5E59;"><%= t(".refund_note") %></p>
+<% end %>
 <%= render "button" %>

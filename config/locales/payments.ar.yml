@@ -1,0 +1,56 @@
+ar:
+  activerecord:
+    errors:
+      models:
+        lesson:
+          payment_unavailable: تعذّر بدء الدفع. يرجى المحاولة بعد قليل.
+        student:
+          attributes:
+            base:
+              has_payments: لهذا الطفل دروس مرتبطة بمدفوعات ولا يمكن حذفه. يرجى التواصل معنا.
+  teachers:
+    show:
+      book_lesson: احجز درسًا
+  lessons:
+    checkout:
+      product: "درس عربية وقرآن مع %{teacher} (60 دقيقة)"
+    new:
+      title_paid: "احجز درسًا مع %{teacher}"
+      intro_paid: "يستغرق الدرس %{minutes} دقيقة وتكلفته %{price}."
+      tab_trial: تجربة مجانية
+      tab_paid: درس مدفوع
+      pay_note: "تدفع في صفحة Stripe الآمنة. ألغِ قبل الدرس بـ %{hours} ساعات على الأقل لاسترداد المبلغ كاملًا."
+      submit_paid: المتابعة إلى الدفع
+      no_price: لم يحدد هذا المعلم سعرًا باليورو بعد، لذلك لا تتوفر إلا التجربة المجانية.
+    lesson:
+      paid: "مدفوع: %{amount}"
+      refund_pending: الاسترداد قيد التنفيذ
+      refunded: تم الاسترداد
+    cancel:
+      cancelled_refunded: تم إلغاء الدرس. تم استرداد المبلغ.
+      cancelled_refund_pending: تم إلغاء الدرس. جارٍ معالجة الاسترداد.
+  orders:
+    paid:
+      confirmed: تم استلام الدفع. تم حجز درسك.
+      processing: جارٍ تأكيد الدفع. تحقق من «دروسي» بعد قليل.
+      refunded_slot: تم تحرير الموعد قبل وصول دفعتك، لذلك تم رد المبلغ إليك. يرجى اختيار موعد آخر.
+      unavailable: تعذّر التحقق من الدفع الآن. إذا تم خصم المبلغ فسيظهر درسك قريبًا.
+    abandon:
+      released: تم إلغاء الدفع. تم تحرير الموعد.
+  lesson_mailer:
+    details:
+      regular: درس
+      price: السعر
+    booked:
+      subject_paid:
+        parent: "تم حجز درس مع %{teacher}"
+        teacher: "درس جديد مع %{child}"
+      heading_paid:
+        parent: تم حجز درسك ودفعه
+        teacher: لديك درس جديد
+      intro_paid:
+        parent: "تم تأكيد ودفع درس الطفل %{child} مع %{teacher}."
+        teacher: "حجز الطفل %{child} درسًا معك."
+      note_paid: "يمكنك الإلغاء قبل الدرس بـ %{hours} ساعات على الأقل من صفحة «دروسي» لاسترداد المبلغ كاملًا."
+    cancelled:
+      refund_note: سيتم استرداد مبلغك كاملًا. قد يستغرق ظهوره في حسابك المصرفي بضعة أيام.

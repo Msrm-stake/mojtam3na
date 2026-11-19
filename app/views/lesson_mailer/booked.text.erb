@@ -1,8 +1,9 @@
-<%= t(".heading.#{@role}") %>
+<% suffix = @lesson.trial? ? "" : "_paid" -%>
+<%= t(".heading#{suffix}.#{@role}") %>
 
-<%= t(".intro.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name) %>
+<%= t(".intro#{suffix}.#{@role}", teacher: public_name(@teacher_user), child: @student.first_name) %>
 
 <%= render "details" %>
-<%= t(".note", hours: (Lesson::CANCEL_NOTICE / 1.hour).to_i) %>
+<%= t(".note#{suffix}", hours: (Lesson::CANCEL_NOTICE / 1.hour).to_i) %>
 
 <%= t("lesson_mailer.common.view_lessons") %>: <%= lessons_url(locale: I18n.locale) %>

@@ -3,4 +3,8 @@
 <%= t(".intro.#{@intro_key}") %>
 
 <%= render "details" %>
+<% if @role == "parent" && @lesson.order.present? -%>
+<%= t(".refund_note") %>
+
+<% end -%>
 <%= t("lesson_mailer.common.view_lessons") %>: <%= lessons_url(locale: I18n.locale) %>

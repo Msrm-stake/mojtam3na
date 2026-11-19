@@ -14,6 +14,13 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :orders, only: [] do
+      member do
+        get :paid
+        get :abandon
+      end
+    end
+
     resource :time_zone, only: :update
 
     resource :teacher_profile, path: "teacher/profile", only: %i[edit update]
@@ -42,6 +49,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Stripe calls this address (no language prefix). Every call is checked against its signature.
+  post "stripe/webhooks", to: "stripe_webhooks#create"
 
   # Health check: returns 200 if the app boots without exceptions.
   get "up" => "rails/health#show", as: :rails_health_check

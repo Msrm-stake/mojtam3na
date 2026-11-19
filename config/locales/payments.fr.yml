@@ -1,0 +1,56 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        lesson:
+          payment_unavailable: Nous n'avons pas pu démarrer le paiement. Veuillez réessayer dans un instant.
+        student:
+          attributes:
+            base:
+              has_payments: Cet enfant a des cours avec des paiements enregistrés et ne peut pas être supprimé. Veuillez nous contacter.
+  teachers:
+    show:
+      book_lesson: Réserver un cours
+  lessons:
+    checkout:
+      product: "Cours d'arabe et de Coran avec %{teacher} (60 minutes)"
+    new:
+      title_paid: "Réserver un cours avec %{teacher}"
+      intro_paid: "Un cours dure %{minutes} minutes et coûte %{price}."
+      tab_trial: Essai gratuit
+      tab_paid: Cours payant
+      pay_note: "Vous payez sur la page sécurisée de Stripe. Annulez au moins %{hours} heures avant le cours pour être remboursé intégralement."
+      submit_paid: Continuer vers le paiement
+      no_price: "Cet enseignant n'a pas encore fixé de tarif en euros : seul l'essai gratuit est disponible."
+    lesson:
+      paid: "Payé : %{amount}"
+      refund_pending: Remboursement en cours
+      refunded: Remboursé
+    cancel:
+      cancelled_refunded: Cours annulé. Votre paiement a été remboursé.
+      cancelled_refund_pending: Cours annulé. Votre remboursement est en cours de traitement.
+  orders:
+    paid:
+      confirmed: Paiement reçu. Votre cours est réservé.
+      processing: Votre paiement est en cours de confirmation. Consultez « Mes cours » dans un instant.
+      refunded_slot: L'horaire a été libéré avant l'arrivée de votre paiement ; vous avez donc été remboursé. Veuillez choisir un autre horaire.
+      unavailable: Nous n'avons pas pu vérifier votre paiement pour le moment. Si vous avez été débité, votre cours apparaîtra bientôt.
+    abandon:
+      released: Paiement annulé. L'horaire a été libéré.
+  lesson_mailer:
+    details:
+      regular: Cours
+      price: Prix
+    booked:
+      subject_paid:
+        parent: "Cours réservé avec %{teacher}"
+        teacher: "Nouveau cours réservé avec %{child}"
+      heading_paid:
+        parent: Votre cours est réservé et payé
+        teacher: Vous avez un nouveau cours
+      intro_paid:
+        parent: "Le cours de %{child} avec %{teacher} est confirmé et payé."
+        teacher: "%{child} a réservé un cours avec vous."
+      note_paid: "Vous pouvez annuler jusqu'à %{hours} heures avant le cours depuis la page « Mes cours » pour être remboursé intégralement."
+    cancelled:
+      refund_note: Votre paiement sera intégralement remboursé. Votre banque peut mettre quelques jours à l'afficher.

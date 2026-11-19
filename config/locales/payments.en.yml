@@ -1,0 +1,56 @@
+en:
+  activerecord:
+    errors:
+      models:
+        lesson:
+          payment_unavailable: We could not start the payment. Please try again in a moment.
+        student:
+          attributes:
+            base:
+              has_payments: This child has lessons with payment records and cannot be removed. Please contact us.
+  teachers:
+    show:
+      book_lesson: Book a lesson
+  lessons:
+    checkout:
+      product: "Arabic and Quran lesson with %{teacher} (60 minutes)"
+    new:
+      title_paid: "Book a lesson with %{teacher}"
+      intro_paid: "A lesson lasts %{minutes} minutes and costs %{price}."
+      tab_trial: Free trial
+      tab_paid: Paid lesson
+      pay_note: "You pay on Stripe's secure page. Cancel at least %{hours} hours before the lesson for a full refund."
+      submit_paid: Continue to payment
+      no_price: This teacher has not set a price in euros yet, so only the free trial is available.
+    lesson:
+      paid: "Paid: %{amount}"
+      refund_pending: Refund in progress
+      refunded: Refunded
+    cancel:
+      cancelled_refunded: Lesson cancelled. Your payment has been refunded.
+      cancelled_refund_pending: Lesson cancelled. Your refund is being processed.
+  orders:
+    paid:
+      confirmed: Payment received. Your lesson is booked.
+      processing: Your payment is being confirmed. Please check My lessons in a moment.
+      refunded_slot: The time was released before your payment arrived, so you have been refunded. Please book another time.
+      unavailable: We could not check your payment right now. If you were charged, your lesson will appear shortly.
+    abandon:
+      released: Payment cancelled. The time has been released.
+  lesson_mailer:
+    details:
+      regular: Lesson
+      price: Price
+    booked:
+      subject_paid:
+        parent: "Lesson booked with %{teacher}"
+        teacher: "New lesson booked with %{child}"
+      heading_paid:
+        parent: Your lesson is booked and paid
+        teacher: You have a new lesson
+      intro_paid:
+        parent: "%{child}'s lesson with %{teacher} is confirmed and paid."
+        teacher: "%{child} has booked a lesson with you."
+      note_paid: "You can cancel up to %{hours} hours before the lesson from the My lessons page for a full refund."
+    cancelled:
+      refund_note: Your payment will be refunded in full. Your bank may take a few days to show it.

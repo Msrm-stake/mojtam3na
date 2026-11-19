@@ -1,0 +1,56 @@
+es:
+  activerecord:
+    errors:
+      models:
+        lesson:
+          payment_unavailable: No hemos podido iniciar el pago. Inténtalo de nuevo en un momento.
+        student:
+          attributes:
+            base:
+              has_payments: Este hijo tiene clases con pagos registrados y no se puede eliminar. Ponte en contacto con nosotros.
+  teachers:
+    show:
+      book_lesson: Reservar una clase
+  lessons:
+    checkout:
+      product: "Clase de árabe y Corán con %{teacher} (60 minutos)"
+    new:
+      title_paid: "Reservar una clase con %{teacher}"
+      intro_paid: "Una clase dura %{minutes} minutos y cuesta %{price}."
+      tab_trial: Prueba gratuita
+      tab_paid: Clase de pago
+      pay_note: "Pagas en la página segura de Stripe. Cancela al menos %{hours} horas antes de la clase para recibir un reembolso completo."
+      submit_paid: Continuar al pago
+      no_price: Este profesor aún no ha fijado un precio en euros, así que solo está disponible la prueba gratuita.
+    lesson:
+      paid: "Pagado: %{amount}"
+      refund_pending: Reembolso en curso
+      refunded: Reembolsado
+    cancel:
+      cancelled_refunded: Clase cancelada. Tu pago ha sido reembolsado.
+      cancelled_refund_pending: Clase cancelada. Tu reembolso se está procesando.
+  orders:
+    paid:
+      confirmed: Pago recibido. Tu clase está reservada.
+      processing: Tu pago se está confirmando. Consulta «Mis clases» en un momento.
+      refunded_slot: La hora se liberó antes de que llegara tu pago, por lo que te hemos reembolsado. Elige otra hora.
+      unavailable: No hemos podido comprobar tu pago ahora mismo. Si se te ha cobrado, tu clase aparecerá en breve.
+    abandon:
+      released: Pago cancelado. La hora se ha liberado.
+  lesson_mailer:
+    details:
+      regular: Clase
+      price: Precio
+    booked:
+      subject_paid:
+        parent: "Clase reservada con %{teacher}"
+        teacher: "Nueva clase reservada con %{child}"
+      heading_paid:
+        parent: Tu clase está reservada y pagada
+        teacher: Tienes una nueva clase
+      intro_paid:
+        parent: "La clase de %{child} con %{teacher} está confirmada y pagada."
+        teacher: "%{child} ha reservado una clase contigo."
+      note_paid: "Puedes cancelar hasta %{hours} horas antes de la clase desde la página «Mis clases» para recibir un reembolso completo."
+    cancelled:
+      refund_note: Tu pago se reembolsará por completo. Tu banco puede tardar unos días en mostrarlo.

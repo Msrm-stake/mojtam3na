@@ -38,6 +38,11 @@ module ApplicationHelper
     "#{format('%.2f', profile.hourly_rate)} #{profile.currency}"
   end
 
+  # Paid lessons need a price in euros.
+  def lesson_payable?(profile)
+    profile.currency == "EUR" && profile.hourly_rate_cents.positive?
+  end
+
   def weekday_order
     WEEKDAY_ORDER
   end
@@ -65,13 +70,17 @@ module ApplicationHelper
     student = lesson.student
     rows = [
       [t("lesson_mailer.details.when"), format_lesson_time(lesson.starts_at, recipient.zone)],
-      [t("lesson_mailer.details.length"), t("lesson_mailer.details.minutes", minutes: lesson.duration_minutes)]
+      [t("lesson_mailer.details.length"), t("lesson_mailer.details.minutes", minutes: lesson.duration_minutes)],
+      [t("lesson_mailer.details.type"), t(lesson.trial? ? "lesson_mailer.details.trial" : "lesson_mailer.details.regular")]
     ]
-    rows << [t("lesson_mailer.details.type"), t("lesson_mailer.details.trial")] if lesson.trial?
 
     if role == "parent"
       rows << [t("lesson_mailer.details.teacher"), public_name(lesson.teacher_profile.user)]
       rows << [t("lesson_mailer.details.child"), student.first_name]
+      if lesson.order
+        rows << [t("lesson_mailer.details.price"),
+                 "#{format('%.2f', lesson.order.amount_cents / 100.0)} #{lesson.order.currency}"]
+      end
     else
       rows << [t("lesson_mailer.details.child"),
                t("lesson_mailer.details.child_with_age", child: student.first_name, age: student.age)]
