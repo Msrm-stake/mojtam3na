@@ -1,0 +1,47 @@
+en:
+  shared:
+    navbar:
+      my_earnings: "My earnings"
+  activerecord:
+    attributes:
+      teacher_profile:
+        payout_method: "Payout method"
+        payout_details: "Payout details"
+  earnings:
+    methods:
+      bank_transfer: "Bank transfer"
+      wise: "Wise"
+      paypal: "PayPal"
+      other: "Other"
+    show:
+      title: "My earnings"
+      intro: "You earn %{share}% of every paid lesson. A lesson is confirmed 24 hours after it ends, and its amount is then added to your balance. Balances of at least %{minimum} are paid once a month."
+      missing_details: "Add your payout details below. Without them we cannot pay you."
+      available: "Ready to be paid"
+      upcoming: "Waiting for lessons to be confirmed"
+      in_payout: "Payout being prepared"
+      paid_out: "Paid so far"
+      history: "Confirmed lessons"
+      history_empty: "No confirmed lessons yet."
+      col_date: "Lesson date"
+      col_amount: "Your share"
+      col_status: "Status"
+      statuses:
+        available: "Ready to be paid"
+        in_payout: "In a payout"
+        paid_out: "Paid"
+      payouts: "Payouts"
+      payouts_empty: "No payout yet."
+      payout_statuses:
+        pending: "Being prepared"
+        paid: "Paid"
+        cancelled: "Cancelled"
+      reference: "Reference: %{reference}"
+      settings_title: "Payout details"
+      settings_intro: "Tell us where to send your money. Only our team can see this, and it is stored encrypted."
+      details_hint: "Bank transfer: account holder name and IBAN (plus BIC/SWIFT outside Europe). Wise or PayPal: the email address of your account."
+      details_saved: "Saved on %{date}. Leave the field empty to keep your current details."
+      details_none: "No payout details saved yet."
+      save: "Save payout details"
+    payout:
+      saved: "Payout details saved."

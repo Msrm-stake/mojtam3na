@@ -1,0 +1,70 @@
+<div class="container auth-page">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <h1 class="h3 mb-0"><%= t(".title") %></h1>
+    <%= link_to t(".export"), export_admin_payouts_path, class: "btn btn-outline-primary btn-sm" %>
+  </div>
+
+  <div class="auth-card mb-4">
+    <h2 class="h5"><%= t(".prepare_title") %></h2>
+    <p><%= t(".prepare_hint", minimum: format_money(Payout::MINIMUM_CENTS)) %></p>
+    <%= form_with url: prepare_admin_payouts_path, method: :post, class: "d-flex gap-2 flex-wrap" do %>
+      <%= select_tag :month, options_for_select(@months), class: "form-select w-auto", "aria-label": t(".prepare_title") %>
+      <%= submit_tag t(".prepare"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="auth-card mb-4">
+    <h2 class="h5"><%= t(".waiting_title") %></h2>
+    <% if @waiting.empty? %>
+      <p class="text-body-secondary mb-0"><%= t(".waiting_empty") %></p>
+    <% else %>
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead>
+            <tr><th><%= t(".teacher") %></th><th><%= t(".amount") %></th><th><%= t(".details") %></th></tr>
+          </thead>
+          <tbody>
+            <% @waiting.each do |profile, cents| %>
+              <tr>
+                <td><%= link_to profile.user.full_name, admin_teacher_profile_path(profile) %></td>
+                <td><%= format_money(cents) %></td>
+                <td><%= profile.payout_ready? ? t(".details_ready") : t(".details_missing") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="auth-card">
+    <h2 class="h5"><%= t(".payouts_title") %></h2>
+    <% if @payouts.empty? %>
+      <p class="text-body-secondary mb-0"><%= t(".payouts_empty") %></p>
+    <% else %>
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead>
+            <tr>
+              <th><%= t(".col_id") %></th><th><%= t(".col_period") %></th><th><%= t(".teacher") %></th>
+              <th><%= t(".amount") %></th><th><%= t(".col_status") %></th><th><%= t(".col_reference") %></th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @payouts.each do |payout| %>
+              <tr>
+                <td>#<%= payout.id %></td>
+                <td><%= payout.period_start.strftime("%B %Y") %></td>
+                <td><%= payout.teacher_profile.user.full_name %></td>
+                <td><%= format_money(payout.amount_cents, payout.currency) %></td>
+                <td><%= payout.status.humanize %></td>
+                <td><%= payout.reference %></td>
+                <td class="text-end"><%= link_to t(".open"), admin_payout_path(payout), class: "btn btn-outline-primary btn-sm" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+fr:
+  shared:
+    navbar:
+      my_earnings: "Mes revenus"
+  activerecord:
+    attributes:
+      teacher_profile:
+        payout_method: "Mode de versement"
+        payout_details: "Coordonnées de versement"
+  earnings:
+    methods:
+      bank_transfer: "Virement bancaire"
+      wise: "Wise"
+      paypal: "PayPal"
+      other: "Autre"
+    show:
+      title: "Mes revenus"
+      intro: "Vous gagnez %{share} % de chaque cours payé. Un cours est confirmé 24 heures après sa fin, puis son montant est ajouté à votre solde. Les soldes d'au moins %{minimum} sont versés une fois par mois."
+      missing_details: "Ajoutez vos coordonnées de versement ci-dessous. Sans elles, nous ne pouvons pas vous payer."
+      available: "Prêt à être versé"
+      upcoming: "En attente de confirmation des cours"
+      in_payout: "Versement en préparation"
+      paid_out: "Déjà versé"
+      history: "Cours confirmés"
+      history_empty: "Aucun cours confirmé pour le moment."
+      col_date: "Date du cours"
+      col_amount: "Votre part"
+      col_status: "Statut"
+      statuses:
+        available: "Prêt à être versé"
+        in_payout: "Dans un versement"
+        paid_out: "Versé"
+      payouts: "Versements"
+      payouts_empty: "Aucun versement pour le moment."
+      payout_statuses:
+        pending: "En préparation"
+        paid: "Versé"
+        cancelled: "Annulé"
+      reference: "Référence : %{reference}"
+      settings_title: "Coordonnées de versement"
+      settings_intro: "Dites-nous où envoyer votre argent. Seule notre équipe peut les voir, et elles sont stockées chiffrées."
+      details_hint: "Virement bancaire : nom du titulaire et IBAN (plus BIC/SWIFT hors d'Europe). Wise ou PayPal : l'adresse e-mail de votre compte."
+      details_saved: "Enregistrées le %{date}. Laissez le champ vide pour conserver vos coordonnées actuelles."
+      details_none: "Aucune coordonnée de versement enregistrée pour le moment."
+      save: "Enregistrer les coordonnées"
+    payout:
+      saved: "Coordonnées de versement enregistrées."

@@ -1,4 +1,5 @@
 class TeacherProfile < ApplicationRecord
+  include TeacherPayouts
   CURRENCIES = %w[EUR].freeze
 
   belongs_to :user

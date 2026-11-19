@@ -1,0 +1,47 @@
+it:
+  shared:
+    navbar:
+      my_earnings: "I miei guadagni"
+  activerecord:
+    attributes:
+      teacher_profile:
+        payout_method: "Metodo di pagamento"
+        payout_details: "Dati per il pagamento"
+  earnings:
+    methods:
+      bank_transfer: "Bonifico bancario"
+      wise: "Wise"
+      paypal: "PayPal"
+      other: "Altro"
+    show:
+      title: "I miei guadagni"
+      intro: "Guadagni il %{share}% di ogni lezione pagata. Una lezione viene confermata 24 ore dopo la fine e il suo importo viene poi aggiunto al tuo saldo. I saldi di almeno %{minimum} vengono pagati una volta al mese."
+      missing_details: "Aggiungi qui sotto i dati per il pagamento. Senza di essi non possiamo pagarti."
+      available: "Pronto per il pagamento"
+      upcoming: "In attesa della conferma delle lezioni"
+      in_payout: "Pagamento in preparazione"
+      paid_out: "Pagato finora"
+      history: "Lezioni confermate"
+      history_empty: "Nessuna lezione confermata finora."
+      col_date: "Data della lezione"
+      col_amount: "La tua quota"
+      col_status: "Stato"
+      statuses:
+        available: "Pronto per il pagamento"
+        in_payout: "In un pagamento"
+        paid_out: "Pagato"
+      payouts: "Pagamenti"
+      payouts_empty: "Nessun pagamento finora."
+      payout_statuses:
+        pending: "In preparazione"
+        paid: "Pagato"
+        cancelled: "Annullato"
+      reference: "Riferimento: %{reference}"
+      settings_title: "Dati per il pagamento"
+      settings_intro: "Indicaci dove inviare il tuo denaro. Solo il nostro team può vederli e sono archiviati in forma cifrata."
+      details_hint: "Bonifico bancario: nome del titolare e IBAN (più BIC/SWIFT fuori dall'Europa). Wise o PayPal: l'indirizzo email del tuo account."
+      details_saved: "Salvati il %{date}. Lascia il campo vuoto per mantenere i dati attuali."
+      details_none: "Nessun dato per il pagamento salvato finora."
+      save: "Salva i dati per il pagamento"
+    payout:
+      saved: "Dati per il pagamento salvati."

@@ -31,9 +31,11 @@
         <% if user_signed_in? %>
           <% if current_user.role_admin? %>
             <li class="nav-item"><%= link_to t(".admin"), admin_root_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to t(".payouts"), admin_payouts_path, class: "nav-link" %></li>
           <% end %>
           <% if current_user.role_teacher? %>
             <li class="nav-item"><%= link_to t(".my_profile"), edit_teacher_profile_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to t(".my_earnings"), earnings_path, class: "nav-link" %></li>
           <% end %>
           <% if current_user.role_parent? %>
             <li class="nav-item"><%= link_to t(".my_children"), students_path, class: "nav-link" %></li>

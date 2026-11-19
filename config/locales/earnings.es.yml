@@ -1,0 +1,47 @@
+es:
+  shared:
+    navbar:
+      my_earnings: "Mis ingresos"
+  activerecord:
+    attributes:
+      teacher_profile:
+        payout_method: "Método de cobro"
+        payout_details: "Datos de cobro"
+  earnings:
+    methods:
+      bank_transfer: "Transferencia bancaria"
+      wise: "Wise"
+      paypal: "PayPal"
+      other: "Otro"
+    show:
+      title: "Mis ingresos"
+      intro: "Ganas el %{share} % de cada clase pagada. Una clase se confirma 24 horas después de terminar y entonces su importe se suma a tu saldo. Los saldos de al menos %{minimum} se pagan una vez al mes."
+      missing_details: "Añade tus datos de cobro a continuación. Sin ellos no podemos pagarte."
+      available: "Listo para pagar"
+      upcoming: "Pendiente de confirmar las clases"
+      in_payout: "Pago en preparación"
+      paid_out: "Pagado hasta ahora"
+      history: "Clases confirmadas"
+      history_empty: "Todavía no hay clases confirmadas."
+      col_date: "Fecha de la clase"
+      col_amount: "Tu parte"
+      col_status: "Estado"
+      statuses:
+        available: "Listo para pagar"
+        in_payout: "En un pago"
+        paid_out: "Pagado"
+      payouts: "Pagos"
+      payouts_empty: "Todavía no hay pagos."
+      payout_statuses:
+        pending: "En preparación"
+        paid: "Pagado"
+        cancelled: "Cancelado"
+      reference: "Referencia: %{reference}"
+      settings_title: "Datos de cobro"
+      settings_intro: "Dinos adónde enviar tu dinero. Solo nuestro equipo puede verlos y se guardan cifrados."
+      details_hint: "Transferencia bancaria: nombre del titular e IBAN (y BIC/SWIFT fuera de Europa). Wise o PayPal: el correo electrónico de tu cuenta."
+      details_saved: "Guardados el %{date}. Deja el campo vacío para conservar tus datos actuales."
+      details_none: "Todavía no has guardado datos de cobro."
+      save: "Guardar datos de cobro"
+    payout:
+      saved: "Datos de cobro guardados."

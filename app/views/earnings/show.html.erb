@@ -1,0 +1,95 @@
+<% zone = current_user.zone %>
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <h1 class="h3 mb-2"><%= t(".title") %></h1>
+      <p><%= t(".intro", share: 100 - Order::COMMISSION_PERCENT, minimum: format_money(Payout::MINIMUM_CENTS)) %></p>
+
+      <% unless @profile.payout_ready? %>
+        <div class="alert alert-warning" role="status"><%= t(".missing_details") %></div>
+      <% end %>
+
+      <div class="row g-3 mb-4">
+        <% %i[available upcoming in_payout paid_out].each do |key| %>
+          <div class="col-6 col-lg-3">
+            <div class="stat-card">
+              <div class="stat-label"><%= t(".#{key}") %></div>
+              <div class="stat-value"><bdi dir="ltr"><%= format_money(@summary[key]) %></bdi></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5"><%= t(".history") %></h2>
+        <% if @earnings.empty? %>
+          <p class="text-body-secondary mb-0"><%= t(".history_empty") %></p>
+        <% else %>
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th><%= t(".col_date") %></th>
+                  <th><%= t(".col_amount") %></th>
+                  <th><%= t(".col_status") %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @earnings.each do |earning| %>
+                  <tr>
+                    <td><%= l(earning.lesson.starts_at.in_time_zone(zone).to_date, format: :long) %></td>
+                    <td><bdi dir="ltr"><%= format_money(earning.amount_cents, earning.currency) %></bdi></td>
+                    <td><%= t(".statuses.#{earning.status}") %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5"><%= t(".payouts") %></h2>
+        <% if @payouts.empty? %>
+          <p class="text-body-secondary mb-0"><%= t(".payouts_empty") %></p>
+        <% else %>
+          <ul class="qualification-list">
+            <% @payouts.each do |payout| %>
+              <li class="qualification-item">
+                <div>
+                  <strong><%= l(payout.period_start, format: "%B %Y") %></strong>
+                  <span class="chip chip-gold ms-2"><%= t(".payout_statuses.#{payout.status}") %></span>
+                  <% if payout.reference.present? %>
+                    <div class="small text-body-secondary"><%= t(".reference", reference: payout.reference) %></div>
+                  <% end %>
+                </div>
+                <bdi dir="ltr" class="fw-bold"><%= format_money(payout.amount_cents, payout.currency) %></bdi>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+      <div class="auth-card">
+        <h2 class="h5"><%= t(".settings_title") %></h2>
+        <p><%= t(".settings_intro") %></p>
+        <p class="small text-body-secondary">
+          <% if @profile.payout_details_updated_at %>
+            <%= t(".details_saved", date: l(@profile.payout_details_updated_at.in_time_zone(zone).to_date, format: :long)) %>
+          <% else %>
+            <%= t(".details_none") %>
+          <% end %>
+        </p>
+
+        <%= simple_form_for @profile, url: payout_earnings_path, method: :patch do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :payout_method, required: false, include_blank: true,
+                collection: TeacherProfile::PAYOUT_METHODS.map { |method| [t("earnings.methods.#{method}"), method] } %>
+          <%= f.input :payout_details, as: :text, required: false, hint: t(".details_hint"),
+                input_html: { rows: 3, value: "", autocomplete: "off" } %>
+          <%= f.button :submit, t(".save"), class: "btn btn-primary mt-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

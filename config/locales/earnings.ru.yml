@@ -1,0 +1,47 @@
+ru:
+  shared:
+    navbar:
+      my_earnings: "Мои доходы"
+  activerecord:
+    attributes:
+      teacher_profile:
+        payout_method: "Способ выплаты"
+        payout_details: "Реквизиты для выплат"
+  earnings:
+    methods:
+      bank_transfer: "Банковский перевод"
+      wise: "Wise"
+      paypal: "PayPal"
+      other: "Другое"
+    show:
+      title: "Мои доходы"
+      intro: "Вы получаете %{share}% от каждого оплаченного урока. Урок подтверждается через 24 часа после окончания, и его сумма добавляется к вашему балансу. Баланс от %{minimum} выплачивается раз в месяц."
+      missing_details: "Добавьте реквизиты для выплат ниже. Без них мы не сможем вам заплатить."
+      available: "Готово к выплате"
+      upcoming: "Ожидает подтверждения уроков"
+      in_payout: "Выплата готовится"
+      paid_out: "Выплачено"
+      history: "Подтверждённые уроки"
+      history_empty: "Пока нет подтверждённых уроков."
+      col_date: "Дата урока"
+      col_amount: "Ваша доля"
+      col_status: "Статус"
+      statuses:
+        available: "Готово к выплате"
+        in_payout: "В выплате"
+        paid_out: "Выплачено"
+      payouts: "Выплаты"
+      payouts_empty: "Пока нет выплат."
+      payout_statuses:
+        pending: "Готовится"
+        paid: "Выплачено"
+        cancelled: "Отменено"
+      reference: "Номер перевода: %{reference}"
+      settings_title: "Реквизиты для выплат"
+      settings_intro: "Укажите, куда отправлять деньги. Их видит только наша команда, и они хранятся в зашифрованном виде."
+      details_hint: "Банковский перевод: имя владельца счёта и IBAN (за пределами Европы ещё BIC/SWIFT). Wise или PayPal: адрес электронной почты вашего аккаунта."
+      details_saved: "Сохранено %{date}. Оставьте поле пустым, чтобы сохранить текущие реквизиты."
+      details_none: "Реквизиты для выплат пока не сохранены."
+      save: "Сохранить реквизиты"
+    payout:
+      saved: "Реквизиты для выплат сохранены."

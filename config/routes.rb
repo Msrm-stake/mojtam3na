@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resource :time_zone, only: :update
 
     resource :teacher_profile, path: "teacher/profile", only: %i[edit update]
+    resource :earnings, path: "teacher/earnings", only: :show do
+      patch :payout
+    end
     resources :qualifications, path: "teacher/qualifications", only: %i[new create destroy]
     resources :availability_slots, path: "teacher/availability", only: %i[index create destroy] do
       collection { patch :update_time_zone }
@@ -45,6 +48,17 @@ Rails.application.routes.draw do
         member do
           patch :verify
           patch :reject
+        end
+      end
+
+      resources :payouts, only: %i[index show] do
+        collection do
+          post :prepare
+          get :export
+        end
+        member do
+          patch :mark_paid
+          patch :cancel
         end
       end
     end

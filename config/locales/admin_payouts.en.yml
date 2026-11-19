@@ -1,0 +1,54 @@
+en:
+  shared:
+    navbar:
+      payouts: "Payouts"
+  admin:
+    payouts:
+      index:
+        title: "Teacher payouts"
+        export: "Download pending payouts (CSV)"
+        prepare_title: "Prepare monthly payouts"
+        prepare_hint: "Adds up each teacher's confirmed earnings up to the end of the chosen month. Teachers below %{minimum} or without payout details wait for the next month."
+        prepare: "Prepare payouts"
+        waiting_title: "Balances waiting to be paid"
+        waiting_empty: "No balance waiting."
+        teacher: "Teacher"
+        amount: "Amount"
+        details: "Payout details"
+        details_ready: "Ready"
+        details_missing: "Missing"
+        payouts_title: "Payouts"
+        payouts_empty: "No payout yet."
+        col_id: "ID"
+        col_period: "Period"
+        col_status: "Status"
+        col_reference: "Reference"
+        open: "Open"
+      prepare:
+        invalid_month: "Choose a month that has already ended."
+        prepared: "Payouts prepared: %{count}."
+        missing_details: "Waiting for payout details: %{names}."
+        below_minimum: "Below the minimum, carried over: %{names}."
+      show:
+        back: "Back to payouts"
+        period: "Period"
+        amount: "Amount"
+        method: "Method"
+        details: "Details"
+        none: "None"
+        reference: "Reference"
+        paid_at: "Paid on"
+        changed_warning: "These payout details were changed recently (%{date}). Check with the teacher before paying."
+        lessons: "Lessons in this payout"
+        lesson_date: "Lesson date"
+        mark_title: "Mark as paid"
+        reference_label: "Your Wise or bank transfer reference"
+        mark: "Mark as paid"
+        cancel: "Cancel this payout"
+        cancel_confirm: "Cancel this payout? The earnings go back to the teacher's balance."
+      mark_paid:
+        reference_required: "Please enter the transfer reference."
+        marked: "Payout marked as paid."
+        not_pending: "This payout is no longer pending."
+      cancel:
+        cancelled: "Payout cancelled. The earnings are back in the teacher's balance."

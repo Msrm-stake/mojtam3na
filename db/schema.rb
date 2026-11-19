@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_18_055708) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_19_061548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,25 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_18_055708) do
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_consents_on_student_id"
     t.index ["user_id"], name: "index_consents_on_user_id"
+  end
+
+  create_table "earnings", force: :cascade do |t|
+    t.bigint "teacher_profile_id", null: false
+    t.bigint "lesson_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "payout_id"
+    t.integer "amount_cents", null: false
+    t.string "currency", limit: 3, default: "EUR", null: false
+    t.string "status", default: "available", null: false
+    t.datetime "earned_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_earnings_on_lesson_id", unique: true
+    t.index ["order_id"], name: "index_earnings_on_order_id", unique: true
+    t.index ["payout_id"], name: "index_earnings_on_payout_id"
+    t.index ["status"], name: "index_earnings_on_status"
+    t.index ["teacher_profile_id"], name: "index_earnings_on_teacher_profile_id"
+    t.check_constraint "amount_cents > 0", name: "earnings_positive_amount"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -129,6 +148,21 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_18_055708) do
     t.index ["stripe_checkout_session_id"], name: "index_orders_on_stripe_checkout_session_id", unique: true
     t.index ["stripe_payment_intent_id"], name: "index_orders_on_stripe_payment_intent_id", unique: true
     t.check_constraint "amount_cents > 0 AND commission_cents >= 0 AND teacher_amount_cents >= 0 AND (commission_cents + teacher_amount_cents) = amount_cents", name: "orders_amounts_consistent"
+  end
+
+  create_table "payouts", force: :cascade do |t|
+    t.bigint "teacher_profile_id", null: false
+    t.date "period_start", null: false
+    t.integer "amount_cents", null: false
+    t.string "currency", limit: 3, default: "EUR", null: false
+    t.string "status", default: "pending", null: false
+    t.string "reference"
+    t.datetime "paid_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_payouts_on_status"
+    t.index ["teacher_profile_id"], name: "index_payouts_on_teacher_profile_id"
+    t.check_constraint "amount_cents > 0", name: "payouts_positive_amount"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -205,6 +239,9 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_18_055708) do
     t.integer "reviews_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "payout_method"
+    t.text "payout_details"
+    t.datetime "payout_details_updated_at"
     t.index ["approved_by_id"], name: "index_teacher_profiles_on_approved_by_id"
     t.index ["status"], name: "index_teacher_profiles_on_status"
     t.index ["user_id"], name: "index_teacher_profiles_on_user_id", unique: true
@@ -248,12 +285,17 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_18_055708) do
   add_foreign_key "availability_slots", "teacher_profiles"
   add_foreign_key "consents", "students"
   add_foreign_key "consents", "users"
+  add_foreign_key "earnings", "lessons"
+  add_foreign_key "earnings", "orders"
+  add_foreign_key "earnings", "payouts"
+  add_foreign_key "earnings", "teacher_profiles"
   add_foreign_key "lessons", "students"
   add_foreign_key "lessons", "teacher_profiles"
   add_foreign_key "lessons", "users", column: "booked_by_id"
   add_foreign_key "lessons", "users", column: "cancelled_by_id"
   add_foreign_key "orders", "lessons"
   add_foreign_key "orders", "users", column: "parent_id"
+  add_foreign_key "payouts", "teacher_profiles"
   add_foreign_key "qualifications", "teacher_profiles"
   add_foreign_key "qualifications", "users", column: "verified_by_id"
   add_foreign_key "students", "languages", column: "native_language_id"

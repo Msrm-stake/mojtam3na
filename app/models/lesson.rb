@@ -1,4 +1,5 @@
 class Lesson < ApplicationRecord
+  include LessonCompletion
   TRIAL_MINUTES = 30
   PAID_MINUTES = 60
   MIN_NOTICE = 12.hours

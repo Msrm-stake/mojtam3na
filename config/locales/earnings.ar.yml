@@ -1,0 +1,47 @@
+ar:
+  shared:
+    navbar:
+      my_earnings: "أرباحي"
+  activerecord:
+    attributes:
+      teacher_profile:
+        payout_method: "طريقة الدفع"
+        payout_details: "بيانات الدفع"
+  earnings:
+    methods:
+      bank_transfer: "تحويل بنكي"
+      wise: "Wise"
+      paypal: "PayPal"
+      other: "أخرى"
+    show:
+      title: "أرباحي"
+      intro: "تحصل على %{share}% من كل درس مدفوع. يتم تأكيد الدرس بعد 24 ساعة من انتهائه، ثم يُضاف مبلغه إلى رصيدك. تُدفع الأرصدة التي تبلغ %{minimum} أو أكثر مرة في الشهر."
+      missing_details: "أضف بيانات الدفع أدناه. بدونها لا نستطيع الدفع لك."
+      available: "جاهز للدفع"
+      upcoming: "بانتظار تأكيد الدروس"
+      in_payout: "دفعة قيد التحضير"
+      paid_out: "المدفوع حتى الآن"
+      history: "الدروس المؤكدة"
+      history_empty: "لا توجد دروس مؤكدة بعد."
+      col_date: "تاريخ الدرس"
+      col_amount: "حصتك"
+      col_status: "الحالة"
+      statuses:
+        available: "جاهز للدفع"
+        in_payout: "ضمن دفعة"
+        paid_out: "مدفوع"
+      payouts: "الدفعات"
+      payouts_empty: "لا توجد دفعات بعد."
+      payout_statuses:
+        pending: "قيد التحضير"
+        paid: "مدفوعة"
+        cancelled: "ملغاة"
+      reference: "المرجع: %{reference}"
+      settings_title: "بيانات الدفع"
+      settings_intro: "أخبرنا أين نرسل أموالك. لا يراها إلا فريقنا وتُحفظ مشفّرة."
+      details_hint: "التحويل البنكي: اسم صاحب الحساب ورقم الآيبان (ومعه BIC/SWIFT خارج أوروبا). Wise أو PayPal: البريد الإلكتروني لحسابك."
+      details_saved: "تم الحفظ في %{date}. اترك الحقل فارغًا للاحتفاظ ببياناتك الحالية."
+      details_none: "لم يتم حفظ بيانات دفع بعد."
+      save: "حفظ بيانات الدفع"
+    payout:
+      saved: "تم حفظ بيانات الدفع."
