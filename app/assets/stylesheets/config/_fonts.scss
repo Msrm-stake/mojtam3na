@@ -1,5 +1,6 @@
-// Nunito covers Latin + Cyrillic; Cairo covers Arabic (browser falls back per character)
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Cairo:wght@400;600;700;800&display=swap');
+// Fonts are served by this site (see bin/rails fonts:install): no request goes to Google.
+// Nunito covers Latin and Cyrillic, Cairo covers Arabic; the browser picks the right one per letter.
+@import "font_faces";
 
-$body-font:    "Nunito", "Cairo", "Helvetica", sans-serif;
-$headers-font: "Nunito", "Cairo", "Helvetica", sans-serif;
+$body-font:    "Nunito Variable", "Cairo Variable", "Helvetica", sans-serif;
+$headers-font: "Nunito Variable", "Cairo Variable", "Helvetica", sans-serif;
