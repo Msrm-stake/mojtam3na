@@ -80,3 +80,8 @@ gem "json", "< 3"
 
 gem "rails-i18n", "~> 7.0"
 gem "devise-i18n", "~> 1.16"
+
+gem "solid_queue", "~> 1.7"
+gem "rack-attack", "~> 6.8"
+
+gem "aws-sdk-s3", "~> 1.245", :require => false

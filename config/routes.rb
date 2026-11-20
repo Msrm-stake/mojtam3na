@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       patch :payout
     end
     resources :qualifications, path: "teacher/qualifications", only: %i[new create destroy]
+    get "qualification-documents/:id", to: "qualification_documents#show", as: :qualification_document
     resources :availability_slots, path: "teacher/availability", only: %i[index create destroy] do
       collection { patch :update_time_zone }
     end

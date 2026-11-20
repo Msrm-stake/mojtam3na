@@ -79,7 +79,7 @@
                     <%= [t("qualifications.kinds.#{qualification.kind}"), qualification.institution, qualification.year_obtained].compact_blank.join(" · ") %>
                   </div>
                   <% if qualification.document.attached? %>
-                    <%= link_to t(".qualifications.view"), rails_blob_path(qualification.document, disposition: "inline"),
+                    <%= link_to t(".qualifications.view"), qualification_document_path(qualification),
                           target: "_blank", rel: "noopener", class: "small" %>
                   <% end %>
                 </div>
