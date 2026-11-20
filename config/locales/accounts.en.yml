@@ -1,0 +1,42 @@
+en:
+  shared:
+    navbar:
+      my_account: "My account"
+  devise:
+    failure:
+      deleted_account: "This account has been deleted."
+  accounts:
+    use_account_page: "To close your account, use the My account page."
+    show:
+      title: "My account"
+      details_title: "Your details"
+      name: "Name"
+      email: "Email"
+      role: "Account type"
+      roles:
+        parent: "Parent"
+        teacher: "Teacher"
+        admin: "Administrator"
+      change_login: "Change my email or password"
+      export_title: "Download my data"
+      export_text: "Get a copy of the personal data we hold about you (profile, children, lessons, payments, teacher information) as a file. Enter your password to confirm."
+      password: "Password"
+      export_button: "Download my data"
+      delete_title: "Delete my account"
+      delete_text: "Deleting your account erases your name, email, phone number, your children's profiles, your teacher profile and uploaded documents, and you will no longer be able to sign in. Records of payments, refunds and payouts are kept without your name, because accounting law requires us to keep them. This cannot be undone."
+      blocked_intro: "You cannot delete your account yet:"
+      blockers:
+        upcoming_lessons: "You have lessons that are not finished or confirmed yet. Cancel them or wait until they are confirmed."
+        payments_in_progress: "A payment or a refund is still in progress."
+        unpaid_earnings: "You still have earnings that have not been paid out. Contact us to settle them first."
+        admin_account: "Administrator accounts cannot be deleted here."
+      confirm_label: "I understand that this cannot be undone."
+      delete_button: "Delete my account permanently"
+      delete_confirm: "Delete your account permanently?"
+    export:
+      wrong_password: "The password is not correct."
+    destroy:
+      wrong_password: "The password is not correct."
+      confirm_required: "Please tick the box to confirm."
+      blocked: "Your account cannot be deleted yet. See the reasons on this page."
+      deleted: "Your account has been deleted."

@@ -1,0 +1,42 @@
+fr:
+  shared:
+    navbar:
+      my_account: "Mon compte"
+  devise:
+    failure:
+      deleted_account: "Ce compte a été supprimé."
+  accounts:
+    use_account_page: "Pour fermer votre compte, utilisez la page « Mon compte »."
+    show:
+      title: "Mon compte"
+      details_title: "Vos informations"
+      name: "Nom"
+      email: "E-mail"
+      role: "Type de compte"
+      roles:
+        parent: "Parent"
+        teacher: "Enseignant"
+        admin: "Administrateur"
+      change_login: "Modifier mon e-mail ou mon mot de passe"
+      export_title: "Télécharger mes données"
+      export_text: "Obtenez dans un fichier une copie des données personnelles que nous détenons sur vous (profil, enfants, cours, paiements, informations d'enseignant). Saisissez votre mot de passe pour confirmer."
+      password: "Mot de passe"
+      export_button: "Télécharger mes données"
+      delete_title: "Supprimer mon compte"
+      delete_text: "La suppression de votre compte efface votre nom, votre e-mail, votre numéro de téléphone, les profils de vos enfants, votre profil d'enseignant et les documents téléversés, et vous ne pourrez plus vous connecter. Les traces des paiements, remboursements et versements sont conservées sans votre nom, car la loi comptable nous oblige à les garder. Cette action est irréversible."
+      blocked_intro: "Vous ne pouvez pas encore supprimer votre compte :"
+      blockers:
+        upcoming_lessons: "Vous avez des cours qui ne sont pas encore terminés ou confirmés. Annulez-les ou attendez leur confirmation."
+        payments_in_progress: "Un paiement ou un remboursement est encore en cours."
+        unpaid_earnings: "Vous avez encore des revenus non versés. Contactez-nous pour les régler d'abord."
+        admin_account: "Les comptes administrateur ne peuvent pas être supprimés ici."
+      confirm_label: "Je comprends que cette action est irréversible."
+      delete_button: "Supprimer définitivement mon compte"
+      delete_confirm: "Supprimer définitivement votre compte ?"
+    export:
+      wrong_password: "Le mot de passe est incorrect."
+    destroy:
+      wrong_password: "Le mot de passe est incorrect."
+      confirm_required: "Veuillez cocher la case pour confirmer."
+      blocked: "Votre compte ne peut pas encore être supprimé. Consultez les raisons sur cette page."
+      deleted: "Votre compte a été supprimé."

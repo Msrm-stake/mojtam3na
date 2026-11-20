@@ -29,6 +29,19 @@ class User < ApplicationRecord
     ActiveSupport::TimeZone[time_zone.to_s] || ActiveSupport::TimeZone["UTC"]
   end
 
+  # A deleted account keeps its row (payment records point to it) but can never sign in again.
+  def deleted?
+    deleted_at.present?
+  end
+
+  def active_for_authentication?
+    super && !deleted?
+  end
+
+  def inactive_message
+    deleted? ? :deleted_account : super
+  end
+
   private
 
   def time_zone_must_exist

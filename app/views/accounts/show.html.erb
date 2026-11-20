@@ -1,0 +1,58 @@
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="h3 mb-4"><%= t(".title") %></h1>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5"><%= t(".details_title") %></h2>
+        <dl class="row mb-3">
+          <dt class="col-sm-4"><%= t(".name") %></dt>
+          <dd class="col-sm-8"><%= current_user.full_name %></dd>
+          <dt class="col-sm-4"><%= t(".email") %></dt>
+          <dd class="col-sm-8"><%= current_user.email %></dd>
+          <dt class="col-sm-4"><%= t(".role") %></dt>
+          <dd class="col-sm-8 mb-0"><%= t(".roles.#{current_user.role}") %></dd>
+        </dl>
+        <%= link_to t(".change_login"), edit_user_registration_path %>
+      </div>
+
+      <div class="auth-card mb-4">
+        <h2 class="h5"><%= t(".export_title") %></h2>
+        <p><%= t(".export_text") %></p>
+        <%= form_with url: export_account_path, method: :post, data: { turbo: false }, class: "d-flex gap-2 flex-wrap" do %>
+          <%= password_field_tag :password, nil, required: true, autocomplete: "current-password",
+                class: "form-control w-auto", placeholder: t(".password"), "aria-label": t(".password") %>
+          <%= submit_tag t(".export_button"), class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+
+      <div class="auth-card">
+        <h2 class="h5"><%= t(".delete_title") %></h2>
+        <p><%= t(".delete_text") %></p>
+
+        <% if @blockers.any? %>
+          <div class="alert alert-warning mb-0">
+            <%= t(".blocked_intro") %>
+            <ul class="mb-0">
+              <% @blockers.each do |reason| %>
+                <li><%= t(".blockers.#{reason}") %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% else %>
+          <%= form_with url: account_path, method: :delete, data: { turbo_confirm: t(".delete_confirm") } do %>
+            <div class="mb-3">
+              <%= password_field_tag :password, nil, required: true, autocomplete: "current-password",
+                    class: "form-control w-auto", placeholder: t(".password"), "aria-label": t(".password") %>
+            </div>
+            <div class="form-check mb-3">
+              <%= check_box_tag :confirm, "1", false, class: "form-check-input", required: true %>
+              <label class="form-check-label" for="confirm"><%= t(".confirm_label") %></label>
+            </div>
+            <%= submit_tag t(".delete_button"), class: "btn btn-outline-danger" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

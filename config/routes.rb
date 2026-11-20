@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|fr|es|it|ru|ar/ do
-    devise_for :users
+    devise_for :users, controllers: { registrations: "users/registrations" }
     root to: "pages#home"
+
+    resource :account, only: %i[show destroy] do
+      post :export
+    end
 
     resources :teachers, only: %i[index show] do
       resources :lessons, only: %i[new create]

@@ -1,0 +1,42 @@
+it:
+  shared:
+    navbar:
+      my_account: "Il mio account"
+  devise:
+    failure:
+      deleted_account: "Questo account è stato eliminato."
+  accounts:
+    use_account_page: "Per chiudere il tuo account usa la pagina «Il mio account»."
+    show:
+      title: "Il mio account"
+      details_title: "I tuoi dati"
+      name: "Nome"
+      email: "Email"
+      role: "Tipo di account"
+      roles:
+        parent: "Genitore"
+        teacher: "Insegnante"
+        admin: "Amministratore"
+      change_login: "Cambia la mia email o la mia password"
+      export_title: "Scarica i miei dati"
+      export_text: "Ottieni in un file una copia dei dati personali che conserviamo su di te (profilo, figli, lezioni, pagamenti, informazioni da insegnante). Inserisci la password per confermare."
+      password: "Password"
+      export_button: "Scarica i miei dati"
+      delete_title: "Elimina il mio account"
+      delete_text: "L'eliminazione dell'account cancella il tuo nome, l'email, il telefono, i profili dei tuoi figli, il profilo da insegnante e i documenti caricati, e non potrai più accedere. Le registrazioni di pagamenti, rimborsi ed erogazioni vengono conservate senza il tuo nome, perché la legge contabile ci obbliga a farlo. L'operazione non può essere annullata."
+      blocked_intro: "Non puoi ancora eliminare il tuo account:"
+      blockers:
+        upcoming_lessons: "Hai lezioni non ancora terminate o confermate. Annullale o attendi la conferma."
+        payments_in_progress: "Un pagamento o un rimborso è ancora in corso."
+        unpaid_earnings: "Hai ancora guadagni non pagati. Contattaci per regolarli prima."
+        admin_account: "Gli account amministratore non possono essere eliminati qui."
+      confirm_label: "Capisco che l'operazione non può essere annullata."
+      delete_button: "Elimina definitivamente il mio account"
+      delete_confirm: "Eliminare definitivamente il tuo account?"
+    export:
+      wrong_password: "La password non è corretta."
+    destroy:
+      wrong_password: "La password non è corretta."
+      confirm_required: "Seleziona la casella per confermare."
+      blocked: "Il tuo account non può ancora essere eliminato. Vedi i motivi in questa pagina."
+      deleted: "Il tuo account è stato eliminato."

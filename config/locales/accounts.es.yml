@@ -1,0 +1,42 @@
+es:
+  shared:
+    navbar:
+      my_account: "Mi cuenta"
+  devise:
+    failure:
+      deleted_account: "Esta cuenta ha sido eliminada."
+  accounts:
+    use_account_page: "Para cerrar tu cuenta, usa la página «Mi cuenta»."
+    show:
+      title: "Mi cuenta"
+      details_title: "Tus datos"
+      name: "Nombre"
+      email: "Correo electrónico"
+      role: "Tipo de cuenta"
+      roles:
+        parent: "Padre o madre"
+        teacher: "Profesor"
+        admin: "Administrador"
+      change_login: "Cambiar mi correo o mi contraseña"
+      export_title: "Descargar mis datos"
+      export_text: "Obtén en un archivo una copia de los datos personales que tenemos sobre ti (perfil, hijos, clases, pagos, información de profesor). Introduce tu contraseña para confirmar."
+      password: "Contraseña"
+      export_button: "Descargar mis datos"
+      delete_title: "Eliminar mi cuenta"
+      delete_text: "Al eliminar tu cuenta se borran tu nombre, correo, teléfono, los perfiles de tus hijos, tu perfil de profesor y los documentos subidos, y ya no podrás iniciar sesión. Los registros de pagos, reembolsos y cobros se conservan sin tu nombre, porque la ley contable nos obliga a guardarlos. Esta acción no se puede deshacer."
+      blocked_intro: "Todavía no puedes eliminar tu cuenta:"
+      blockers:
+        upcoming_lessons: "Tienes clases que aún no han terminado o no están confirmadas. Cancélalas o espera a que se confirmen."
+        payments_in_progress: "Hay un pago o un reembolso en curso."
+        unpaid_earnings: "Todavía tienes ingresos sin cobrar. Ponte en contacto con nosotros para resolverlo primero."
+        admin_account: "Las cuentas de administrador no se pueden eliminar aquí."
+      confirm_label: "Entiendo que esta acción no se puede deshacer."
+      delete_button: "Eliminar mi cuenta definitivamente"
+      delete_confirm: "¿Eliminar tu cuenta definitivamente?"
+    export:
+      wrong_password: "La contraseña no es correcta."
+    destroy:
+      wrong_password: "La contraseña no es correcta."
+      confirm_required: "Marca la casilla para confirmar."
+      blocked: "Tu cuenta todavía no se puede eliminar. Consulta los motivos en esta página."
+      deleted: "Tu cuenta ha sido eliminada."
