@@ -1,0 +1,27 @@
+.legal-page {
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: $green-deep;
+    margin-top: 2rem;
+  }
+
+  p, li { line-height: 1.7; }
+
+  ul { padding-inline-start: 1.25rem; }
+}
+
+.legal-placeholder {
+  background: #fff3a3;
+  color: $gray;
+  padding: 0 .25rem;
+  border-radius: .25rem;
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.25rem;
+  margin-top: 1.25rem;
+  font-size: .9rem;
+}

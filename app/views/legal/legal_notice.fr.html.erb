@@ -1,0 +1,20 @@
+<%= render layout: "legal/frame", locals: { title: t("legal.notice.title") } do %>
+  <h2>Éditeur</h2>
+  <p><%= legal(:company_name) %> &middot; <%= legal(:legal_form) %><br>
+  <%= legal(:address) %><br>
+  Numéro d'immatriculation : <%= legal(:registration_number) %><br>
+  TVA : <%= legal(:vat_number) %><br>
+  E-mail : <%= legal(:contact_email) %></p>
+
+  <h2>Directeur de la publication</h2>
+  <p><%= legal(:publication_director) %></p>
+
+  <h2>Hébergeur</h2>
+  <p><%= legal(:host_name) %><br><%= legal(:host_address) %></p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>Les textes, le design et le logiciel de Mojtam3na appartiennent à l'éditeur ou à ses concédants. Leur copie sans autorisation n'est pas permise.</p>
+
+  <h2>Signaler un contenu illicite ou une inquiétude pour la sécurité</h2>
+  <p>Écrivez à <%= legal(:contact_email) %>.</p>
+<% end %>

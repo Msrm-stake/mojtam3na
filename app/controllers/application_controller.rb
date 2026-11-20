@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
       user_params.permit(:email, :password, :password_confirmation,
-                         :first_name, :last_name, :role).tap do |permitted|
+                         :first_name, :last_name, :role, :accept_terms).tap do |permitted|
         permitted[:role] = "parent" unless User::SIGNUP_ROLES.include?(permitted[:role])
         permitted[:locale] = I18n.locale.to_s
       end

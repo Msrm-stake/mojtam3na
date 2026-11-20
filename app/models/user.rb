@@ -13,10 +13,16 @@ class User < ApplicationRecord
   has_many :students, foreign_key: :parent_id, inverse_of: :parent, dependent: :destroy
   has_many :consents, dependent: :destroy
 
+  # Set by the sign-up form only, so accounts created by scripts or tests do not need the tick.
+  attr_accessor :require_terms_acceptance
+  attribute :accept_terms, :boolean
+
   # Every new teacher starts with a pending profile, reviewed before going live.
   after_create :create_teacher_profile!, if: :role_teacher?
+  before_create :record_terms_acceptance, if: :require_terms_acceptance
 
   validates :first_name, :last_name, presence: true
+  validates :accept_terms, acceptance: { accept: true }, allow_nil: false, if: :require_terms_acceptance
   validates :locale, inclusion: { in: ->(_user) { I18n.available_locales.map(&:to_s) } }
   validate :time_zone_must_exist
 
@@ -43,6 +49,12 @@ class User < ApplicationRecord
   end
 
   private
+
+  # The date and the version of the legal texts accepted at sign-up.
+  def record_terms_acceptance
+    self.terms_accepted_at = Time.current
+    self.terms_version = Legal.value(:last_updated)
+  end
 
   def time_zone_must_exist
     errors.add(:time_zone, :inclusion) unless ActiveSupport::TimeZone[time_zone.to_s]

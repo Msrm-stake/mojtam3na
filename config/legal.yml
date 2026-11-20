@@ -1,0 +1,17 @@
+# Company details used by the legal pages (terms, privacy, cookies, legal notice).
+# Replace every [PLACEHOLDER] with the real value, then check with: bin/rails legal:check
+# Change last_updated whenever the legal texts change. It is saved on each new account as the terms version.
+shared:
+  company_name: "[COMPANY NAME]"
+  legal_form: "[LEGAL FORM, e.g. micro-entrepreneur or SAS]"
+  address: "[REGISTERED ADDRESS]"
+  registration_number: "[SIRET OR REGISTRATION NUMBER]"
+  vat_number: "[VAT NUMBER, or: not subject to VAT]"
+  contact_email: "[CONTACT EMAIL]"
+  privacy_email: "[PRIVACY CONTACT EMAIL]"
+  publication_director: "[NAME OF THE PUBLICATION DIRECTOR]"
+  host_name: "[HOSTING COMPANY NAME]"
+  host_address: "[HOSTING COMPANY ADDRESS]"
+  mediator: "[CONSUMER MEDIATOR NAME AND WEBSITE]"
+  tax_note: "[TAX NOTE, e.g. Prices include VAT where applicable / VAT not applicable]"
+  last_updated: "2026-11-20"

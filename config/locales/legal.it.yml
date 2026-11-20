@@ -1,0 +1,33 @@
+it:
+  legal:
+    updated: "Ultimo aggiornamento: %{date}"
+    language_note: "Questi documenti sono disponibili in inglese e francese. Le altre lingue mostrano la versione inglese, che è quella applicabile."
+    terms:
+      title: "Condizioni d'uso"
+    privacy:
+      title: "Informativa sulla privacy"
+    cookies:
+      title: "Cookie"
+    notice:
+      title: "Note legali"
+  shared:
+    footer:
+      legal_nav: "Informazioni legali"
+      terms: "Condizioni"
+      privacy: "Privacy"
+      cookies: "Cookie"
+      legal_notice: "Note legali"
+  devise:
+    registrations:
+      new:
+        accept_html: "Ho almeno 18 anni e accetto le %{terms} e l'%{privacy}."
+  activerecord:
+    attributes:
+      user:
+        accept_terms: "Condizioni d'uso e informativa sulla privacy"
+    errors:
+      models:
+        user:
+          attributes:
+            accept_terms:
+              accepted: "devono essere accettate"

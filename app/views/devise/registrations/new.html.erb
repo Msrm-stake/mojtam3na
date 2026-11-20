@@ -18,6 +18,11 @@
           <%= f.input :password, required: true, input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
 
+          <%= f.input :accept_terms, as: :boolean, required: true,
+                label: t(".accept_html",
+                         terms: link_to(t("legal.terms.title"), terms_path, target: "_blank", rel: "noopener"),
+                         privacy: link_to(t("legal.privacy.title"), privacy_path, target: "_blank", rel: "noopener")) %>
+
           <%= f.button :submit, t(".sign_up"), class: "btn btn-primary w-100 mt-2" %>
         <% end %>
 

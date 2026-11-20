@@ -1,0 +1,69 @@
+<%= render layout: "legal/frame", locals: { title: t("legal.terms.title") } do %>
+  <h2>1. À propos de Mojtam3na</h2>
+  <p>Mojtam3na (le « Service ») est une plateforme en ligne éditée par <%= legal(:company_name) %> (« nous »). Les parents y réservent, pour leurs enfants, des cours particuliers en visioconférence d'arabe et de Coran avec des enseignants indépendants. Nous fournissons la plateforme, la réservation, le paiement et la salle vidéo. Les cours sont donnés par les enseignants, qui ne sont pas nos salariés.</p>
+  <p>Les résultats de recherche d'enseignants sont classés par ancienneté (les plus récents d'abord) ou par prix, selon le choix de l'utilisateur. Il n'y a pas de référencement payant.</p>
+
+  <h2>2. Comptes</h2>
+  <ul>
+    <li>Vous devez avoir au moins 18 ans pour créer un compte. Les enfants n'ont jamais de compte : un parent ou représentant légal crée et gère le profil de chaque enfant et est responsable de l'usage que l'enfant fait du Service.</li>
+    <li>Donnez des informations exactes et gardez votre mot de passe secret. Vous êtes responsable de ce qui se passe sous votre compte.</li>
+    <li>Nous pouvons refuser ou suspendre un compte qui enfreint ces conditions ou met d'autres personnes en danger.</li>
+  </ul>
+
+  <h2>3. Réservation et cours</h2>
+  <ul>
+    <li>Chaque enfant peut suivre un cours d'essai gratuit de <%= Lesson::TRIAL_MINUTES %> minutes avec chaque enseignant.</li>
+    <li>Les cours payants durent <%= Lesson::PAID_MINUTES %> minutes et coûtent le tarif horaire indiqué sur la page de l'enseignant.</li>
+    <li>Lorsque vous choisissez un horaire pour un cours payant, nous le réservons pendant <%= Lesson::HOLD_MINUTES %> minutes le temps du paiement. Le cours est réservé une fois le paiement confirmé.</li>
+    <li>Les horaires sont affichés dans le fuseau horaire enregistré dans votre compte. Vérifiez-le avant de réserver.</li>
+    <li>Les cours ont lieu dans la salle vidéo du Service. Vous pouvez la rejoindre <%= (Lesson::JOIN_OPENS / 1.minute).to_i %> minutes avant le début. Les parents sont les bienvenus dans la salle pendant le cours.</li>
+    <li>N'enregistrez pas, ne photographiez pas et ne partagez pas un cours sans l'accord de toutes les personnes concernées, et des parents pour tout enfant.</li>
+  </ul>
+
+  <h2>4. Prix et paiement</h2>
+  <p>Les prix sont en euros et affichés avant le paiement. <%= legal(:tax_note) %></p>
+  <p>Les paiements sont gérés par Stripe, notre prestataire de paiement. Nous ne voyons ni ne conservons jamais votre numéro de carte complet.</p>
+
+  <h2>5. Annulation et remboursement</h2>
+  <ul>
+    <li>Vous ou l'enseignant pouvez annuler un cours réservé depuis la page « Mes cours » jusqu'à <%= (Lesson::CANCEL_NOTICE / 1.hour).to_i %> heures avant son début. Lorsqu'un cours payant est annulé, vous êtes remboursé intégralement sur le moyen de paiement d'origine. Votre banque peut mettre quelques jours à afficher le remboursement.</li>
+    <li>Moins de <%= (Lesson::CANCEL_NOTICE / 1.hour).to_i %> heures avant le début, le cours ne peut plus être annulé en ligne, et aucun remboursement n'est dû si vous le manquez. Contactez-nous si une situation exceptionnelle s'est produite.</li>
+    <li>Si l'enseignant est absent, ou si un problème de notre côté empêche le cours d'avoir lieu, contactez-nous dans les <%= (LessonCompletion::COMPLETION_DELAY / 1.hour).to_i %> heures après la fin du cours et nous le rembourserons intégralement.</li>
+    <li>Un cours est confirmé <%= (LessonCompletion::COMPLETION_DELAY / 1.hour).to_i %> heures après sa fin, et les revenus de l'enseignant sont alors confirmés. Merci de signaler tout problème avant ce moment.</li>
+  </ul>
+
+  <h2>6. Droit de rétractation (consommateurs)</h2>
+  <p>Si vous êtes un consommateur dans l'Union européenne, vous disposez de 14 jours à compter de la réservation pour vous rétracter sans donner de motif. Vous pouvez le faire en annulant le cours depuis la page « Mes cours » ou en écrivant à <%= legal(:contact_email) %>. Si vous demandez qu'un cours ait lieu pendant ce délai de 14 jours et qu'il a été pleinement exécuté, vous perdez votre droit de rétractation pour ce cours une fois qu'il a eu lieu. En réservant un cours, vous nous demandez de le fournir à l'horaire que vous avez choisi. Les règles d'annulation de l'article 5 s'appliquent en plus et peuvent être plus favorables pour vous.</p>
+
+  <h2>7. Enseignants</h2>
+  <ul>
+    <li>Les enseignants sont indépendants. Ils sont responsables du contenu et de la qualité de leurs cours, ainsi que de leurs impôts et cotisations sociales.</li>
+    <li>Les enseignants doivent fournir des informations et documents exacts. Nous vérifions les documents avant d'approuver un profil, mais nous ne garantissons pas les compétences ou qualifications d'un enseignant, et nous ne délivrons pas de certification religieuse.</li>
+    <li>Les enseignants fixent leur tarif horaire en euros. Pour chaque cours payant, le Service conserve <%= Order::COMMISSION_PERCENT %> % et l'enseignant perçoit <%= 100 - Order::COMMISSION_PERCENT %> %.</li>
+    <li>Un cours est considéré comme terminé <%= (LessonCompletion::COMPLETION_DELAY / 1.hour).to_i %> heures après sa fin. Les revenus confirmés sont versés une fois par mois, pour les soldes d'au moins <%= format_money(Payout::MINIMUM_CENTS) %>, selon les coordonnées de versement fournies par l'enseignant. Des frais bancaires ou de service de versement peuvent s'appliquer.</li>
+    <li>Pour les cours réservés via le Service, les enseignants ne doivent pas demander aux parents de payer en dehors du Service ni de déplacer le contact en dehors de celui-ci.</li>
+    <li>Nous pouvons suspendre un profil ou retenir un versement en cas de soupçon de fraude, d'abus ou de non-respect de ces conditions.</li>
+  </ul>
+
+  <h2>8. Sécurité et comportement</h2>
+  <ul>
+    <li>Chacun doit se comporter avec respect. Le harcèlement, la discrimination, la haine, la violence, les contenus sexuels, la publicité et les contenus illicites sont interdits.</li>
+    <li>Les enseignants ne doivent communiquer avec les enfants que dans le cadre des cours sur le Service. Ils ne doivent pas demander à un enfant ses coordonnées personnelles, des photos ou des informations privées.</li>
+    <li>Signalez toute inquiétude, y compris pour la sécurité d'un enfant, à <%= legal(:contact_email) %>. Nous pouvons suspendre un compte immédiatement et, lorsque la loi l'exige, informer les autorités.</li>
+  </ul>
+
+  <h2>9. Notre responsabilité</h2>
+  <p>Nous fournissons le Service avec un soin raisonnable. Nous ne garantissons ni un accès ininterrompu ni un résultat d'apprentissage particulier. Rien dans ces conditions ne limite les droits que la loi vous donne en tant que consommateur, ni une responsabilité qui ne peut être exclue par la loi. Pour les autres préjudices, et dans la mesure permise par la loi, notre responsabilité est limitée au montant que vous avez payé pour le cours concerné.</p>
+
+  <h2>10. Fermeture d'un compte</h2>
+  <p>Vous pouvez télécharger vos données et supprimer votre compte à tout moment depuis la page « Mon compte », sauf si des cours ou des paiements sont en cours. Les documents comptables sont conservés comme la loi l'exige (voir la politique de confidentialité).</p>
+
+  <h2>11. Modification des conditions</h2>
+  <p>Nous pouvons modifier ces conditions, par exemple lorsque le Service ou la loi évolue. Nous vous informerons des changements importants par e-mail ou sur le site avant leur application. La date en haut de page indique la version en vigueur.</p>
+
+  <h2>12. Droit applicable et litiges</h2>
+  <p>Le droit français s'applique, sans priver le consommateur de la protection impérative du pays où il réside. En cas de difficulté, merci de nous contacter d'abord. En tant que consommateur, vous pouvez aussi recourir gratuitement à un médiateur de la consommation : <%= legal(:mediator) %>.</p>
+
+  <h2>13. Contact</h2>
+  <p><%= legal(:company_name) %>, <%= legal(:address) %> &middot; <%= legal(:contact_email) %></p>
+<% end %>

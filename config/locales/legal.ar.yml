@@ -1,0 +1,33 @@
+ar:
+  legal:
+    updated: "آخر تحديث: %{date}"
+    language_note: "هذه المستندات متوفرة بالإنجليزية والفرنسية. تعرض اللغات الأخرى النسخة الإنجليزية وهي المعتمدة."
+    terms:
+      title: "شروط الاستخدام"
+    privacy:
+      title: "سياسة الخصوصية"
+    cookies:
+      title: "ملفات تعريف الارتباط"
+    notice:
+      title: "إشعار قانوني"
+  shared:
+    footer:
+      legal_nav: "معلومات قانونية"
+      terms: "الشروط"
+      privacy: "الخصوصية"
+      cookies: "ملفات تعريف الارتباط"
+      legal_notice: "إشعار قانوني"
+  devise:
+    registrations:
+      new:
+        accept_html: "عمري 18 عامًا على الأقل وأوافق على %{terms} و%{privacy}."
+  activerecord:
+    attributes:
+      user:
+        accept_terms: "شروط الاستخدام وسياسة الخصوصية"
+    errors:
+      models:
+        user:
+          attributes:
+            accept_terms:
+              accepted: "يجب قبولها"

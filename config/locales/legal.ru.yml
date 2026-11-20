@@ -1,0 +1,33 @@
+ru:
+  legal:
+    updated: "Последнее обновление: %{date}"
+    language_note: "Эти документы доступны на английском и французском языках. На других языках показывается английская версия, которая и действует."
+    terms:
+      title: "Условия использования"
+    privacy:
+      title: "Политика конфиденциальности"
+    cookies:
+      title: "Файлы cookie"
+    notice:
+      title: "Правовая информация"
+  shared:
+    footer:
+      legal_nav: "Юридическая информация"
+      terms: "Условия"
+      privacy: "Конфиденциальность"
+      cookies: "Cookie"
+      legal_notice: "Правовая информация"
+  devise:
+    registrations:
+      new:
+        accept_html: "Мне не менее 18 лет, и я согласен(на) с документами: %{terms}, %{privacy}."
+  activerecord:
+    attributes:
+      user:
+        accept_terms: "Условия использования и политика конфиденциальности"
+    errors:
+      models:
+        user:
+          attributes:
+            accept_terms:
+              accepted: "необходимо принять"

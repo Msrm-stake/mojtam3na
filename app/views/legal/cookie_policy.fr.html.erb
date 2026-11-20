@@ -1,0 +1,18 @@
+<%= render layout: "legal/frame", locals: { title: t("legal.cookies.title") } do %>
+  <h2>1. Ce que nous utilisons</h2>
+  <p>Mojtam3na n'utilise que des cookies strictement nécessaires au fonctionnement du Service. Ils ne nécessitent pas votre consentement, et nous n'utilisons ni cookies publicitaires ni cookies de mesure d'audience.</p>
+  <ul>
+    <li><strong>Cookie de session</strong> (son nom commence par <code>_mojtam3na_session</code>) : vous garde connecté et protège les formulaires contre la falsification. Il dure jusqu'à la fermeture de votre navigateur.</li>
+    <li><strong>Cookie « se souvenir de moi »</strong> (<code>remember_user_token</code>) : uniquement si vous cochez « Se souvenir de moi » à la connexion. Il dure jusqu'à deux semaines.</li>
+  </ul>
+  <p>Votre choix de langue fait partie de l'adresse de la page, il n'est pas stocké dans un cookie.</p>
+
+  <h2>2. Services tiers</h2>
+  <p>La page de paiement (Stripe) et la salle vidéo (Daily) sont exploitées par ces sociétés. Elles peuvent déposer sur votre appareil des cookies ou identifiants similaires nécessaires pour traiter les paiements et les appels vidéo en toute sécurité. Leurs propres politiques s'appliquent.</p>
+
+  <h2>3. Vos choix</h2>
+  <p>Vous pouvez supprimer ou bloquer les cookies dans les paramètres de votre navigateur. Si vous bloquez les cookies nécessaires, vous ne pourrez pas vous connecter.</p>
+
+  <h2>4. Questions</h2>
+  <p>Écrivez à <%= legal(:privacy_email) %>.</p>
+<% end %>

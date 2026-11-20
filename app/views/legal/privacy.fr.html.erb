@@ -1,0 +1,58 @@
+<%= render layout: "legal/frame", locals: { title: t("legal.privacy.title") } do %>
+  <h2>1. Responsable du traitement</h2>
+  <p><%= legal(:company_name) %>, <%= legal(:address) %>, est responsable de vos données personnelles sur Mojtam3na. Contact : <%= legal(:privacy_email) %>.</p>
+
+  <h2>2. Données collectées</h2>
+  <ul>
+    <li><strong>Compte :</strong> nom, adresse e-mail, mot de passe (conservé uniquement sous forme brouillée), rôle (parent ou enseignant), langue, fuseau horaire, et numéro de téléphone ou pays si vous les indiquez.</li>
+    <li><strong>Enfants (renseignés par leurs parents) :</strong> prénom, date de naissance, genre et langue maternelle facultatifs, niveau d'arabe et de Coran, objectifs d'apprentissage. Nous ne demandons ni nom de famille, ni adresse, ni photo. Merci de ne pas les saisir.</li>
+    <li><strong>Enseignants :</strong> texte du profil, langues et matières, disponibilités hebdomadaires, tarif, qualifications et documents téléversés, coordonnées de versement (stockées chiffrées).</li>
+    <li><strong>Cours et paiements :</strong> réservations, horaires, annulations, statut et montants des paiements, remboursements, revenus et versements. Les données de carte sont saisies sur la page de Stripe et ne nous parviennent jamais.</li>
+    <li><strong>Preuves de consentement :</strong> la date, et l'adresse IP du parent, lorsqu'un parent confirme être le parent ou représentant légal de l'enfant, ainsi que la date d'acceptation de ces conditions.</li>
+    <li><strong>Données techniques :</strong> journaux du serveur (adresse IP, date, pages demandées, erreurs) et cookies décrits dans la politique de cookies.</li>
+  </ul>
+  <p>Le Service n'enregistre pas les cours en vidéo.</p>
+
+  <h2>3. Pourquoi nous les utilisons et sur quelle base légale</h2>
+  <ul>
+    <li>Pour créer et gérer votre compte, les réservations, les cours, les paiements et les versements : exécution de notre contrat avec vous.</li>
+    <li>Pour envoyer les e-mails du service (confirmations de réservation, annulations, rappels, messages de sécurité) : exécution du contrat et notre intérêt légitime.</li>
+    <li>Pour vérifier les qualifications des enseignants et protéger les enfants : notre intérêt légitime à assurer la sécurité et la confiance dans le Service.</li>
+    <li>Pour prévenir la fraude, sécuriser le Service et traiter les litiges : notre intérêt légitime.</li>
+    <li>Pour tenir la comptabilité et les obligations fiscales : obligation légale.</li>
+    <li>Pour conserver la preuve du consentement parental : obligation légale et notre intérêt légitime.</li>
+  </ul>
+  <p>Nous ne vendons pas de données personnelles, n'affichons pas de publicité et ne prenons pas de décisions automatisées ayant des effets juridiques sur vous.</p>
+
+  <h2>4. Qui peut les voir</h2>
+  <ul>
+    <li>Un enseignant voit le prénom, l'âge, les niveaux et les objectifs de votre enfant pour les cours qu'il donne, et votre prénom dans la salle vidéo.</li>
+    <li>Les parents voient le prénom et l'initiale du nom d'un enseignant, son profil public et les intitulés de ses qualifications vérifiées.</li>
+    <li>Notre équipe peut accéder aux données nécessaires pour faire fonctionner et protéger le Service.</li>
+    <li>Les prestataires qui travaillent pour nous : Stripe (paiements), Daily (cours en vidéo), <%= legal(:host_name) %> (hébergement), notre prestataire d'envoi d'e-mails, et les services de versement ou banques utilisés pour payer les enseignants.</li>
+    <li>Les autorités, lorsque la loi l'exige.</li>
+  </ul>
+
+  <h2>5. Transferts hors de l'Union européenne</h2>
+  <p>Certains de ces prestataires, ainsi que des enseignants vivant à l'étranger, peuvent traiter ou recevoir des données hors de l'Union européenne. Dans ce cas, nous nous appuyons sur une décision d'adéquation, des clauses contractuelles types ou une autre garantie prévue par la loi.</p>
+
+  <h2>6. Durée de conservation</h2>
+  <ul>
+    <li>Données du compte : jusqu'à la suppression de votre compte. À ce moment, nous effaçons votre nom, e-mail, numéro de téléphone, les profils de vos enfants, votre profil d'enseignant, les documents téléversés, les coordonnées de versement et les adresses IP enregistrées avec les consentements.</li>
+    <li>Les traces des paiements, remboursements, revenus et versements sont conservées, sans votre nom, pendant la durée que la loi impose pour les documents comptables (en général dix ans en France).</li>
+    <li>Les journaux du serveur sont conservés pour une durée limitée, au maximum 12 mois.</li>
+    <li>Les copies dans les sauvegardes disparaissent lorsque les sauvegardes sont renouvelées.</li>
+  </ul>
+
+  <h2>7. Vos droits</h2>
+  <p>Vous avez le droit d'accéder à vos données, de les corriger, de les effacer, d'en limiter l'usage, de vous y opposer, de les recevoir dans un format portable et de retirer un consentement à tout moment. La plupart de ces droits sont disponibles sur la page « Mon compte » (télécharger vos données, supprimer votre compte). Pour le reste, écrivez à <%= legal(:privacy_email) %>. Nous répondons dans un délai d'un mois. Vous pouvez aussi saisir la CNIL (cnil.fr) ou l'autorité de protection des données de votre pays de résidence.</p>
+
+  <h2>8. Enfants</h2>
+  <p>Le Service est destiné aux adultes. Seuls les parents ou représentants légaux créent les profils de leurs enfants, avec le minimum d'informations nécessaires. Les enseignants ne s'adressent aux enfants que pendant les cours sur le Service.</p>
+
+  <h2>9. Sécurité</h2>
+  <p>Les connexions sont chiffrées, les mots de passe sont conservés sous forme brouillée, les coordonnées de versement sont chiffrées et l'accès est limité à ce dont chacun a besoin. Si une violation de données présente un risque pour vos droits, nous vous en informerons ainsi que l'autorité, comme la loi l'exige.</p>
+
+  <h2>10. Modifications</h2>
+  <p>Nous mettrons à jour cette politique lorsque le Service ou la loi évolue, et vous informerons des changements importants. La date en haut de page indique la version en vigueur.</p>
+<% end %>

@@ -3,6 +3,11 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: "users/registrations" }
     root to: "pages#home"
 
+    get "terms", to: "legal#terms"
+    get "privacy", to: "legal#privacy"
+    get "cookies", to: "legal#cookie_policy", as: :cookie_policy
+    get "legal-notice", to: "legal#legal_notice", as: :legal_notice
+
     resource :account, only: %i[show destroy] do
       post :export
     end

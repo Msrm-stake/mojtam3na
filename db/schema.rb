@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_19_181712) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_20_050150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -275,6 +275,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_19_181712) do
     t.string "stripe_customer_id"
     t.datetime "terms_accepted_at"
     t.datetime "deleted_at"
+    t.string "terms_version"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

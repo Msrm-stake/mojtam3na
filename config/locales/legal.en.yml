@@ -1,0 +1,33 @@
+en:
+  legal:
+    updated: "Last updated: %{date}"
+    language_note: "These documents are available in English and French. Other languages show the English version, which is the one that applies."
+    terms:
+      title: "Terms of use"
+    privacy:
+      title: "Privacy policy"
+    cookies:
+      title: "Cookies"
+    notice:
+      title: "Legal notice"
+  shared:
+    footer:
+      legal_nav: "Legal information"
+      terms: "Terms of use"
+      privacy: "Privacy"
+      cookies: "Cookies"
+      legal_notice: "Legal notice"
+  devise:
+    registrations:
+      new:
+        accept_html: "I am at least 18 and I accept the %{terms} and the %{privacy}."
+  activerecord:
+    attributes:
+      user:
+        accept_terms: "Terms of use and privacy policy"
+    errors:
+      models:
+        user:
+          attributes:
+            accept_terms:
+              accepted: "must be accepted"

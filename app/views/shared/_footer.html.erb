@@ -11,6 +11,12 @@
         <% end %>
       </div>
     </div>
+    <nav class="footer-legal" aria-label="<%= t('shared.footer.legal_nav') %>">
+      <%= link_to t("shared.footer.terms"), terms_path %>
+      <%= link_to t("shared.footer.privacy"), privacy_path %>
+      <%= link_to t("shared.footer.cookies"), cookie_policy_path %>
+      <%= link_to t("shared.footer.legal_notice"), legal_notice_path %>
+    </nav>
     <p class="footer-copy">© <%= Date.current.year %> <%= t("shared.navbar.brand") %>. <%= t("shared.footer.rights") %></p>
   </div>
 </footer>

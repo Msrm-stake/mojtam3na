@@ -1,0 +1,69 @@
+<%= render layout: "legal/frame", locals: { title: t("legal.terms.title") } do %>
+  <h2>1. About Mojtam3na</h2>
+  <p>Mojtam3na (the "Service") is an online platform published by <%= legal(:company_name) %> ("we", "us"). Parents use it to book live one-to-one video lessons in Arabic and the Quran for their children with independent teachers. We provide the platform, the booking, the payment and the video room. The lessons are given by the teachers, who are not our employees.</p>
+  <p>Teacher search results are sorted by newest or by price, as the user chooses. There is no paid placement.</p>
+
+  <h2>2. Accounts</h2>
+  <ul>
+    <li>You must be at least 18 to create an account. Children never have their own account: a parent or legal guardian creates and manages each child's profile and is responsible for how the child uses the Service.</li>
+    <li>Give accurate information and keep your password secret. You are responsible for what happens under your account.</li>
+    <li>We may refuse or suspend an account that breaks these terms or puts others at risk.</li>
+  </ul>
+
+  <h2>3. Booking and lessons</h2>
+  <ul>
+    <li>Each child can take one free trial lesson of <%= Lesson::TRIAL_MINUTES %> minutes with each teacher.</li>
+    <li>Paid lessons last <%= Lesson::PAID_MINUTES %> minutes and cost the hourly price shown on the teacher's page.</li>
+    <li>When you choose a time for a paid lesson, we hold it for <%= Lesson::HOLD_MINUTES %> minutes while you pay. The lesson is booked once the payment is confirmed.</li>
+    <li>Times are shown in the time zone saved in your account. Please check it before you book.</li>
+    <li>Lessons take place in the video room on the Service. You can join from <%= (Lesson::JOIN_OPENS / 1.minute).to_i %> minutes before the start. Parents are welcome to stay in the room during the lesson.</li>
+    <li>Do not record, photograph or share a lesson without the permission of everyone concerned, and of the parents for any child.</li>
+  </ul>
+
+  <h2>4. Prices and payment</h2>
+  <p>Prices are in euros and shown before you pay. <%= legal(:tax_note) %></p>
+  <p>Payments are handled by Stripe, our payment provider. We never see or store your full card number.</p>
+
+  <h2>5. Cancellation and refunds</h2>
+  <ul>
+    <li>You or the teacher can cancel a booked lesson from the My lessons page up to <%= (Lesson::CANCEL_NOTICE / 1.hour).to_i %> hours before it starts. When a paid lesson is cancelled, you are refunded in full to the original payment method. Your bank may need a few days to show the refund.</li>
+    <li>Less than <%= (Lesson::CANCEL_NOTICE / 1.hour).to_i %> hours before the start, the lesson can no longer be cancelled online, and no refund is due if you miss it. Contact us if something exceptional happened.</li>
+    <li>If the teacher does not attend, or a problem on our side prevents the lesson from taking place, contact us within <%= (LessonCompletion::COMPLETION_DELAY / 1.hour).to_i %> hours after the lesson ends and we will refund it in full.</li>
+    <li>A lesson is confirmed <%= (LessonCompletion::COMPLETION_DELAY / 1.hour).to_i %> hours after it ends, and the teacher's earnings are confirmed at that point. Please report any problem before then.</li>
+  </ul>
+
+  <h2>6. Right of withdrawal (consumers)</h2>
+  <p>If you are a consumer in the European Union, you have 14 days from the booking to withdraw without giving a reason. You can do this by cancelling the lesson on the My lessons page or by writing to <%= legal(:contact_email) %>. If you ask for a lesson to take place within the 14 days and it has been fully provided, you lose your right to withdraw for that lesson once it has taken place. By booking a lesson, you ask us to provide it at the time you chose. The cancellation rules in section 5 apply in addition and may be more favourable to you.</p>
+
+  <h2>7. Teachers</h2>
+  <ul>
+    <li>Teachers are independent. They are responsible for the content and quality of their lessons and for their own taxes and social contributions.</li>
+    <li>Teachers must give true information and documents. We check documents before approving a profile, but we do not guarantee any teacher's skills or qualifications, and we do not issue religious certifications.</li>
+    <li>Teachers set their own hourly price in euros. For each paid lesson, the Service keeps <%= Order::COMMISSION_PERCENT %>% and the teacher earns <%= 100 - Order::COMMISSION_PERCENT %>%.</li>
+    <li>A lesson counts as completed <%= (LessonCompletion::COMPLETION_DELAY / 1.hour).to_i %> hours after it ends. Confirmed earnings are paid once a month, for balances of at least <%= format_money(Payout::MINIMUM_CENTS) %>, to the payout details the teacher has given. Bank or payout-service fees may apply.</li>
+    <li>For lessons booked through the Service, teachers must not ask parents to pay outside the Service or to move the contact outside it.</li>
+    <li>We may suspend a profile or hold a payout if we suspect fraud, abuse or a breach of these terms.</li>
+  </ul>
+
+  <h2>8. Safety and conduct</h2>
+  <ul>
+    <li>Everyone must behave respectfully. Harassment, discrimination, hate, violence, sexual content, advertising and illegal content are forbidden.</li>
+    <li>Teachers must only communicate with children through lessons on the Service. They must not ask a child for personal contact details, photos or private information.</li>
+    <li>Report any concern, including any concern for a child's safety, to <%= legal(:contact_email) %>. We may suspend an account immediately and, where the law requires, inform the authorities.</li>
+  </ul>
+
+  <h2>9. Our responsibility</h2>
+  <p>We provide the Service with reasonable care. We do not guarantee uninterrupted access or any particular learning result. Nothing in these terms limits the rights the law gives you as a consumer, or any liability that cannot be excluded by law. For other losses, and to the extent the law allows, our liability is limited to the amount you paid for the lesson concerned.</p>
+
+  <h2>10. Closing an account</h2>
+  <p>You can download your data and delete your account at any time from the My account page, unless lessons or payments are still in progress. Accounting records are kept as the law requires (see the privacy policy).</p>
+
+  <h2>11. Changes to these terms</h2>
+  <p>We may change these terms, for example when the Service or the law changes. We will tell you about important changes by email or on the website before they apply. The date at the top shows the current version.</p>
+
+  <h2>12. Governing law and disputes</h2>
+  <p>French law applies, without removing the mandatory consumer protection of the country where you live. If you have a problem, please contact us first. As a consumer, you can also use a free consumer mediator: <%= legal(:mediator) %>.</p>
+
+  <h2>13. Contact</h2>
+  <p><%= legal(:company_name) %>, <%= legal(:address) %> &middot; <%= legal(:contact_email) %></p>
+<% end %>

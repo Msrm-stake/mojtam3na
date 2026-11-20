@@ -1,0 +1,24 @@
+<% legal_lang = I18n.locale == :fr ? "fr" : "en" %>
+<div class="container auth-page">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <% if Legal.incomplete? %>
+        <div class="alert alert-danger" role="alert">
+          DRAFT: fill in the company details in config/legal.yml before publishing. Still missing: <%= Legal.missing.join(", ") %>.
+        </div>
+      <% end %>
+
+      <div class="auth-card">
+        <h1 class="h3"><%= title %></h1>
+        <p class="text-body-secondary"><%= t("legal.updated", date: l(Date.parse(Legal.value(:last_updated)), format: :long)) %></p>
+        <% unless %i[en fr].include?(I18n.locale) %>
+          <p class="small"><%= t("legal.language_note") %></p>
+        <% end %>
+
+        <div class="legal-page" lang="<%= legal_lang %>" dir="ltr">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

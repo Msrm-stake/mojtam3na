@@ -1,0 +1,58 @@
+<%= render layout: "legal/frame", locals: { title: t("legal.privacy.title") } do %>
+  <h2>1. Who is responsible</h2>
+  <p><%= legal(:company_name) %>, <%= legal(:address) %>, is responsible for your personal data on Mojtam3na. Contact: <%= legal(:privacy_email) %>.</p>
+
+  <h2>2. What we collect</h2>
+  <ul>
+    <li><strong>Account:</strong> name, email address, password (stored only in scrambled form), role (parent or teacher), language, time zone, and the phone number or country if you give them.</li>
+    <li><strong>Children (given by their parents):</strong> first name, date of birth, optional gender and native language, Arabic and Quran level, and learning goals. We do not ask for a surname, address or photo. Please do not enter them.</li>
+    <li><strong>Teachers:</strong> profile text, languages and subjects, weekly availability, price, qualifications and the documents uploaded, and payout details (stored encrypted).</li>
+    <li><strong>Lessons and payments:</strong> bookings, times, cancellations, payment status and amounts, refunds, earnings and payouts. Card details are entered on Stripe's page and never reach us.</li>
+    <li><strong>Consent records:</strong> the date, and the IP address of the parent, when a parent confirms they are the child's parent or guardian, and the date you accepted these terms.</li>
+    <li><strong>Technical data:</strong> server logs (IP address, date, pages requested, errors) and the cookies described in the cookie policy.</li>
+  </ul>
+  <p>The Service does not record video lessons.</p>
+
+  <h2>3. Why we use it, and on what legal basis</h2>
+  <ul>
+    <li>To create and run your account, bookings, lessons, payments and payouts: to perform our contract with you.</li>
+    <li>To send service emails (booking confirmations, cancellations, reminders, security messages): to perform our contract, and our legitimate interest.</li>
+    <li>To check teachers' qualifications and keep children safe: our legitimate interest in the safety and trust of the Service.</li>
+    <li>To prevent fraud, secure the Service and handle disputes: our legitimate interest.</li>
+    <li>To keep accounting and tax records: a legal obligation.</li>
+    <li>To keep proof of parental consent: a legal obligation and our legitimate interest.</li>
+  </ul>
+  <p>We do not sell personal data, show advertising, or take automated decisions that have legal effects on you.</p>
+
+  <h2>4. Who can see it</h2>
+  <ul>
+    <li>A teacher sees your child's first name, age, levels and goals for the lessons they give, and your first name in the video room.</li>
+    <li>Parents see a teacher's first name and last initial, public profile and the titles of verified qualifications.</li>
+    <li>Our team can access the data needed to run and protect the Service.</li>
+    <li>Service providers working for us: Stripe (payments), Daily (video lessons), <%= legal(:host_name) %> (hosting), our email service provider, and the payout services or banks used to pay teachers.</li>
+    <li>Authorities, when the law requires it.</li>
+  </ul>
+
+  <h2>5. Transfers outside the European Union</h2>
+  <p>Some of these providers, and teachers living abroad, may process or receive data outside the European Union. In that case we rely on an adequacy decision, standard contractual clauses or another safeguard allowed by law.</p>
+
+  <h2>6. How long we keep it</h2>
+  <ul>
+    <li>Account data: until you delete your account. When you do, we erase your name, email, phone number, your children's profiles, your teacher profile, uploaded documents, payout details and the IP addresses saved with consents.</li>
+    <li>Records of payments, refunds, earnings and payouts are kept, without your name, for the period the law requires for accounting documents (generally ten years in France).</li>
+    <li>Server logs are kept for a limited time, at most 12 months.</li>
+    <li>Copies in backups disappear when the backups are rotated out.</li>
+  </ul>
+
+  <h2>7. Your rights</h2>
+  <p>You have the right to access, correct, erase, restrict and object to the use of your data, to receive it in a portable format, and to withdraw a consent at any time. Most of this is available on the My account page (download your data, delete your account). For anything else, write to <%= legal(:privacy_email) %>. We answer within one month. You can also complain to the CNIL (cnil.fr) or to the data protection authority of the country where you live.</p>
+
+  <h2>8. Children</h2>
+  <p>The Service is for adults. Only parents or legal guardians create profiles for their children, with the minimum information needed. Teachers talk to children only during lessons on the Service.</p>
+
+  <h2>9. Security</h2>
+  <p>Connections are encrypted, passwords are stored in scrambled form, payout details are encrypted, and access is limited to what each person needs. If a data breach puts your rights at risk, we will tell you and the authority as the law requires.</p>
+
+  <h2>10. Changes</h2>
+  <p>We will update this policy when the Service or the law changes, and tell you about important changes. The date at the top shows the current version.</p>
+<% end %>
