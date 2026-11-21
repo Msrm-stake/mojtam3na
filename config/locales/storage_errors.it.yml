@@ -1,0 +1,3 @@
+it:
+  errors:
+    storage_unavailable: "Non siamo riusciti a salvare il tuo file in questo momento. Riprova tra poco. Se il problema continua, contattaci."
