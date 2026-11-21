@@ -45,7 +45,6 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root "teacher_profiles#index"
-      get "storage_check", to: "storage_checks#show"
 
       resources :teacher_profiles, only: %i[index show] do
         member do
