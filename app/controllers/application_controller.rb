@@ -24,12 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def storage_unavailable(error)
-    context = error.respond_to?(:context) ? error.context : nil
-    Rails.logger.error(
-      "File storage error: #{error.class} operation=#{context&.operation_name} " \
-      "method=#{context&.http_request&.http_method} status=#{context&.http_response&.status_code} " \
-      "path=#{request.path}"
-    )
+    Rails.logger.error("File storage error: #{StorageCheck.describe(error)} path=#{request.path}")
     Rails.logger.error(Array(error.backtrace).first(25).join("\n"))
     redirect_back_or_to root_path, alert: t("errors.storage_unavailable"), status: :see_other
   end
