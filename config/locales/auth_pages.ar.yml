@@ -1,0 +1,27 @@
+ar:
+  auth_pages:
+    fields:
+      email: "البريد الإلكتروني"
+      password: "كلمة المرور"
+      new_password: "كلمة المرور الجديدة"
+      password_confirmation: "تأكيد كلمة المرور الجديدة"
+    sessions:
+      new:
+        title: "مرحباً بعودتك"
+        subtitle: "سجّل الدخول لإدارة دروسك."
+        remember_me: "أبقني مسجّل الدخول"
+        submit: "تسجيل الدخول"
+        forgot_password: "هل نسيت كلمة المرور؟"
+        no_account: "جديد هنا؟"
+        sign_up: "إنشاء حساب"
+    passwords:
+      new:
+        title: "هل نسيت كلمة المرور؟"
+        subtitle: "أدخل بريدك الإلكتروني وسنرسل لك رابطاً لاختيار كلمة مرور جديدة."
+        submit: "أرسل لي الرابط"
+        back: "العودة إلى تسجيل الدخول"
+      edit:
+        title: "اختر كلمة مرور جديدة"
+        subtitle: "اختر كلمة مرور لا تستخدمها في أي مكان آخر."
+        hint: "%{minimum} أحرف على الأقل."
+        submit: "حفظ كلمة المرور"

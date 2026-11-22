@@ -1,0 +1,27 @@
+es:
+  auth_pages:
+    fields:
+      email: "Correo electrónico"
+      password: "Contraseña"
+      new_password: "Nueva contraseña"
+      password_confirmation: "Confirma la nueva contraseña"
+    sessions:
+      new:
+        title: "Bienvenido de nuevo"
+        subtitle: "Inicia sesión para gestionar tus clases."
+        remember_me: "Mantener la sesión iniciada"
+        submit: "Iniciar sesión"
+        forgot_password: "¿Olvidaste tu contraseña?"
+        no_account: "¿Nuevo aquí?"
+        sign_up: "Crear una cuenta"
+    passwords:
+      new:
+        title: "¿Olvidaste tu contraseña?"
+        subtitle: "Escribe tu correo electrónico y te enviaremos un enlace para elegir una nueva."
+        submit: "Enviarme el enlace"
+        back: "Volver a iniciar sesión"
+      edit:
+        title: "Elige una nueva contraseña"
+        subtitle: "Elige una contraseña que no uses en ningún otro sitio."
+        hint: "Al menos %{minimum} caracteres."
+        submit: "Guardar la contraseña"

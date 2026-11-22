@@ -1,0 +1,27 @@
+en:
+  auth_pages:
+    fields:
+      email: "Email"
+      password: "Password"
+      new_password: "New password"
+      password_confirmation: "Confirm new password"
+    sessions:
+      new:
+        title: "Welcome back"
+        subtitle: "Log in to manage your lessons."
+        remember_me: "Keep me logged in"
+        submit: "Log in"
+        forgot_password: "Forgot your password?"
+        no_account: "New here?"
+        sign_up: "Create an account"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        subtitle: "Enter your email address and we will send you a link to choose a new one."
+        submit: "Send me the link"
+        back: "Back to log in"
+      edit:
+        title: "Choose a new password"
+        subtitle: "Pick a password you do not use anywhere else."
+        hint: "At least %{minimum} characters."
+        submit: "Save new password"

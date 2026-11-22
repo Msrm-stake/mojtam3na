@@ -1,20 +1,28 @@
-<h2>Log in</h2>
+<div class="auth">
+  <div class="auth-card">
+    <div class="auth-card__header">
+      <h1 class="auth-card__title"><%= t("auth_pages.sessions.new.title") %></h1>
+      <p class="auth-card__subtitle"><%= t("auth_pages.sessions.new.subtitle") %></p>
+    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
+      <%= f.input :email, required: false, label: t("auth_pages.fields.email"),
+                  input_html: { autofocus: true, autocomplete: "email", inputmode: "email" } %>
+      <%= f.input :password, required: false, label: t("auth_pages.fields.password"),
+                  input_html: { autocomplete: "current-password" } %>
+      <% if devise_mapping.rememberable? %>
+        <%= f.input :remember_me, as: :boolean, label: t("auth_pages.sessions.new.remember_me"),
+                    wrapper_html: { class: "auth-form__remember" } %>
+      <% end %>
+      <%= f.button :submit, t("auth_pages.sessions.new.submit"), class: "btn btn-primary auth-form__submit" %>
+    <% end %>
+
+    <div class="auth-card__links">
+      <%= link_to t("auth_pages.sessions.new.forgot_password"), new_password_path(resource_name) %>
+      <% if devise_mapping.registerable? %>
+        <span><%= t("auth_pages.sessions.new.no_account") %>
+          <%= link_to t("auth_pages.sessions.new.sign_up"), new_registration_path(resource_name) %></span>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

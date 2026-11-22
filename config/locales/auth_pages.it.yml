@@ -1,0 +1,27 @@
+it:
+  auth_pages:
+    fields:
+      email: "E-mail"
+      password: "Password"
+      new_password: "Nuova password"
+      password_confirmation: "Conferma la nuova password"
+    sessions:
+      new:
+        title: "Bentornato"
+        subtitle: "Accedi per gestire le tue lezioni."
+        remember_me: "Resta connesso"
+        submit: "Accedi"
+        forgot_password: "Hai dimenticato la password?"
+        no_account: "Prima volta qui?"
+        sign_up: "Crea un account"
+    passwords:
+      new:
+        title: "Hai dimenticato la password?"
+        subtitle: "Inserisci il tuo indirizzo e-mail: ti invieremo un link per sceglierne una nuova."
+        submit: "Inviami il link"
+        back: "Torna all'accesso"
+      edit:
+        title: "Scegli una nuova password"
+        subtitle: "Scegli una password che non usi altrove."
+        hint: "Almeno %{minimum} caratteri."
+        submit: "Salva la password"
