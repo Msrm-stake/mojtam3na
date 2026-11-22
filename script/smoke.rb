@@ -10,6 +10,7 @@ Rack::Attack.cache.store.clear
 puts "Ruby #{RUBY_VERSION}, Rails #{Rails.version}"
 puts "default public file routes removed: #{!Rails.application.routes.url_helpers.method_defined?(:rails_blob_path)}"
 puts "Action Cable endpoint switched off: #{Rails.application.routes.routes.none? { |r| r.path.spec.to_s.start_with?("/cable") }}"
+puts "image analysis switched off: #{ActiveStorage.analyzers.empty?}"
 puts "job tables in the main database: #{%w[solid_queue_jobs solid_queue_recurring_tasks solid_queue_processes].all? { |t| ActiveRecord::Base.connection.table_exists?(t) }}"
 recurring = YAML.safe_load(ERB.new(File.read("config/recurring.yml")).result, aliases: true).fetch("production")
 puts "scheduled jobs: #{recurring.keys.sort.inspect}, classes exist: #{recurring.values.filter_map { |t| t["class"] }.all? { |name| name.safe_constantize }}"
