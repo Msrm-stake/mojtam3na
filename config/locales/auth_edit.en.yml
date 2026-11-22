@@ -1,0 +1,15 @@
+en:
+  auth_pages:
+    registrations:
+      edit:
+        title: "Your login details"
+        subtitle: "Change your email or password."
+        password: "New password"
+        password_confirmation: "Confirm new password"
+        current_password: "Current password"
+        password_hint: "Leave blank to keep your current password."
+        current_password_hint: "We need your current password to confirm the changes."
+        submit: "Save changes"
+        delete_text: "Want to delete your account?"
+        delete_link: "Open My account"
+        back: "Back to my account"

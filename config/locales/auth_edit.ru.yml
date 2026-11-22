@@ -1,0 +1,15 @@
+ru:
+  auth_pages:
+    registrations:
+      edit:
+        title: "Данные для входа"
+        subtitle: "Измените адрес электронной почты или пароль."
+        password: "Новый пароль"
+        password_confirmation: "Подтвердите новый пароль"
+        current_password: "Текущий пароль"
+        password_hint: "Оставьте пустым, чтобы сохранить текущий пароль."
+        current_password_hint: "Для подтверждения изменений нужен текущий пароль."
+        submit: "Сохранить изменения"
+        delete_text: "Хотите удалить аккаунт?"
+        delete_link: "Открыть «Мой аккаунт»"
+        back: "Назад в мой аккаунт"

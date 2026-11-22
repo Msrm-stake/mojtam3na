@@ -1,0 +1,15 @@
+ar:
+  auth_pages:
+    registrations:
+      edit:
+        title: "بيانات تسجيل الدخول"
+        subtitle: "غيّر بريدك الإلكتروني أو كلمة المرور."
+        password: "كلمة مرور جديدة"
+        password_confirmation: "تأكيد كلمة المرور الجديدة"
+        current_password: "كلمة المرور الحالية"
+        password_hint: "اتركه فارغاً للاحتفاظ بكلمة المرور الحالية."
+        current_password_hint: "نحتاج إلى كلمة مرورك الحالية لتأكيد التغييرات."
+        submit: "حفظ التغييرات"
+        delete_text: "هل تريد حذف حسابك؟"
+        delete_link: "افتح حسابي"
+        back: "العودة إلى حسابي"

@@ -1,0 +1,15 @@
+es:
+  auth_pages:
+    registrations:
+      edit:
+        title: "Tus datos de acceso"
+        subtitle: "Cambia tu correo o tu contraseña."
+        password: "Nueva contraseña"
+        password_confirmation: "Confirmar la nueva contraseña"
+        current_password: "Contraseña actual"
+        password_hint: "Déjala en blanco para mantener tu contraseña actual."
+        current_password_hint: "Necesitamos tu contraseña actual para confirmar los cambios."
+        submit: "Guardar cambios"
+        delete_text: "¿Quieres eliminar tu cuenta?"
+        delete_link: "Abrir Mi cuenta"
+        back: "Volver a mi cuenta"

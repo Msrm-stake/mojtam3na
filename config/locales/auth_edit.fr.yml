@@ -1,0 +1,15 @@
+fr:
+  auth_pages:
+    registrations:
+      edit:
+        title: "Vos identifiants"
+        subtitle: "Modifiez votre e-mail ou votre mot de passe."
+        password: "Nouveau mot de passe"
+        password_confirmation: "Confirmer le nouveau mot de passe"
+        current_password: "Mot de passe actuel"
+        password_hint: "Laissez vide pour garder votre mot de passe actuel."
+        current_password_hint: "Nous avons besoin de votre mot de passe actuel pour confirmer les changements."
+        submit: "Enregistrer"
+        delete_text: "Vous souhaitez supprimer votre compte ?"
+        delete_link: "Ouvrir Mon compte"
+        back: "Retour à mon compte"
