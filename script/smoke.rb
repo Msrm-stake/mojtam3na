@@ -1,4 +1,6 @@
 # Checks the main flows in one run. Uses the development database and rolls everything back.
+# Jobs are run with ActiveJob::Base.execute, the way real workers run them. Calling perform_now after web requests in the
+# same process fails on Rails 8.1 (a test-script artifact: no server does that).
 # Run with: bin/rails runner script/smoke.rb
 ActionController::Base.allow_forgery_protection = false
 ActionMailer::Base.delivery_method = :test
@@ -99,14 +101,14 @@ ActiveRecord::Base.transaction do
   ActionMailer::Base.deliveries.clear
   soon = make_paid.call(teacher.teacher_profile, 1)
   soon.update_columns(starts_at: 30.minutes.from_now, ends_at: 90.minutes.from_now)
-  handled = LessonRemindersJob.perform_now
+  handled = ActiveJob::Base.execute(LessonRemindersJob.new.serialize)
   recipients = ActionMailer::Base.deliveries.flat_map(&:to)
   puts "reminders job: #{[handled >= 1, recipients.include?("p-doc@example.com"), recipients.include?("t-doc@example.com")].inspect}"
   puts "reminded only once: #{!Lesson.needing_reminder.exists?(soon.id)}"
 
   finished = make_paid.call(other_teacher.teacher_profile, 2)
   finished.update_columns(starts_at: 50.hours.ago, ends_at: 49.hours.ago)
-  result = PaymentsMaintenanceJob.perform_now
+  result = ActiveJob::Base.execute(PaymentsMaintenanceJob.new.serialize)
   puts "maintenance job: #{[result[:confirmed] >= 1, Earning.exists?(lesson_id: finished.id)].inspect}"
 
   uploaded.each { |blob| blob.service.delete(blob.key) }
