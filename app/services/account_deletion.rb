@@ -67,6 +67,7 @@ class AccountDeletion
     profile = @user.teacher_profile
     return unless profile
 
+    profile.remove_photo!
     profile.qualifications.each do |qualification|
       qualification.document.purge if qualification.document.attached?
       qualification.destroy!

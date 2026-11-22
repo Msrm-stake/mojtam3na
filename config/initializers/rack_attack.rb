@@ -10,6 +10,7 @@ class Rack::Attack
   PASSWORD_RESET_PATH = %r{\A#{LOCALE_PREFIX}/users/password/?\z}
   ACCOUNT_PATH = %r{\A#{LOCALE_PREFIX}/account(/export)?/?\z}
   BOOKING_PATH = %r{\A#{LOCALE_PREFIX}/teachers/\d+/lessons/?\z}
+  PHOTO_PATH = %r{\A#{LOCALE_PREFIX}/teachers/\d+/photo/?\z}
 
   def self.email_param(req)
     req.params.dig("user", "email").to_s.downcase.strip.presence
@@ -47,7 +48,12 @@ class Rack::Attack
 
   # A general limit per address. Assets, the health check and Stripe's webhook are never limited.
   throttle("requests/ip", limit: 300, period: 5.minutes) do |req|
-    req.ip unless req.path.start_with?("/assets", "/up", "/stripe/webhooks")
+    req.ip unless req.path.start_with?("/assets", "/up", "/stripe/webhooks") || req.path.match?(PHOTO_PATH)
+  end
+
+  # Photos are small and cached by browsers, but a page of teacher cards loads many of them.
+  throttle("photos/ip", limit: 600, period: 5.minutes) do |req|
+    req.ip if req.get? && req.path.match?(PHOTO_PATH)
   end
 
   self.throttled_responder = lambda do |request|

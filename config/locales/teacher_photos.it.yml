@@ -1,0 +1,6 @@
+it:
+  teacher_profiles:
+    photo:
+      errors:
+        type: "La foto deve essere un'immagine JPG o PNG."
+        size: "La foto è troppo grande (massimo 1,5 MB)."

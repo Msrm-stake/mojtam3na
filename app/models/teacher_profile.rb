@@ -1,6 +1,8 @@
 class TeacherProfile < ApplicationRecord
   include TeacherPayouts
   CURRENCIES = %w[EUR].freeze
+  PHOTO_TYPES = %w[image/jpeg image/png].freeze
+  PHOTO_MAX_BYTES = 1_500_000
 
   belongs_to :user
   belongs_to :approved_by, class_name: "User", optional: true
@@ -12,6 +14,11 @@ class TeacherProfile < ApplicationRecord
   has_many :qualifications, dependent: :destroy
   has_many :availability_slots, dependent: :destroy
   has_many :lessons, dependent: :destroy
+
+  # The live photo is shown to parents. A new photo waits in pending_photo until an admin approves it,
+  # and the old live photo stays visible meanwhile. Both are stored in the private bucket.
+  has_one_attached :photo
+  has_one_attached :pending_photo
 
   # Only approved profiles appear in search.
   enum :status, { pending: "pending", approved: "approved", rejected: "rejected", suspended: "suspended" }, prefix: true
@@ -28,6 +35,7 @@ class TeacherProfile < ApplicationRecord
   validates :gender, inclusion: { in: %w[female male] }, allow_nil: true
   validates :intro_video_url, format: { with: %r{\Ahttps?://\S+\z}i }, allow_nil: true
   validate :user_must_be_teacher
+  validate :pending_photo_rules
 
   def hourly_rate
     hourly_rate_cents / 100.0
@@ -90,11 +98,47 @@ class TeacherProfile < ApplicationRecord
     starts.sort
   end
 
+  def photo_pending?
+    pending_photo.attached?
+  end
+
+  # Moves the waiting photo into place. The previous live photo is removed from the bucket.
+  def approve_photo!
+    return false unless pending_photo.attached?
+
+    photo.attach(pending_photo.blob)
+    pending_photo.detach
+    update!(photo_rejected_at: nil)
+    true
+  end
+
+  def reject_photo!
+    return false unless pending_photo.attached?
+
+    pending_photo.purge
+    update!(photo_rejected_at: Time.current)
+    true
+  end
+
+  # Removes the live and the waiting photo (moderation, and when an account is deleted).
+  def remove_photo!
+    photo.purge if photo.attached?
+    pending_photo.purge if pending_photo.attached?
+  end
+
   private
 
   def normalize_fields
     self.gender = nil if gender.blank?
     self.intro_video_url = intro_video_url.to_s.strip.presence
+  end
+
+  def pending_photo_rules
+    return unless pending_photo.attached?
+
+    blob = pending_photo.blob
+    errors.add(:pending_photo, I18n.t("teacher_profiles.photo.errors.type")) unless PHOTO_TYPES.include?(blob.content_type)
+    errors.add(:pending_photo, I18n.t("teacher_profiles.photo.errors.size")) if blob.byte_size > PHOTO_MAX_BYTES
   end
 
   def user_must_be_teacher

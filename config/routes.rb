@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       post :export
     end
 
+    # Teacher photos live in the private bucket and are served by the site.
+    get "teachers/:id/photo", to: "teacher_photos#show", as: :teacher_photo, constraints: { id: /\d+/ }
+    get "teachers/:id/pending-photo", to: "teacher_photos#pending", as: :pending_teacher_photo, constraints: { id: /\d+/ }
+
     resources :teachers, only: %i[index show] do
       resources :lessons, only: %i[new create]
     end

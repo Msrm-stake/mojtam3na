@@ -1,0 +1,6 @@
+ru:
+  teacher_profiles:
+    photo:
+      errors:
+        type: "Фото должно быть изображением JPG или PNG."
+        size: "Фото слишком большое (максимум 1,5 МБ)."

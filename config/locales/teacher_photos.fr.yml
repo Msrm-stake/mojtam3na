@@ -1,0 +1,6 @@
+fr:
+  teacher_profiles:
+    photo:
+      errors:
+        type: "La photo doit être une image JPG ou PNG."
+        size: "La photo est trop volumineuse (1,5 Mo maximum)."

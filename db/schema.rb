@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_20_054112) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_22_070022) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -392,6 +392,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_20_054112) do
     t.string "payout_method"
     t.text "payout_details"
     t.datetime "payout_details_updated_at"
+    t.datetime "photo_rejected_at"
     t.index ["approved_by_id"], name: "index_teacher_profiles_on_approved_by_id"
     t.index ["status"], name: "index_teacher_profiles_on_status"
     t.index ["user_id"], name: "index_teacher_profiles_on_user_id", unique: true

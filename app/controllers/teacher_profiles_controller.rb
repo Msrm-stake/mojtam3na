@@ -5,7 +5,9 @@ class TeacherProfilesController < ApplicationController
   def edit; end
 
   def update
+    new_photo = params.dig(:teacher_profile, :pending_photo).present?
     if @profile.update(profile_params)
+      @profile.update_column(:photo_rejected_at, nil) if new_photo
       redirect_to edit_teacher_profile_path, notice: t(".updated")
     else
       render :edit, status: :unprocessable_entity
@@ -26,7 +28,7 @@ class TeacherProfilesController < ApplicationController
   def profile_params
     params.require(:teacher_profile).permit(
       :headline, :bio, :gender, :years_experience, :hourly_rate, :currency,
-      :min_age, :max_age, :intro_video_url,
+      :min_age, :max_age, :intro_video_url, :pending_photo,
       language_ids: [], subject_ids: []
     )
   end

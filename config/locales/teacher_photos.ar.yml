@@ -1,0 +1,6 @@
+ar:
+  teacher_profiles:
+    photo:
+      errors:
+        type: "يجب أن تكون الصورة بصيغة JPG أو PNG."
+        size: "الصورة كبيرة جداً (الحد الأقصى 1.5 ميغابايت)."
