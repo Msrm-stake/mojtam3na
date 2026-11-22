@@ -15,6 +15,8 @@ module Mojtam3na
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+    # Action Cable is not used: do not expose its endpoint.
+    config.action_cable.mount_path = nil
     config.i18n.available_locales = %i[en fr es it ru ar]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
