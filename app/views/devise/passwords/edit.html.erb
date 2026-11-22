@@ -1,12 +1,12 @@
-<div class="auth">
-  <div class="auth-card">
-    <div class="auth-card__header">
-      <h1 class="auth-card__title"><%= t("auth_pages.passwords.edit.title") %></h1>
-      <p class="auth-card__subtitle"><%= t("auth_pages.passwords.edit.subtitle") %></p>
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-card__header">
+      <h1 class="login-card__title"><%= t("auth_pages.passwords.edit.title") %></h1>
+      <p class="login-card__subtitle"><%= t("auth_pages.passwords.edit.subtitle") %></p>
     </div>
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name),
-                        html: { method: :put, class: "auth-form" }) do |f| %>
+                        html: { method: :put, class: "login-form" }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
       <%= f.full_error :reset_password_token, class: "text-danger small d-block mb-2" %>
       <%= f.input :password, required: true, label: t("auth_pages.fields.new_password"),
@@ -14,10 +14,10 @@
                   input_html: { autofocus: true, autocomplete: "new-password" } %>
       <%= f.input :password_confirmation, required: true, label: t("auth_pages.fields.password_confirmation"),
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.button :submit, t("auth_pages.passwords.edit.submit"), class: "btn btn-primary auth-form__submit" %>
+      <%= f.button :submit, t("auth_pages.passwords.edit.submit"), class: "btn btn-primary login-form__submit" %>
     <% end %>
 
-    <div class="auth-card__links">
+    <div class="login-card__links">
       <%= link_to t("auth_pages.passwords.new.back"), new_session_path(resource_name) %>
     </div>
   </div>

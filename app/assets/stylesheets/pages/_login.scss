@@ -1,12 +1,12 @@
 // Log in, forgot password and choose-a-new-password pages.
-.auth {
+.login-page {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 2.5rem 1rem 4rem;
 }
 
-.auth-card {
+.login-card {
   width: 100%;
   max-width: 28rem;
   background: #ffffff;
@@ -55,7 +55,7 @@
   }
 }
 
-.auth-form {
+.login-form {
   label,
   .form-label {
     font-weight: 600;

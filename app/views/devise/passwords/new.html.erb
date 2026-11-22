@@ -1,18 +1,18 @@
-<div class="auth">
-  <div class="auth-card">
-    <div class="auth-card__header">
-      <h1 class="auth-card__title"><%= t("auth_pages.passwords.new.title") %></h1>
-      <p class="auth-card__subtitle"><%= t("auth_pages.passwords.new.subtitle") %></p>
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-card__header">
+      <h1 class="login-card__title"><%= t("auth_pages.passwords.new.title") %></h1>
+      <p class="login-card__subtitle"><%= t("auth_pages.passwords.new.subtitle") %></p>
     </div>
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name),
-                        html: { method: :post, class: "auth-form" }) do |f| %>
+                        html: { method: :post, class: "login-form" }) do |f| %>
       <%= f.input :email, required: true, label: t("auth_pages.fields.email"),
                   input_html: { autofocus: true, autocomplete: "email", inputmode: "email" } %>
-      <%= f.button :submit, t("auth_pages.passwords.new.submit"), class: "btn btn-primary auth-form__submit" %>
+      <%= f.button :submit, t("auth_pages.passwords.new.submit"), class: "btn btn-primary login-form__submit" %>
     <% end %>
 
-    <div class="auth-card__links">
+    <div class="login-card__links">
       <%= link_to t("auth_pages.passwords.new.back"), new_session_path(resource_name) %>
     </div>
   </div>

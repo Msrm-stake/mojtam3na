@@ -1,23 +1,23 @@
-<div class="auth">
-  <div class="auth-card">
-    <div class="auth-card__header">
-      <h1 class="auth-card__title"><%= t("auth_pages.sessions.new.title") %></h1>
-      <p class="auth-card__subtitle"><%= t("auth_pages.sessions.new.subtitle") %></p>
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-card__header">
+      <h1 class="login-card__title"><%= t("auth_pages.sessions.new.title") %></h1>
+      <p class="login-card__subtitle"><%= t("auth_pages.sessions.new.subtitle") %></p>
     </div>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
       <%= f.input :email, required: false, label: t("auth_pages.fields.email"),
                   input_html: { autofocus: true, autocomplete: "email", inputmode: "email" } %>
       <%= f.input :password, required: false, label: t("auth_pages.fields.password"),
                   input_html: { autocomplete: "current-password" } %>
       <% if devise_mapping.rememberable? %>
         <%= f.input :remember_me, as: :boolean, label: t("auth_pages.sessions.new.remember_me"),
-                    wrapper_html: { class: "auth-form__remember" } %>
+                    wrapper_html: { class: "login-form__remember" } %>
       <% end %>
-      <%= f.button :submit, t("auth_pages.sessions.new.submit"), class: "btn btn-primary auth-form__submit" %>
+      <%= f.button :submit, t("auth_pages.sessions.new.submit"), class: "btn btn-primary login-form__submit" %>
     <% end %>
 
-    <div class="auth-card__links">
+    <div class="login-card__links">
       <%= link_to t("auth_pages.sessions.new.forgot_password"), new_password_path(resource_name) %>
       <% if devise_mapping.registerable? %>
         <span><%= t("auth_pages.sessions.new.no_account") %>
