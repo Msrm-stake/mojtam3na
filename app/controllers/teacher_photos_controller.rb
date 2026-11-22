@@ -12,7 +12,7 @@ class TeacherPhotosController < ApplicationController
     profile = TeacherProfile.find(params[:id])
     raise ActiveRecord::RecordNotFound unless profile.user_id == current_user.id || current_user.role_admin?
 
-    send_photo(profile.pending_photo, shared_cache: false)
+    send_photo(params[:live] == "1" ? profile.photo : profile.pending_photo, shared_cache: false)
   end
 
   private

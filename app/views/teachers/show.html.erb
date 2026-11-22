@@ -7,7 +7,7 @@
     <div class="col-lg-8">
       <div class="auth-card">
         <div class="profile-header">
-          <div class="teacher-avatar profile-avatar" aria-hidden="true"><%= user.first_name.to_s[0].to_s.upcase %></div>
+          <%= teacher_portrait(@profile, size: :profile) %>
           <div>
             <h1 class="h3 mb-1"><%= public_name(user) %></h1>
             <p class="mb-0"><%= @profile.headline.presence || t("teachers.index.no_headline") %></p>

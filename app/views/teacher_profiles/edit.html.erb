@@ -18,15 +18,52 @@
           <%= f.error_notification %>
 
           <h2 class="h5 mt-4"><%= t(".section_about") %></h2>
+
+          <div class="tphoto-section" data-controller="photo-resize"
+               data-photo-resize-type-error-value="<%= t(".photo.type_error") %>">
+            <div class="tphoto-section__preview" data-photo-resize-target="preview">
+              <%= teacher_portrait(@profile, size: :form) %>
+            </div>
+            <div class="tphoto-section__body">
+              <h3 class="h6"><%= t(".photo.title") %></h3>
+              <p class="small mb-2"><%= t(".photo.intro") %></p>
+              <% if @profile.pending_photo.attached? && @profile.pending_photo.blob.persisted? %>
+                <div class="alert alert-info small py-2 d-flex align-items-center gap-3" role="status">
+                  <%= image_tag pending_teacher_photo_path(@profile, v: @profile.pending_photo.blob.id), alt: "", width: 56, height: 56,
+                        class: "tphoto-review tphoto-review--small" %>
+                  <span><%= t(".photo.waiting") %></span>
+                </div>
+              <% elsif @profile.photo_rejected_at.present? %>
+                <div class="alert alert-warning small py-2" role="status"><%= t(".photo.rejected") %></div>
+              <% end %>
+              <%= f.input :pending_photo, as: :file, required: false, label: t(".photo.upload"), hint: t(".photo.hint"),
+                    input_html: { accept: "image/jpeg,image/png",
+                                  data: { photo_resize_target: "input", action: "change->photo-resize#resize" } } %>
+              <p class="small text-danger mb-0" data-photo-resize-target="error" hidden></p>
+            </div>
+          </div>
+
+          <fieldset class="tphoto-gender">
+            <legend class="tphoto-gender__legend"><%= t(".photo.avatar_title") %></legend>
+            <p class="small"><%= t(".photo.avatar_intro") %></p>
+            <div class="tphoto-gender__choices">
+              <% %w[female male].each do |kind| %>
+                <label class="tphoto-choice">
+                  <%= f.radio_button :gender, kind, class: "tphoto-choice__input" %>
+                  <span class="tphoto-choice__card">
+                    <span class="tphoto tphoto--choice tphoto--avatar"><%= render "teacher_profiles/avatar", kind: kind %></span>
+                    <span class="tphoto-choice__label"><%= t("teacher_profiles.genders.#{kind}") %></span>
+                  </span>
+                </label>
+              <% end %>
+            </div>
+          </fieldset>
+
           <%= f.input :headline, required: false %>
           <%= f.input :bio, as: :text, required: false, input_html: { rows: 6 } %>
           <div class="row">
             <div class="col-sm-6">
               <%= f.input :years_experience, as: :integer, required: false, input_html: { min: 0 } %>
-            </div>
-            <div class="col-sm-6">
-              <%= f.input :gender, required: false, include_blank: true,
-                    collection: [[t("teacher_profiles.genders.female"), "female"], [t("teacher_profiles.genders.male"), "male"]] %>
             </div>
           </div>
           <%= f.input :intro_video_url, as: :url, required: false %>

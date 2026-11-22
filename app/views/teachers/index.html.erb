@@ -36,7 +36,7 @@
       <% @profiles.each do |profile| %>
         <div class="col-md-6 col-lg-4">
           <%= link_to teacher_path(profile), class: "teacher-card" do %>
-            <div class="teacher-avatar" aria-hidden="true"><%= profile.user.first_name.to_s[0].to_s.upcase %></div>
+            <%= teacher_portrait(profile) %>
             <div class="teacher-name"><%= public_name(profile.user) %></div>
             <div class="teacher-headline"><%= profile.headline.presence || t(".no_headline") %></div>
             <div class="chips mt-3">

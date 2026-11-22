@@ -1,0 +1,13 @@
+fr:
+  teacher_profiles:
+    edit:
+      photo:
+        title: "Photo de profil"
+        intro: "Ajoutez une photo ou choisissez un avatar ci-dessous. Les parents ne voient une photo qu'après validation par notre équipe."
+        upload: "Choisir une photo"
+        hint: "JPG ou PNG. Votre photo est recadrée en carré et réduite automatiquement."
+        waiting: "Votre nouvelle photo est en attente de validation. D'ici là, les parents voient votre image actuelle."
+        rejected: "Votre dernière photo n'a pas été validée. Choisissez-en une autre, ou gardez votre avatar."
+        avatar_title: "Avatar"
+        avatar_intro: "Votre choix indique aussi votre genre sur votre profil. Les parents voient cet avatar si vous n'avez pas de photo."
+        type_error: "Veuillez choisir une image JPG ou PNG."

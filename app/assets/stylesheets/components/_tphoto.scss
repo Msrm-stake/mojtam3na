@@ -1,0 +1,141 @@
+// Teacher portrait: a photo, an avatar or a first letter in a round frame. New class names only (tphoto-*).
+.tphoto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #f3e7bd;
+  border: 3px solid #c9a227;
+  box-shadow: 0 4px 12px rgba(8, 69, 56, 0.15);
+  line-height: 0;
+
+  &--card {
+    width: 4.75rem;
+    height: 4.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &--profile {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  &--form {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  &--choice {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  &--letter {
+    background: #0b5d4b;
+    color: #fbf7ee;
+    font-weight: 800;
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+
+  &__img,
+  &__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__bg { fill: #f3e7bd; }
+  &__skin { fill: #fbf7ee; }
+  &__hair { fill: #084538; }
+  &__cloth { fill: #0b5d4b; }
+  &__accent { fill: #c9a227; }
+}
+
+.tphoto--profile.tphoto--letter { font-size: 2.6rem; }
+.tphoto--form.tphoto--letter { font-size: 2.4rem; }
+
+.tphoto-review {
+  display: block;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(11, 93, 75, 0.2);
+
+  &--small {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}
+
+.tphoto-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  background: #fbf7ee;
+  border: 1px solid rgba(11, 93, 75, 0.12);
+  border-radius: 1rem;
+
+  &__preview { flex-shrink: 0; }
+  &__body { flex: 1 1 14rem; min-width: 0; }
+}
+
+.tphoto-gender {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1.5rem;
+
+  &__legend {
+    float: none;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  &__choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.tphoto-choice {
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+}
+
+.tphoto-choice__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.tphoto-choice__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 8rem;
+  padding: 0.9rem 1.1rem;
+  background: #ffffff;
+  border: 2px solid rgba(11, 93, 75, 0.15);
+  border-radius: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tphoto-choice:hover .tphoto-choice__card { border-color: rgba(11, 93, 75, 0.45); }
+.tphoto-choice__input:checked + .tphoto-choice__card { border-color: #0b5d4b; box-shadow: 0 0 0 3px rgba(11, 93, 75, 0.18); }
+.tphoto-choice__input:focus-visible + .tphoto-choice__card { outline: 3px solid #c9a227; outline-offset: 2px; }
+.tphoto-choice__label { font-weight: 700; color: #084538; }

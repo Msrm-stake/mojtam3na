@@ -1,0 +1,19 @@
+en:
+  admin:
+    teacher_profiles:
+      photo_approved: "Photo approved. It is now visible to parents."
+      photo_rejected: "Photo rejected. The teacher can upload another one."
+      photo_removed: "Photo removed."
+      photo_none_waiting: "There is no photo waiting for review."
+      index:
+        photos_waiting: "Photos waiting for your review (%{count}):"
+      show:
+        photo:
+          title: "Profile photo"
+          live: "Visible to parents"
+          waiting: "Waiting for review"
+          none: "No photo."
+          approve: "Approve photo"
+          reject: "Reject photo"
+          remove: "Remove photo"
+          confirm_remove: "Remove this photo? The teacher will see that it was not approved."

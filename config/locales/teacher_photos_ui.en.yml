@@ -1,0 +1,13 @@
+en:
+  teacher_profiles:
+    edit:
+      photo:
+        title: "Profile picture"
+        intro: "Add a photo, or choose an avatar below. Parents see a photo only after our team has approved it."
+        upload: "Upload a photo"
+        hint: "JPG or PNG. Your photo is cropped to a square and made smaller automatically."
+        waiting: "Your new photo is waiting for review. Until then, parents see your current picture."
+        rejected: "Your last photo was not approved. Please upload a different one, or keep your avatar."
+        avatar_title: "Avatar"
+        avatar_intro: "Your choice is also shown as your gender on your profile. Parents see this avatar when you have no photo."
+        type_error: "Please choose a JPG or PNG image."

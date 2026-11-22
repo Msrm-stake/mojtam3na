@@ -1,6 +1,17 @@
 <div class="container auth-page">
   <h1 class="h3 mb-3"><%= t(".title") %></h1>
 
+  <% if @photos_waiting.any? %>
+    <div class="alert alert-warning" role="status">
+      <strong><%= t(".photos_waiting", count: @photos_waiting.size) %></strong>
+      <ul class="mb-0">
+        <% @photos_waiting.each do |profile| %>
+          <li><%= link_to profile.user.full_name, admin_teacher_profile_path(profile) %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <ul class="nav nav-pills mb-4">
     <% TeacherProfile.statuses.each_key do |status| %>
       <li class="nav-item">

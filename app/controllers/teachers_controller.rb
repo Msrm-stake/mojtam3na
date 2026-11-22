@@ -9,7 +9,7 @@ class TeachersController < ApplicationController
     @languages = Language.alphabetical
     @sort = SORTS.include?(params[:sort]) ? params[:sort] : "newest"
 
-    scope = TeacherProfile.status_approved.includes(:user, :languages, :subjects)
+    scope = TeacherProfile.status_approved.includes(:user, :languages, :subjects).with_attached_photo
     if params[:subject].present?
       scope = scope.where(id: TeacherSubject.where(subject_id: params[:subject]).select(:teacher_profile_id))
     end
@@ -27,7 +27,7 @@ class TeachersController < ApplicationController
 
   def show
     # Only approved profiles are public: anything else is a 404.
-    @profile = TeacherProfile.status_approved.includes(:user, :languages, :subjects).find(params[:id])
+    @profile = TeacherProfile.status_approved.includes(:user, :languages, :subjects).with_attached_photo.find(params[:id])
     @qualifications = @profile.qualifications.status_verified.order(:year_obtained, :id)
   end
 end

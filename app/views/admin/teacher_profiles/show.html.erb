@@ -94,6 +94,33 @@
     <% end %>
   </div>
 
+  <div class="auth-card mb-4">
+    <h2 class="h5 mb-3"><%= t(".photo.title") %></h2>
+    <div class="d-flex flex-wrap gap-4 align-items-start">
+      <div>
+        <div class="small text-body-secondary mb-1"><%= t(".photo.live") %></div>
+        <% if @profile.photo.attached? %>
+          <%= image_tag pending_teacher_photo_path(@profile, live: 1, v: @profile.photo.blob.id), alt: "", width: 140, height: 140, class: "tphoto-review" %>
+          <%= button_to t(".photo.remove"), remove_photo_admin_teacher_profile_path(@profile), method: :patch,
+                class: "btn btn-outline-danger btn-sm mt-2",
+                form: { data: { turbo_confirm: t(".photo.confirm_remove") } } %>
+        <% else %>
+          <div class="text-body-secondary"><%= t(".photo.none") %></div>
+        <% end %>
+      </div>
+      <% if @profile.pending_photo.attached? %>
+        <div>
+          <div class="small text-body-secondary mb-1"><%= t(".photo.waiting") %></div>
+          <%= image_tag pending_teacher_photo_path(@profile, v: @profile.pending_photo.blob.id), alt: "", width: 140, height: 140, class: "tphoto-review" %>
+          <div class="d-flex gap-2 mt-2">
+            <%= button_to t(".photo.approve"), approve_photo_admin_teacher_profile_path(@profile), method: :patch, class: "btn btn-primary btn-sm" %>
+            <%= button_to t(".photo.reject"), reject_photo_admin_teacher_profile_path(@profile), method: :patch, class: "btn btn-outline-secondary btn-sm" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="auth-card">
     <h2 class="h5 mb-3"><%= t(".qualifications_title") %></h2>
 

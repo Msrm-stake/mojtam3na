@@ -55,6 +55,9 @@ Rails.application.routes.draw do
           patch :approve
           patch :reject
           patch :suspend
+          patch :approve_photo
+          patch :reject_photo
+          patch :remove_photo
         end
       end
 
