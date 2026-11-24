@@ -1,0 +1,13 @@
+en:
+  teacher_mailer:
+    welcome_reminder:
+      subject: "Welcome to Mojtam3na"
+      heading: "Welcome to Mojtam3na, %{name}!"
+      intro: "Thank you for joining us as a teacher. Here is where your profile stands."
+      incomplete: "Your profile is not complete yet. Please add:"
+      ready: "Your profile is complete. Please press “Submit my profile for review” at the bottom of your profile page, so that we can review it."
+      waiting: "Your profile is complete and waiting for our review. We will be in touch soon."
+      approved: "Your profile is approved. Parents can now book lessons with you."
+      submit_note: "When everything is filled in, press “Submit my profile for review” at the bottom of your profile page."
+      button: "Open my profile"
+      footer: "Questions? Just reply to this email."

@@ -37,6 +37,21 @@ module Admin
       end
     end
 
+    # Welcome and reminder email to the teacher: what is still missing in the profile, in the teacher's language.
+    def send_reminder
+      profile = TeacherProfile.find(params[:id])
+      if profile.status_suspended?
+        redirect_to admin_teacher_profile_path(profile), alert: t("admin.teacher_profiles.reminder_suspended"), status: :see_other
+      elsif profile.reminder_sent_at.present? && profile.reminder_sent_at > 5.minutes.ago
+        redirect_to admin_teacher_profile_path(profile), alert: t("admin.teacher_profiles.reminder_too_soon"), status: :see_other
+      else
+        TeacherMailer.with(profile: profile).welcome_reminder.deliver_later
+        profile.update_column(:reminder_sent_at, Time.current)
+        redirect_to admin_teacher_profile_path(profile),
+                    notice: t("admin.teacher_profiles.reminder_sent", email: profile.user.email), status: :see_other
+      end
+    end
+
     def suspend
       @profile.suspend!
       redirect_to admin_teacher_profile_path(@profile), notice: t("admin.teacher_profiles.suspended"), status: :see_other

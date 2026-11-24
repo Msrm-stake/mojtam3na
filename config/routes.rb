@@ -60,6 +60,7 @@ Rails.application.routes.draw do
           patch :approve_photo
           patch :reject_photo
           patch :remove_photo
+          patch :send_reminder
         end
       end
 

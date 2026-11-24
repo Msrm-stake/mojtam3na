@@ -1,0 +1,16 @@
+<%= t(".heading", name: @user.first_name) %>
+
+<%= t(".intro") %>
+
+<%= t(".#{@case}") %>
+<% if @case == :incomplete %>
+<% @missing.each do |item| %>
+- <%= item %>
+<% end %>
+
+<%= t(".submit_note") %>
+<% end %>
+
+<%= t(".button") %>: <%= edit_teacher_profile_url(locale: I18n.locale) %>
+
+<%= t(".footer") %>

@@ -1,0 +1,10 @@
+en:
+  admin:
+    teacher_profiles:
+      reminder_sent: "Welcome / reminder email sent to %{email}."
+      reminder_too_soon: "An email was sent to this teacher a moment ago. Please wait a few minutes."
+      reminder_suspended: "This profile is suspended, so no email was sent."
+      show:
+        send_reminder: "Send welcome / reminder email"
+        confirm_reminder: "Send an email to this teacher with what is still missing in the profile?"
+        reminder_last: "Last welcome / reminder email: %{date}"

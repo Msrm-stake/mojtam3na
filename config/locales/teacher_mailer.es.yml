@@ -1,0 +1,13 @@
+es:
+  teacher_mailer:
+    welcome_reminder:
+      subject: "Bienvenido a Mojtam3na"
+      heading: "¡Bienvenido a Mojtam3na, %{name}!"
+      intro: "Gracias por unirte como profesor. Así está tu perfil."
+      incomplete: "Tu perfil aún no está completo. Por favor, añade:"
+      ready: "Tu perfil está completo. Pulsa «Enviar mi perfil para revisión» al final de tu página de perfil para que podamos revisarlo."
+      waiting: "Tu perfil está completo y pendiente de revisión. Te contactaremos pronto."
+      approved: "Tu perfil está aprobado. Los padres ya pueden reservar clases contigo."
+      submit_note: "Cuando todo esté completo, pulsa «Enviar mi perfil para revisión» al final de tu página de perfil."
+      button: "Abrir mi perfil"
+      footer: "¿Preguntas? Responde a este correo."

@@ -1,0 +1,13 @@
+it:
+  teacher_mailer:
+    welcome_reminder:
+      subject: "Benvenuto su Mojtam3na"
+      heading: "Benvenuto su Mojtam3na, %{name}!"
+      intro: "Grazie per esserti unito a noi come insegnante. Ecco a che punto è il tuo profilo."
+      incomplete: "Il tuo profilo non è ancora completo. Aggiungi:"
+      ready: "Il tuo profilo è completo. Premi «Invia il mio profilo per la verifica» in fondo alla pagina del profilo, così potremo esaminarlo."
+      waiting: "Il tuo profilo è completo e in attesa di verifica. Ti contatteremo presto."
+      approved: "Il tuo profilo è approvato. I genitori possono ora prenotare lezioni con te."
+      submit_note: "Quando tutto è compilato, premi «Invia il mio profilo per la verifica» in fondo alla pagina del profilo."
+      button: "Apri il mio profilo"
+      footer: "Domande? Rispondi semplicemente a questa e-mail."

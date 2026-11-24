@@ -83,7 +83,13 @@
               class: "btn btn-outline-secondary",
               form: { data: { turbo_confirm: t(".confirm_suspend") } } %>
       <% end %>
+      <%= button_to t(".send_reminder"), send_reminder_admin_teacher_profile_path(@profile), method: :patch,
+            class: "btn btn-outline-primary",
+            form: { data: { turbo_confirm: t(".confirm_reminder") } } %>
     </div>
+    <% if @profile.reminder_sent_at.present? %>
+      <p class="small text-body-secondary"><%= t(".reminder_last", date: l(@profile.reminder_sent_at, format: :short)) %></p>
+    <% end %>
 
     <% unless @profile.status_approved? || @profile.status_rejected? %>
       <%= form_with url: reject_admin_teacher_profile_path(@profile), method: :patch do %>
