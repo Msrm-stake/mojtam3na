@@ -51,7 +51,6 @@ class TeacherProfile < ApplicationRecord
   # What is still missing before an admin may approve this profile.
   def missing_for_approval
     missing = []
-    missing << :qualification unless qualifications.status_verified.exists?
     missing << :language unless teacher_languages.exists?
     missing << :subject unless teacher_subjects.exists?
     missing
