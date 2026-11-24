@@ -1,0 +1,6 @@
+fr:
+  teacher_profiles:
+    edit:
+      missing_title: "Votre profil n'est pas encore complet. Veuillez ajouter :"
+      save_hint: "Enregistre vos modifications sans envoyer le profil pour validation."
+      submit_hint: "Vos modifications sur cette page sont enregistrées lors de l'envoi."

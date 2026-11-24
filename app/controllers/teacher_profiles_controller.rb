@@ -12,8 +12,8 @@ class TeacherProfilesController < ApplicationController
 
     missing = @profile.missing_for_submission
     if missing.any?
-      names = missing.map { |item| t("teacher_profiles.submit.missing_items.#{item}") }.to_sentence
-      redirect_to edit_teacher_profile_path, alert: t("teacher_profiles.submit.missing", items: names), status: :see_other
+      flash[:profile_missing] = missing.map { |item| t("teacher_profiles.submit.missing_items.#{item}") }
+      redirect_to edit_teacher_profile_path, status: :see_other
     else
       @profile.submit_for_review!
       AdminNotifier.new_teacher(current_user)
@@ -25,6 +25,8 @@ class TeacherProfilesController < ApplicationController
     new_photo = params.dig(:teacher_profile, :pending_photo).present?
     if @profile.update(profile_params)
       @profile.update_column(:photo_rejected_at, nil) if new_photo
+      return submit if params[:submit_for_review].present?
+
       redirect_to edit_teacher_profile_path, notice: t(".updated")
     else
       render :edit, status: :unprocessable_entity

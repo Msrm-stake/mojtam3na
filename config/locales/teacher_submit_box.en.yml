@@ -1,0 +1,6 @@
+en:
+  teacher_profiles:
+    edit:
+      missing_title: "Your profile is not complete yet. Please add:"
+      save_hint: "Saves your changes without sending the profile for review."
+      submit_hint: "Your changes on this page are saved when you submit."
