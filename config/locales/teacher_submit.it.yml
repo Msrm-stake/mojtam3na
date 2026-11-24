@@ -1,0 +1,21 @@
+it:
+  teacher_profiles:
+    edit:
+      submit_review:
+        title: "Invia il tuo profilo per la verifica"
+        intro: "Quando tutto è compilato, invia il tuo profilo. Lo esamineremo e ti risponderemo. I certificati sono facoltativi, ma rassicurano i genitori."
+        button: "Invia il mio profilo per la verifica"
+        waiting: "Il tuo profilo è stato inviato ed è in attesa di verifica."
+        approved: "Il tuo profilo è approvato. I genitori possono prenotarti."
+        rejected: "Il tuo profilo richiede modifiche: %{reason}"
+        suspended: "Il tuo profilo è attualmente sospeso. Contattaci."
+    submit:
+      missing: "Il tuo profilo non è ancora completo. Manca: %{items}."
+      done: "Grazie! Il tuo profilo è stato inviato per la verifica."
+      missing_items:
+        headline: "un titolo"
+        bio: "una descrizione di te"
+        language: "almeno una lingua"
+        subject: "almeno una materia"
+        availability: "almeno una fascia di disponibilità settimanale"
+        price: "una tariffa oraria"

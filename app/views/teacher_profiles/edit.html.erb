@@ -129,6 +129,22 @@
             <% end %>
           </ul>
         <% end %>
+
+        <hr class="my-4">
+        <h2 class="h5"><%= t(".submit_review.title") %></h2>
+        <% if @profile.status_approved? %>
+          <p class="mb-0 text-success"><%= t(".submit_review.approved") %></p>
+        <% elsif @profile.status_suspended? %>
+          <p class="mb-0"><%= t(".submit_review.suspended") %></p>
+        <% elsif @profile.submitted? && !@profile.status_rejected? %>
+          <p class="mb-0"><%= t(".submit_review.waiting") %></p>
+        <% else %>
+          <% if @profile.status_rejected? && @profile.rejection_reason.present? %>
+            <div class="alert alert-warning"><%= t(".submit_review.rejected", reason: @profile.rejection_reason) %></div>
+          <% end %>
+          <p><%= t(".submit_review.intro") %></p>
+          <%= button_to t(".submit_review.button"), submit_teacher_profile_path, method: :post, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

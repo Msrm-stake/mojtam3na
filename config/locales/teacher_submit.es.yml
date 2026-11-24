@@ -1,0 +1,21 @@
+es:
+  teacher_profiles:
+    edit:
+      submit_review:
+        title: "Envía tu perfil para revisión"
+        intro: "Cuando todo esté completo, envía tu perfil. Lo revisaremos y te responderemos. Los certificados son opcionales, pero dan confianza a los padres."
+        button: "Enviar mi perfil para revisión"
+        waiting: "Tu perfil ha sido enviado y está pendiente de revisión."
+        approved: "Tu perfil está aprobado. Los padres pueden reservarte."
+        rejected: "Tu perfil necesita cambios: %{reason}"
+        suspended: "Tu perfil está suspendido actualmente. Por favor, contáctanos."
+    submit:
+      missing: "Tu perfil aún no está completo. Falta: %{items}."
+      done: "¡Gracias! Tu perfil ha sido enviado para revisión."
+      missing_items:
+        headline: "un título"
+        bio: "una descripción sobre ti"
+        language: "al menos un idioma"
+        subject: "al menos una materia"
+        availability: "al menos un horario de disponibilidad semanal"
+        price: "una tarifa por hora"

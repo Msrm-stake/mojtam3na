@@ -19,7 +19,6 @@ class User < ApplicationRecord
 
   # Every new teacher starts with a pending profile, reviewed before going live.
   after_create :create_teacher_profile!, if: :role_teacher?
-  after_create_commit { AdminNotifier.new_teacher(self) if role_teacher? }
   before_create :record_terms_acceptance, if: :require_terms_acceptance
 
   validates :first_name, :last_name, presence: true

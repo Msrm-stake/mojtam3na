@@ -1,0 +1,21 @@
+en:
+  teacher_profiles:
+    edit:
+      submit_review:
+        title: "Send your profile for review"
+        intro: "When everything is filled in, send your profile. We will review it and get back to you. Certificates are optional, but they help parents trust you."
+        button: "Submit my profile for review"
+        waiting: "Your profile has been sent and is waiting for review."
+        approved: "Your profile is approved. Parents can book you."
+        rejected: "Your profile needs changes: %{reason}"
+        suspended: "Your profile is currently suspended. Please contact us."
+    submit:
+      missing: "Your profile is not complete yet. Still missing: %{items}."
+      done: "Thank you! Your profile has been sent for review."
+      missing_items:
+        headline: "a headline"
+        bio: "a description about you"
+        language: "at least one language"
+        subject: "at least one subject"
+        availability: "at least one weekly availability slot"
+        price: "an hourly price"

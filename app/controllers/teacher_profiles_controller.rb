@@ -4,6 +4,23 @@ class TeacherProfilesController < ApplicationController
 
   def edit; end
 
+  # The teacher sends the finished profile for review. Anything missing is listed and nothing is sent.
+  def submit
+    if @profile.status_approved? || @profile.status_suspended?
+      return redirect_to(edit_teacher_profile_path, status: :see_other)
+    end
+
+    missing = @profile.missing_for_submission
+    if missing.any?
+      names = missing.map { |item| t("teacher_profiles.submit.missing_items.#{item}") }.to_sentence
+      redirect_to edit_teacher_profile_path, alert: t("teacher_profiles.submit.missing", items: names), status: :see_other
+    else
+      @profile.submit_for_review!
+      AdminNotifier.new_teacher(current_user)
+      redirect_to edit_teacher_profile_path, notice: t("teacher_profiles.submit.done"), status: :see_other
+    end
+  end
+
   def update
     new_photo = params.dig(:teacher_profile, :pending_photo).present?
     if @profile.update(profile_params)

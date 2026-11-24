@@ -1,0 +1,21 @@
+fr:
+  teacher_profiles:
+    edit:
+      submit_review:
+        title: "Envoyer votre profil pour validation"
+        intro: "Quand tout est rempli, envoyez votre profil. Nous l'examinerons et reviendrons vers vous. Les certificats sont facultatifs, mais ils rassurent les parents."
+        button: "Envoyer mon profil pour validation"
+        waiting: "Votre profil a été envoyé et attend sa validation."
+        approved: "Votre profil est approuvé. Les parents peuvent vous réserver."
+        rejected: "Votre profil doit être modifié : %{reason}"
+        suspended: "Votre profil est actuellement suspendu. Veuillez nous contacter."
+    submit:
+      missing: "Votre profil n'est pas encore complet. Il manque : %{items}."
+      done: "Merci ! Votre profil a été envoyé pour validation."
+      missing_items:
+        headline: "un titre"
+        bio: "une description de vous"
+        language: "au moins une langue"
+        subject: "au moins une matière"
+        availability: "au moins un créneau de disponibilité hebdomadaire"
+        price: "un tarif horaire"

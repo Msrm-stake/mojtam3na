@@ -36,7 +36,9 @@ Rails.application.routes.draw do
 
     resource :time_zone, only: :update
 
-    resource :teacher_profile, path: "teacher/profile", only: %i[edit update]
+    resource :teacher_profile, path: "teacher/profile", only: %i[edit update] do
+      post :submit
+    end
     resource :earnings, path: "teacher/earnings", only: :show do
       patch :payout
     end

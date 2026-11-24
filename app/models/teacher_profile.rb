@@ -56,6 +56,26 @@ class TeacherProfile < ApplicationRecord
     missing
   end
 
+  # What the teacher must fill in before sending the profile for review (certificates stay optional, a price is required).
+  def missing_for_submission
+    missing = []
+    missing << :headline if headline.blank?
+    missing << :bio if bio.blank?
+    missing << :language unless teacher_languages.exists?
+    missing << :subject unless teacher_subjects.exists?
+    missing << :price unless hourly_rate_cents.to_i.positive?
+    missing << :availability unless availability_slots.exists?
+    missing
+  end
+
+  def submitted?
+    submitted_at.present?
+  end
+
+  def submit_for_review!
+    update!(status: "pending", submitted_at: Time.current, rejection_reason: nil)
+  end
+
   def approve!(admin)
     update!(status: "approved", approved_by: admin, approved_at: Time.current, rejection_reason: nil)
   end
