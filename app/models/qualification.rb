@@ -12,6 +12,7 @@ class Qualification < ApplicationRecord
   enum :status, { pending: "pending", verified: "verified", rejected: "rejected" }, prefix: true
 
   validates :title, presence: true
+  after_create_commit { AdminNotifier.qualification_added(self) }
   validates :document, presence: true, on: :create
   validates :year_obtained,
             numericality: { only_integer: true, greater_than: 1900, less_than_or_equal_to: -> { Date.current.year } },

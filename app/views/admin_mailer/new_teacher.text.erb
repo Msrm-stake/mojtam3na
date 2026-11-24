@@ -1,0 +1,7 @@
+A new teacher has registered and is waiting for your approval.
+
+Name: <%= @user.first_name %> <%= @user.last_name %>
+Email: <%= @user.email %>
+Registered: <%= l(@user.created_at, format: :long) %>
+
+Open the profile: <%= url_for(controller: "/admin/teacher_profiles", action: :show, id: @profile.id, only_path: false, locale: "en") %>

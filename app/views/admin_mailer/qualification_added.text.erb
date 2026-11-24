@@ -1,0 +1,6 @@
+A teacher has added a qualification document to verify.
+
+Teacher: <%= @user.first_name %> <%= @user.last_name %>
+Document: <%= @qualification.title %>
+
+Open the profile: <%= url_for(controller: "/admin/teacher_profiles", action: :show, id: @profile.id, only_path: false, locale: "en") %>
