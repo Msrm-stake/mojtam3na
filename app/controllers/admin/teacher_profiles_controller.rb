@@ -37,6 +37,21 @@ module Admin
       end
     end
 
+    # An email written by the admin, sent inside the teacher email template.
+    def send_message
+      profile = TeacherProfile.find(params[:id])
+      subject = params[:subject].to_s.gsub(/\s+/, " ").strip
+      body = params[:body].to_s.strip
+      if subject.blank? || body.blank?
+        redirect_to admin_teacher_profile_path(profile), alert: t("admin.teacher_profiles.message_blank"), status: :see_other
+      else
+        TeacherMailer.with(profile: profile, subject: subject.first(150), body: body.first(5000),
+                           include_missing: params[:include_missing] == "1").custom_message.deliver_later
+        redirect_to admin_teacher_profile_path(profile),
+                    notice: t("admin.teacher_profiles.message_sent", email: profile.user.email), status: :see_other
+      end
+    end
+
     # Welcome and reminder email to the teacher: what is still missing in the profile, in the teacher's language.
     def send_reminder
       profile = TeacherProfile.find(params[:id])

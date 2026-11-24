@@ -16,6 +16,15 @@ class TeacherMailer < ApplicationMailer
     mail(to: @user.email, subject: t(".subject"), reply_to: ENV.fetch("ADMIN_NOTIFY_EMAIL", "contact@mojtam3na.com"))
   end
 
+  # A message written by the admin. The text is shown exactly as written; only the greeting, button and footer are translated.
+  def custom_message
+    @profile = params.fetch(:profile)
+    @user = @profile.user
+    @body = params.fetch(:body).to_s
+    @missing = params[:include_missing] ? @profile.missing_for_submission.map { |item| t("teacher_profiles.submit.missing_items.#{item}") } : []
+    mail(to: @user.email, subject: params.fetch(:subject).to_s, reply_to: ENV.fetch("ADMIN_NOTIFY_EMAIL", "contact@mojtam3na.com"))
+  end
+
   private
 
   def in_recipient_locale(&block)

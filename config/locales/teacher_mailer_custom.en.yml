@@ -1,0 +1,4 @@
+en:
+  teacher_mailer:
+    custom_message:
+      greeting: "Hello %{name},"

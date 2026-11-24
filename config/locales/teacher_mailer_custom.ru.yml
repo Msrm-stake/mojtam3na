@@ -1,0 +1,4 @@
+ru:
+  teacher_mailer:
+    custom_message:
+      greeting: "Здравствуйте, %{name}!"

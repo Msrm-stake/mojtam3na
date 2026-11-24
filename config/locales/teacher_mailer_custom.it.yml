@@ -1,0 +1,4 @@
+it:
+  teacher_mailer:
+    custom_message:
+      greeting: "Ciao %{name},"

@@ -1,0 +1,4 @@
+fr:
+  teacher_mailer:
+    custom_message:
+      greeting: "Bonjour %{name},"

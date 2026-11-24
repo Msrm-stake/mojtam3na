@@ -1,0 +1,4 @@
+ar:
+  teacher_mailer:
+    custom_message:
+      greeting: "مرحباً %{name}،"

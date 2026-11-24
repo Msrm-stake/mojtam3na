@@ -91,6 +91,27 @@
       <p class="small text-body-secondary"><%= t(".reminder_last", date: l(@profile.reminder_sent_at, format: :short)) %></p>
     <% end %>
 
+    <details class="mb-4">
+      <summary class="fw-bold"><%= t(".custom_title") %></summary>
+      <%= form_with url: send_message_admin_teacher_profile_path(@profile), method: :patch, class: "mt-3",
+            data: { turbo_confirm: t(".custom_confirm") } do %>
+        <p class="small text-body-secondary"><%= t(".custom_hint") %></p>
+        <div class="mb-3">
+          <label class="form-label" for="custom_subject"><%= t(".custom_subject") %></label>
+          <%= text_field_tag :subject, t(".custom_subject_default"), id: "custom_subject", maxlength: 150, required: true, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="custom_body"><%= t(".custom_body") %></label>
+          <%= text_area_tag :body, nil, id: "custom_body", rows: 7, maxlength: 5000, required: true, class: "form-control" %>
+        </div>
+        <div class="form-check mb-3">
+          <%= check_box_tag :include_missing, "1", false, id: "custom_include_missing", class: "form-check-input" %>
+          <label class="form-check-label" for="custom_include_missing"><%= t(".custom_include_missing") %></label>
+        </div>
+        <%= submit_tag t(".custom_send"), class: "btn btn-primary" %>
+      <% end %>
+    </details>
+
     <% unless @profile.status_approved? || @profile.status_rejected? %>
       <%= form_with url: reject_admin_teacher_profile_path(@profile), method: :patch do %>
         <label class="form-label" for="rejection_reason"><%= t(".reject_reason") %></label>

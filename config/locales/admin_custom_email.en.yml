@@ -1,0 +1,14 @@
+en:
+  admin:
+    teacher_profiles:
+      message_sent: "Your email was sent to %{email}."
+      message_blank: "Please write a subject and a message."
+      show:
+        custom_title: "Write a custom email"
+        custom_hint: "Sent in the same design as the welcome email, with the teacher's first name and a button to their profile. Your message is sent exactly as you write it (it is not translated)."
+        custom_subject: "Subject"
+        custom_subject_default: "A message from Mojtam3na"
+        custom_body: "Message"
+        custom_include_missing: "Add the list of what is still missing in the profile"
+        custom_send: "Send email"
+        custom_confirm: "Send this email to the teacher now?"

@@ -1,0 +1,14 @@
+<%= t(".greeting", name: @user.first_name) %>
+
+<%= @body %>
+<% if @missing.any? %>
+
+<%= t("teacher_mailer.welcome_reminder.incomplete") %>
+<% @missing.each do |item| %>
+- <%= item %>
+<% end %>
+<% end %>
+
+<%= t("teacher_mailer.welcome_reminder.button") %>: <%= edit_teacher_profile_url(locale: I18n.locale) %>
+
+<%= t("teacher_mailer.welcome_reminder.footer") %>
