@@ -68,6 +68,11 @@ class TeacherProfile < ApplicationRecord
     missing
   end
 
+  # Shown as a badge on the teacher cards: at least one qualification checked by an admin.
+  def verified_teacher?
+    qualifications.any?(&:status_verified?)
+  end
+
   def submitted?
     submitted_at.present?
   end

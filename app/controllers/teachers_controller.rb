@@ -9,7 +9,7 @@ class TeachersController < ApplicationController
     @languages = Language.alphabetical
     @sort = SORTS.include?(params[:sort]) ? params[:sort] : "newest"
 
-    scope = TeacherProfile.status_approved.includes(:user, :languages, :subjects).with_attached_photo
+    scope = TeacherProfile.status_approved.includes(:user, :languages, :subjects, :qualifications).with_attached_photo
     if params[:subject].present?
       scope = scope.where(id: TeacherSubject.where(subject_id: params[:subject]).select(:teacher_profile_id))
     end

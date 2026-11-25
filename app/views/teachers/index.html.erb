@@ -38,6 +38,9 @@
           <%= link_to teacher_path(profile), class: "teacher-card" do %>
             <%= teacher_portrait(profile) %>
             <div class="teacher-name"><%= public_name(profile.user) %></div>
+            <% if profile.verified_teacher? %>
+              <div class="mb-1"><span class="badge text-bg-success">✓ <%= t(".verified") %></span></div>
+            <% end %>
             <div class="teacher-headline"><%= profile.headline.presence || t(".no_headline") %></div>
             <% if profile.views_count.positive? %>
               <div class="teacher-views small text-body-secondary"><%= t(".views", count: profile.views_count) %></div>
