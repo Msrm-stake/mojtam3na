@@ -1,0 +1,34 @@
+<% steps = TeacherSetupController::STEPS %>
+<% number = steps.index(@step) + 1 %>
+<style>
+  .tsetup { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center;
+            padding: 1rem; background: rgba(20, 30, 28, .6); overflow-y: auto; }
+  .tsetup__card { width: 100%; max-width: 560px; max-height: 100%; overflow-y: auto; background: var(--bs-body-bg, #fff);
+                  border-radius: 1rem; padding: 1.5rem; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+  .tsetup__count { font-size: .85rem; margin: 0 0 .35rem; color: var(--bs-secondary-color, #6c757d); }
+  .tsetup__bar { width: 100%; height: .5rem; margin-bottom: 1.25rem; accent-color: #0B5D4B; }
+  .tsetup__nav { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1.5rem; }
+  .tsetup__day { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; padding: .4rem 0;
+                 border-bottom: 1px solid rgba(0, 0, 0, .08); }
+  .tsetup__day .form-check { min-width: 8rem; margin: 0; }
+  .tsetup__day select { width: auto; }
+  .tsetup__list { padding-inline-start: 1.2rem; }
+  .tsetup__choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .4rem .75rem; }
+  body:has(.tsetup) { overflow: hidden; }
+</style>
+<div class="tsetup" data-step="<%= @step %>" role="dialog" aria-modal="true" aria-labelledby="tsetup-title">
+  <div class="tsetup__card">
+    <p class="tsetup__count"><%= t("teacher_setup.progress", n: number, total: steps.size) %></p>
+    <progress class="tsetup__bar" max="<%= steps.size %>" value="<%= number %>"></progress>
+
+    <% if @errors.present? %>
+      <div class="alert alert-danger" role="alert">
+        <ul class="mb-0">
+          <% @errors.each do |message| %><li><%= message %></li><% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= render "teacher_setup/#{@step}" %>
+  </div>
+</div>

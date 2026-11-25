@@ -1,0 +1,64 @@
+fr:
+  teacher_setup:
+    progress: "Étape %{n} sur %{total}"
+    next: "Suivant"
+    back: "Retour"
+    weekdays: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+    steps:
+      availability:
+        title: "Quand pouvez-vous enseigner ?"
+        intro: "Choisissez les jours où vous êtes disponible chaque semaine et vos horaires. Les parents ne pourront réserver que sur ces créneaux. Vous pourrez les modifier plus tard."
+        zone: "Votre fuseau horaire"
+        from: "De"
+        to: "Jusqu'à"
+        none: "Choisissez au moins un jour."
+        invalid: "Une des plages horaires n'est pas valide. L'heure de fin doit être au moins 30 minutes après le début."
+        saved_hint: "Vos disponibilités hebdomadaires sont enregistrées. Vous pourrez les modifier plus tard depuis votre profil."
+      picture:
+        title: "Votre image"
+        intro: "Ajoutez une photo de vous ou choisissez un avatar. Une photo est vérifiée par notre équipe avant que les parents la voient."
+        upload: "Téléverser une photo (JPG ou PNG)"
+        avatar: "Ou choisissez un avatar"
+        error: "Veuillez téléverser une photo ou choisir un avatar."
+      headline:
+        title: "Votre accroche"
+        intro: "Une courte phrase qui présente qui vous êtes aux parents."
+        label: "Accroche"
+        error: "Veuillez écrire une accroche."
+      bio:
+        title: "À propos de vous"
+        intro: "Présentez-vous aux parents : votre façon d'enseigner et votre manière de travailler avec les enfants."
+        label: "À propos de vous"
+        error: "Veuillez vous présenter."
+      experience:
+        title: "Années d'expérience"
+        intro: "Depuis combien d'années enseignez-vous ?"
+        label: "Années d'expérience"
+        error: "Veuillez saisir un nombre d'années entre 0 et 60."
+      rate:
+        title: "Votre tarif et les âges que vous enseignez"
+        intro: "Fixez votre prix pour une leçon d'une heure et la tranche d'âge des enfants que vous enseignez."
+        rate: "Tarif horaire (EUR)"
+        youngest: "Âge minimum que vous enseignez"
+        oldest: "Âge maximum que vous enseignez"
+        rate_error: "Veuillez saisir un tarif horaire supérieur à 0."
+        ages_error: "Veuillez saisir des âges entre 3 et 18, l'âge minimum ne dépassant pas l'âge maximum."
+      languages:
+        title: "Langues d'enseignement"
+        intro: "Choisissez toutes les langues que vous utiliserez pour enseigner, afin que les parents sachent à quoi s'attendre."
+        error: "Veuillez choisir au moins une langue."
+      subjects:
+        title: "Qu'enseignez-vous ?"
+        intro: "Choisissez tout ce que vous enseignez."
+        error: "Veuillez choisir au moins une matière."
+      certificate:
+        title: "Ajouter un certificat ?"
+        intro: "Un certificat (par exemple une Ijaza ou un diplôme d'enseignement) est facultatif."
+        benefit: "Si vous en ajoutez un et que notre équipe le vérifie, votre profil affiche un badge Enseignant vérifié, ce qui rassure davantage les parents."
+        add: "Ajouter un certificat maintenant"
+        later: "Plus tard"
+        have: "Votre certificat a été ajouté. Notre équipe va le vérifier."
+      submit:
+        title: "Envoyer votre profil"
+        intro: "Tout est prêt. Envoyez votre profil à notre équipe pour validation. Nous vous écrirons dès qu'il sera approuvé."
+        button: "Envoyer mon profil"

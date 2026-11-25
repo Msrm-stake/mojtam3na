@@ -1,0 +1,64 @@
+es:
+  teacher_setup:
+    progress: "Paso %{n} de %{total}"
+    next: "Siguiente"
+    back: "Atrás"
+    weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
+    steps:
+      availability:
+        title: "¿Cuándo puedes dar clases?"
+        intro: "Elige los días en que estás disponible cada semana y tus horarios. Los padres solo podrán reservar en esos horarios. Podrás cambiarlos más tarde."
+        zone: "Tu zona horaria"
+        from: "Desde"
+        to: "Hasta"
+        none: "Elige al menos un día."
+        invalid: "Uno de los horarios no es válido. La hora de fin debe ser al menos 30 minutos después del inicio."
+        saved_hint: "Tu disponibilidad semanal está guardada. Podrás cambiarla más tarde desde tu perfil."
+      picture:
+        title: "Tu imagen"
+        intro: "Añade una foto tuya o elige un avatar. Nuestro equipo revisa la foto antes de que los padres la vean."
+        upload: "Subir una foto (JPG o PNG)"
+        avatar: "O elige un avatar"
+        error: "Sube una foto o elige un avatar."
+      headline:
+        title: "Tu titular"
+        intro: "Una frase corta que diga a los padres quién eres."
+        label: "Titular"
+        error: "Escribe un titular."
+      bio:
+        title: "Sobre ti"
+        intro: "Cuéntales a los padres sobre ti, tu forma de enseñar y cómo trabajas con los niños."
+        label: "Sobre ti"
+        error: "Cuéntanos algo sobre ti."
+      experience:
+        title: "Años de experiencia"
+        intro: "¿Cuántos años llevas enseñando?"
+        label: "Años de experiencia"
+        error: "Introduce un número de años entre 0 y 60."
+      rate:
+        title: "Tu tarifa y las edades que enseñas"
+        intro: "Fija el precio de una clase de una hora y el rango de edad de los niños a los que enseñas."
+        rate: "Tarifa por hora (EUR)"
+        youngest: "Edad mínima que enseñas"
+        oldest: "Edad máxima que enseñas"
+        rate_error: "Introduce una tarifa por hora superior a 0."
+        ages_error: "Introduce edades entre 3 y 18, con la mínima no superior a la máxima."
+      languages:
+        title: "Idiomas en los que enseñas"
+        intro: "Elige todos los idiomas que usarás para enseñar, para que los padres sepan qué esperar."
+        error: "Elige al menos un idioma."
+      subjects:
+        title: "¿Qué enseñas?"
+        intro: "Elige todo lo que enseñas."
+        error: "Elige al menos una materia."
+      certificate:
+        title: "¿Añadir un certificado?"
+        intro: "Un certificado (por ejemplo una Iyaza o un título de enseñanza) es opcional."
+        benefit: "Si añades uno y nuestro equipo lo verifica, tu perfil mostrará la insignia de Profesor verificado, que da más confianza a los padres."
+        add: "Añadir un certificado ahora"
+        later: "Más tarde"
+        have: "Tu certificado se ha añadido. Nuestro equipo lo revisará."
+      submit:
+        title: "Enviar tu perfil"
+        intro: "Todo está listo. Envía tu perfil a nuestro equipo para su revisión. Te escribiremos cuando sea aprobado."
+        button: "Enviar mi perfil"

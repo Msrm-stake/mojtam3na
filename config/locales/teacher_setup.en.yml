@@ -1,0 +1,64 @@
+en:
+  teacher_setup:
+    progress: "Step %{n} of %{total}"
+    next: "Next"
+    back: "Back"
+    weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    steps:
+      availability:
+        title: "When can you teach?"
+        intro: "Choose the days you are available each week and your hours. Parents can only book you at these times. You can change them later."
+        zone: "Your time zone"
+        from: "From"
+        to: "Until"
+        none: "Choose at least one day."
+        invalid: "One of the time ranges is not valid. The end time must be at least 30 minutes after the start."
+        saved_hint: "Your weekly availability is saved. You can change it later from your profile page."
+      picture:
+        title: "Your picture"
+        intro: "Add a photo of yourself or pick an avatar. A photo is checked by our team before parents see it."
+        upload: "Upload a photo (JPG or PNG)"
+        avatar: "Or choose an avatar"
+        error: "Please upload a photo or choose an avatar."
+      headline:
+        title: "Your headline"
+        intro: "One short sentence that tells parents who you are."
+        label: "Headline"
+        error: "Please write a headline."
+      bio:
+        title: "About you"
+        intro: "Tell parents about yourself, your teaching style and how you work with children."
+        label: "About you"
+        error: "Please tell us about yourself."
+      experience:
+        title: "Years of experience"
+        intro: "How many years have you been teaching?"
+        label: "Years of experience"
+        error: "Please enter a number of years between 0 and 60."
+      rate:
+        title: "Your rate and the ages you teach"
+        intro: "Set your price for a one-hour lesson and the age range of the children you teach."
+        rate: "Hourly rate (EUR)"
+        youngest: "Youngest age you teach"
+        oldest: "Oldest age you teach"
+        rate_error: "Please enter an hourly rate above 0."
+        ages_error: "Please enter ages between 3 and 18, with the youngest not above the oldest."
+      languages:
+        title: "Languages you teach in"
+        intro: "Choose every language you will use to teach, so parents know what to expect."
+        error: "Please choose at least one language."
+      subjects:
+        title: "What do you teach?"
+        intro: "Choose everything you teach."
+        error: "Please choose at least one subject."
+      certificate:
+        title: "Add a certificate?"
+        intro: "A certificate (for example an Ijazah or a teaching diploma) is optional."
+        benefit: "If you add one and our team verifies it, your profile shows a Verified teacher badge, which gives parents more confidence."
+        add: "Add a certificate now"
+        later: "Later"
+        have: "Your certificate was added. Our team will check it."
+      submit:
+        title: "Send your profile"
+        intro: "Everything is ready. Send your profile to our team for review. We will email you once it is approved."
+        button: "Submit my profile"

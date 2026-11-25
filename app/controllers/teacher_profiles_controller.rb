@@ -1,6 +1,7 @@
 class TeacherProfilesController < ApplicationController
   before_action :require_teacher!
   before_action :set_profile
+  before_action :open_setup, only: :edit
 
   def edit; end
 
@@ -41,6 +42,11 @@ class TeacherProfilesController < ApplicationController
 
   def set_profile
     @profile = current_user.teacher_profile || current_user.create_teacher_profile!
+  end
+
+  # New teachers are guided through the setup pop-up until they send the profile for review.
+  def open_setup
+    redirect_to teacher_setup_path if @profile.status_pending? && !@profile.submitted?
   end
 
   # status, approved_by and the other review fields are deliberately not permitted.

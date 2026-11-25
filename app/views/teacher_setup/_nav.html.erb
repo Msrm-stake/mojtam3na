@@ -1,0 +1,11 @@
+<% label = local_assigns[:label] || t("teacher_setup.next") %>
+<% index = TeacherSetupController::STEPS.index(@step) %>
+<div class="tsetup__nav">
+  <% if index.positive? %>
+    <%= link_to t("teacher_setup.back"), teacher_setup_path(step: TeacherSetupController::STEPS[index - 1]),
+          class: "btn btn-outline-secondary" %>
+  <% else %>
+    <span></span>
+  <% end %>
+  <button type="submit" name="later" value="1" class="btn btn-primary"><%= label %></button>
+</div>

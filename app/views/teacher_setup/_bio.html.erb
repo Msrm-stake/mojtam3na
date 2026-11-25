@@ -1,0 +1,9 @@
+<h1 class="h4" id="tsetup-title"><%= t("teacher_setup.steps.bio.title") %></h1>
+<p><%= t("teacher_setup.steps.bio.intro") %></p>
+<%= form_with url: teacher_setup_path, method: :patch do %>
+  <%= hidden_field_tag :step, "bio" %>
+  <label class="form-label" for="teacher_profile_bio"><%= t("teacher_setup.steps.bio.label") %></label>
+  <%= text_area_tag "teacher_profile[bio]", params.dig(:teacher_profile, :bio) || @profile.bio,
+        id: "teacher_profile_bio", class: "form-control", rows: 7, autofocus: true %>
+  <%= render "teacher_setup/nav" %>
+<% end %>

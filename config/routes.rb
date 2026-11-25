@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resource :teacher_profile, path: "teacher/profile", only: %i[edit update] do
       post :submit
     end
+    resource :teacher_setup, path: "teacher/setup", controller: "teacher_setup", only: %i[show update]
     resource :earnings, path: "teacher/earnings", only: :show do
       patch :payout
     end

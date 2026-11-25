@@ -1,0 +1,16 @@
+<h1 class="h4" id="tsetup-title"><%= t("teacher_setup.steps.languages.title") %></h1>
+<p><%= t("teacher_setup.steps.languages.intro") %></p>
+<% selected = Array(params.dig(:teacher_profile, :language_ids)).map(&:to_i).presence || @profile.language_ids %>
+<%= form_with url: teacher_setup_path, method: :patch do %>
+  <%= hidden_field_tag :step, "languages" %>
+  <div class="tsetup__choices">
+    <% Language.alphabetical.each do |language| %>
+      <div class="form-check">
+        <%= check_box_tag "teacher_profile[language_ids][]", language.id, selected.include?(language.id),
+              id: "tsetup_language_#{language.id}", class: "form-check-input" %>
+        <label class="form-check-label" for="tsetup_language_<%= language.id %>"><%= language.native_name %></label>
+      </div>
+    <% end %>
+  </div>
+  <%= render "teacher_setup/nav" %>
+<% end %>

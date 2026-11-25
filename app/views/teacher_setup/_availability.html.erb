@@ -1,0 +1,51 @@
+<h1 class="h4" id="tsetup-title"><%= t("teacher_setup.steps.availability.title") %></h1>
+<p><%= t("teacher_setup.steps.availability.intro") %></p>
+
+<% if @profile.availability_slots.exists? %>
+  <ul class="tsetup__list">
+    <% @profile.availability_slots.order(:weekday, :start_minute).each do |slot| %>
+      <li>
+        <%= t("teacher_setup.weekdays")[slot.weekday] %> ·
+        <%= format("%02d:%02d", slot.start_minute / 60, slot.start_minute % 60) %> –
+        <%= format("%02d:%02d", slot.end_minute / 60, slot.end_minute % 60) %>
+      </li>
+    <% end %>
+  </ul>
+  <p class="small text-body-secondary"><%= t("teacher_setup.steps.availability.saved_hint") %></p>
+  <%= form_with url: teacher_setup_path, method: :patch do %>
+    <%= hidden_field_tag :step, "availability" %>
+    <%= render "teacher_setup/nav" %>
+  <% end %>
+<% else %>
+  <% starts = (0..1410).step(30).map { |m| [format("%02d:%02d", m / 60, m % 60), m] } %>
+  <% ends = (30..1440).step(30).map { |m| [format("%02d:%02d", m / 60, m % 60), m] } %>
+  <%= form_with url: teacher_setup_path, method: :patch do %>
+    <%= hidden_field_tag :step, "availability" %>
+
+    <label class="form-label" for="time_zone"><%= t("teacher_setup.steps.availability.zone") %></label>
+    <%= select_tag :time_zone,
+          options_for_select(ActiveSupport::TimeZone.all.map { |zone| [zone.to_s, zone.name] },
+                             params[:time_zone].presence || current_user.time_zone.presence || "UTC"),
+          class: "form-select mb-3" %>
+
+    <% [1, 2, 3, 4, 5, 6, 0].each do |weekday| %>
+      <% chosen = params.dig(:days, weekday.to_s) %>
+      <div class="tsetup__day">
+        <div class="form-check">
+          <%= check_box_tag "days[#{weekday}][on]", "1", chosen.present? && chosen[:on] == "1",
+                id: "day_#{weekday}", class: "form-check-input" %>
+          <label class="form-check-label" for="day_<%= weekday %>"><%= t("teacher_setup.weekdays")[weekday] %></label>
+        </div>
+        <label class="visually-hidden" for="from_<%= weekday %>"><%= t("teacher_setup.steps.availability.from") %></label>
+        <%= select_tag "days[#{weekday}][from]", options_for_select(starts, (chosen && chosen[:from]).presence || 540),
+              id: "from_#{weekday}", class: "form-select form-select-sm" %>
+        <span>–</span>
+        <label class="visually-hidden" for="to_<%= weekday %>"><%= t("teacher_setup.steps.availability.to") %></label>
+        <%= select_tag "days[#{weekday}][to]", options_for_select(ends, (chosen && chosen[:to]).presence || 720),
+              id: "to_#{weekday}", class: "form-select form-select-sm" %>
+      </div>
+    <% end %>
+
+    <%= render "teacher_setup/nav" %>
+  <% end %>
+<% end %>

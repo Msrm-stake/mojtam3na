@@ -1,0 +1,16 @@
+<h1 class="h4" id="tsetup-title"><%= t("teacher_setup.steps.subjects.title") %></h1>
+<p><%= t("teacher_setup.steps.subjects.intro") %></p>
+<% selected = Array(params.dig(:teacher_profile, :subject_ids)).map(&:to_i).presence || @profile.subject_ids %>
+<%= form_with url: teacher_setup_path, method: :patch do %>
+  <%= hidden_field_tag :step, "subjects" %>
+  <div class="tsetup__choices">
+    <% Subject.order(:id).each do |subject| %>
+      <div class="form-check">
+        <%= check_box_tag "teacher_profile[subject_ids][]", subject.id, selected.include?(subject.id),
+              id: "tsetup_subject_#{subject.id}", class: "form-check-input" %>
+        <label class="form-check-label" for="tsetup_subject_<%= subject.id %>"><%= t("pages.home.subjects.items.#{subject.slug}") %></label>
+      </div>
+    <% end %>
+  </div>
+  <%= render "teacher_setup/nav" %>
+<% end %>
