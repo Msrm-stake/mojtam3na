@@ -1,0 +1,6 @@
+ar:
+  teachers:
+    index:
+      views:
+        one: "المشاهدات: %{count}"
+        other: "المشاهدات: %{count}"

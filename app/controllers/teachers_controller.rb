@@ -29,5 +29,22 @@ class TeachersController < ApplicationController
     # Only approved profiles are public: anything else is a 404.
     @profile = TeacherProfile.status_approved.includes(:user, :languages, :subjects).with_attached_photo.find(params[:id])
     @qualifications = @profile.qualifications.status_verified.order(:year_obtained, :id)
+    count_view(@profile)
+  end
+
+  private
+
+  # One count per visitor and day. The teacher's own visits and crawlers are not counted.
+  # Only a number is stored, nothing about the visitor.
+  def count_view(profile)
+    return if request.head? || request.user_agent.to_s.match?(/bot|crawl|spider|slurp|preview/i)
+    return if current_user&.id == profile.user_id
+
+    today = Date.current.to_s
+    seen = session[:viewed_teachers].is_a?(Hash) ? session[:viewed_teachers] : {}
+    return if seen[profile.id.to_s] == today
+
+    TeacherProfile.increment_counter(:views_count, profile.id)
+    session[:viewed_teachers] = seen.select { |_id, day| day == today }.merge(profile.id.to_s => today)
   end
 end

@@ -1,0 +1,6 @@
+fr:
+  teachers:
+    index:
+      views:
+        one: "%{count} vue"
+        other: "%{count} vues"

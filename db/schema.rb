@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_24_200000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_200000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -395,6 +395,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_200000) do
     t.datetime "photo_rejected_at"
     t.datetime "submitted_at"
     t.datetime "reminder_sent_at"
+    t.integer "views_count", default: 0, null: false
     t.index ["approved_by_id"], name: "index_teacher_profiles_on_approved_by_id"
     t.index ["status"], name: "index_teacher_profiles_on_status"
     t.index ["user_id"], name: "index_teacher_profiles_on_user_id", unique: true

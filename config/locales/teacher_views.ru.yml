@@ -1,0 +1,6 @@
+ru:
+  teachers:
+    index:
+      views:
+        one: "Просмотры: %{count}"
+        other: "Просмотры: %{count}"

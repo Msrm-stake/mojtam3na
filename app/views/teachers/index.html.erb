@@ -39,6 +39,9 @@
             <%= teacher_portrait(profile) %>
             <div class="teacher-name"><%= public_name(profile.user) %></div>
             <div class="teacher-headline"><%= profile.headline.presence || t(".no_headline") %></div>
+            <% if profile.views_count.positive? %>
+              <div class="teacher-views small text-body-secondary"><%= t(".views", count: profile.views_count) %></div>
+            <% end %>
             <div class="chips mt-3">
               <% profile.languages.first(3).each do |language| %>
                 <span class="chip chip-gold"><%= language.native_name %></span>

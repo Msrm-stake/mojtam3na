@@ -1,0 +1,6 @@
+es:
+  teachers:
+    index:
+      views:
+        one: "%{count} visita"
+        other: "%{count} visitas"
