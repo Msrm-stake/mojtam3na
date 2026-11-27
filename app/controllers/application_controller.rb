@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # New teachers land on the setup pop-up (after sign-up and after every login)
+  # until they have sent their profile for review.
+  def after_sign_in_path_for(resource)
+    if resource.respond_to?(:role_teacher?) && resource.role_teacher?
+      profile = resource.teacher_profile
+      return teacher_setup_path if profile && profile.status_pending? && !profile.submitted?
+    end
+    super
+  end
+
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
     I18n.with_locale(locale, &action)
