@@ -80,6 +80,7 @@
             <th><%= t(".parent") %></th>
             <th><%= t(".child") %></th>
             <th><%= t(".status") %></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -109,6 +110,15 @@
               <td><%= child_name.presence || "—" %></td>
               <td>
                 <span class="badge text-bg-<%= badge %>"><%= t(".statuses.#{lesson.status == 'scheduled' ? 'upcoming' : lesson.status}", default: lesson.status.humanize) %></span>
+              </td>
+              <td class="text-end">
+                <% if lesson.order.nil? %>
+                  <%= button_to t(".delete"), admin_booking_path(lesson), method: :delete,
+                        class: "btn btn-outline-danger btn-sm",
+                        form: { data: { turbo_confirm: lesson.status_scheduled? ? t(".delete_confirm_upcoming") : t(".delete_confirm") } } %>
+                <% else %>
+                  <span class="small text-body-secondary"><%= t(".kept") %></span>
+                <% end %>
               </td>
             </tr>
           <% end %>

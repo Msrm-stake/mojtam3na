@@ -12,7 +12,7 @@ module Admin
       # Lessons waiting for payment and expired payment holds are not bookings.
       booked = Lesson.where.not(status: %w[pending_payment expired])
 
-      scope = booked.includes(:student, :booked_by, teacher_profile: :user).order(created_at: :desc)
+      scope = booked.includes(:student, :booked_by, :order, teacher_profile: :user).order(created_at: :desc)
       scope =
         case @status
         when "upcoming" then scope.upcoming
@@ -25,6 +25,20 @@ module Admin
       @lessons = scope.limit(200)
 
       load_teacher_activity(booked)
+    end
+
+    # A booking that has a payment record is never deleted: payment records are kept for accounting.
+    def destroy
+      lesson = Lesson.find(params[:id])
+      return redirect_back_or_to(admin_bookings_path, alert: t("admin.bookings.destroy.has_payment"), status: :see_other) if lesson.order.present?
+
+      if lesson.destroy
+        redirect_back_or_to admin_bookings_path, notice: t("admin.bookings.destroy.deleted"), status: :see_other
+      else
+        redirect_back_or_to admin_bookings_path, alert: t("admin.bookings.destroy.failed"), status: :see_other
+      end
+    rescue ActiveRecord::InvalidForeignKey
+      redirect_back_or_to admin_bookings_path, alert: t("admin.bookings.destroy.has_payment"), status: :see_other
     end
 
     private

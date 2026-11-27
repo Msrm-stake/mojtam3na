@@ -1,0 +1,12 @@
+en:
+  admin:
+    bookings:
+      destroy:
+        deleted: "The booking was deleted."
+        has_payment: "This booking has a payment record, so it cannot be deleted."
+        failed: "The booking could not be deleted."
+      index:
+        delete: "Delete"
+        delete_confirm: "Delete this booking? This cannot be undone."
+        delete_confirm_upcoming: "This lesson is still upcoming. Deleting it removes it for the parent and the teacher, and they are NOT notified. Delete anyway?"
+        kept: "Payment record kept"
