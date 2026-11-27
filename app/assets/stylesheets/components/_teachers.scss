@@ -69,3 +69,100 @@
   font-size: 2rem;
   margin-bottom: 0;
 }
+
+// Compact teacher cards on the list page (new class names only: tcard-*).
+.teacher-card--compact {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  padding: 1rem;
+}
+
+.tphoto--mini {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: 0;
+  border-width: 2px;
+
+  &.tphoto--letter { font-size: 1.3rem; }
+}
+
+.tcard-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.tcard-id { min-width: 0; }
+
+.tcard-name {
+  font-size: 1rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.tcard-badge {
+  display: inline-block;
+  margin-top: .2rem;
+  font-size: .7rem;
+  font-weight: 600;
+}
+
+.tcard-headline {
+  margin-top: 0;
+  font-size: .88rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tcard-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .65;
+  margin-bottom: .2rem;
+}
+
+.tcard-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
+.tcard-chip {
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: .2rem .55rem;
+  border-radius: 999px;
+  border: 1px solid rgba($green-deep, .2);
+  color: $green-dark;
+  background: #fff;
+}
+
+.tcard-chip--language {
+  background: $gold-light;
+  border-color: transparent;
+}
+
+.tcard-chip--more {
+  background: transparent;
+  border-style: dashed;
+}
+
+.tcard-foot {
+  margin-top: auto;
+  padding-top: .5rem;
+  border-top: 1px solid rgba($green-deep, .08);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.tcard-price { margin-top: 0; }

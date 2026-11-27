@@ -1,0 +1,5 @@
+es:
+  teachers:
+    index:
+      teaches: "Enseña"
+      speaks: "Idiomas"
