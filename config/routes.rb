@@ -73,6 +73,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :bookings, only: :index
+
       resources :payouts, only: %i[index show] do
         collection do
           post :prepare
