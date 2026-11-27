@@ -1,0 +1,10 @@
+it:
+  teacher_setup:
+    done:
+      title: "Congratulazioni, il tuo profilo è stato inviato!"
+      welcome: "Siamo felici di averti nella nostra comunità."
+      review: "Il nostro team controlla il tuo profilo e le tue qualifiche prima della pubblicazione. Ti invieremo un'e-mail di conferma il prima possibile."
+      ok: "OK"
+  teachers:
+    show:
+      preview: "Questa è un'anteprima del tuo profilo. I genitori lo vedranno non appena il nostro team lo avrà approvato."

@@ -1,5 +1,6 @@
 <% steps = TeacherSetupController::STEPS %>
-<% number = steps.index(@step) + 1 %>
+<% done = @step == "done" %>
+<% number = steps.index(@step).to_i + 1 %>
 <style>
   .tsetup { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center;
             padding: 1rem; background: rgba(20, 30, 28, .6); overflow-y: auto; }
@@ -14,12 +15,16 @@
   .tsetup__day select { width: auto; }
   .tsetup__list { padding-inline-start: 1.2rem; }
   .tsetup__choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .4rem .75rem; }
+  .tsetup__done { text-align: center; }
+  .tsetup__done-mark { font-size: 2.5rem; line-height: 1; color: #0B5D4B; margin-bottom: .5rem; }
   body:has(.tsetup) { overflow: hidden; }
 </style>
 <div class="tsetup" data-step="<%= @step %>" role="dialog" aria-modal="true" aria-labelledby="tsetup-title">
   <div class="tsetup__card">
-    <p class="tsetup__count"><%= t("teacher_setup.progress", n: number, total: steps.size) %></p>
-    <progress class="tsetup__bar" max="<%= steps.size %>" value="<%= number %>"></progress>
+    <% unless done %>
+      <p class="tsetup__count"><%= t("teacher_setup.progress", n: number, total: steps.size) %></p>
+      <progress class="tsetup__bar" max="<%= steps.size %>" value="<%= number %>"></progress>
+    <% end %>
 
     <% if @errors.present? %>
       <div class="alert alert-danger" role="alert">

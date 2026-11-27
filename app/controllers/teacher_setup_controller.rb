@@ -6,7 +6,7 @@ class TeacherSetupController < ApplicationController
   before_action :require_unsubmitted
 
   def show
-    @step = requested_step || first_incomplete
+    @step = params[:done].present? && @profile.submitted? ? "done" : (requested_step || first_incomplete)
     @errors = []
   end
 
@@ -18,7 +18,7 @@ class TeacherSetupController < ApplicationController
     if @errors.any?
       render :show, status: :unprocessable_entity
     elsif @step == "submit"
-      redirect_to edit_teacher_profile_path, notice: t("teacher_profiles.submit.done"), status: :see_other
+      redirect_to teacher_setup_path(done: 1), status: :see_other
     else
       redirect_to teacher_setup_path, status: :see_other
     end
@@ -36,7 +36,10 @@ class TeacherSetupController < ApplicationController
 
   # The pop-up only exists until the profile has been sent for review.
   def require_unsubmitted
-    redirect_to edit_teacher_profile_path unless @profile.status_pending? && !@profile.submitted?
+    return if @profile.status_pending? && !@profile.submitted?
+    return if action_name == "show" && params[:done].present? && @profile.status_pending? && @profile.submitted?
+
+    redirect_to edit_teacher_profile_path
   end
 
   # A teacher may go back to an earlier step, never ahead of the first unfinished one.

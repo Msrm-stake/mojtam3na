@@ -1,0 +1,10 @@
+en:
+  teacher_setup:
+    done:
+      title: "Congratulations, your profile is submitted!"
+      welcome: "We are happy to have you in our community."
+      review: "Our team checks your profile and qualifications before it goes live. We will send you an email confirming your profile as soon as possible."
+      ok: "OK"
+  teachers:
+    show:
+      preview: "This is a preview of your profile. Parents will see it as soon as our team approves it."

@@ -26,8 +26,12 @@ class TeachersController < ApplicationController
   end
 
   def show
-    # Only approved profiles are public: anything else is a 404.
-    @profile = TeacherProfile.status_approved.includes(:user, :languages, :subjects).with_attached_photo.find(params[:id])
+    # Only approved profiles are public. The teacher can also preview their own profile before approval.
+    @profile = TeacherProfile.includes(:user, :languages, :subjects).with_attached_photo.find(params[:id])
+    owner = current_user&.id == @profile.user_id
+    raise ActiveRecord::RecordNotFound unless @profile.status_approved? || owner
+
+    flash.now[:notice] = t("teachers.show.preview") if owner && !@profile.status_approved?
     @qualifications = @profile.qualifications.status_verified.order(:year_obtained, :id)
     count_view(@profile)
   end
