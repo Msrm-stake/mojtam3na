@@ -1,0 +1,6 @@
+it:
+  teacher_setup:
+    steps:
+      headline:
+        hint: "Massimo 80 caratteri."
+        too_long: "Il tuo titolo è troppo lungo. Limitalo a 80 caratteri."

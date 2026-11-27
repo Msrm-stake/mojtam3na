@@ -166,3 +166,14 @@
 }
 
 .tcard-price { margin-top: 0; }
+
+// Long words and long lines must wrap instead of running out of the card.
+.profile-header > div { min-width: 0; }
+
+.profile-headline,
+.profile-bio,
+.tcard-headline,
+.teacher-headline {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

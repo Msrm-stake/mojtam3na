@@ -3,6 +3,7 @@ class TeacherProfile < ApplicationRecord
   CURRENCIES = %w[EUR].freeze
   PHOTO_TYPES = %w[image/jpeg image/png].freeze
   PHOTO_MAX_BYTES = 1_500_000
+  HEADLINE_MAX = 80
 
   belongs_to :user
   belongs_to :approved_by, class_name: "User", optional: true
@@ -33,6 +34,7 @@ class TeacherProfile < ApplicationRecord
   validates :years_experience, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validates :min_age, :max_age, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validates :gender, inclusion: { in: %w[female male] }, allow_nil: true
+  validates :headline, length: { maximum: HEADLINE_MAX }, if: :will_save_change_to_headline?
   validates :intro_video_url, format: { with: %r{\Ahttps?://\S+\z}i }, allow_nil: true
   validate :user_must_be_teacher
   validate :pending_photo_rules

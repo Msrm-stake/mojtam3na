@@ -10,13 +10,13 @@
           <%= teacher_portrait(@profile, size: :profile) %>
           <div>
             <h1 class="h3 mb-1"><%= public_name(user) %></h1>
-            <p class="mb-0"><%= @profile.headline.presence || t("teachers.index.no_headline") %></p>
+            <p class="mb-0 profile-headline"><%= @profile.headline.presence || t("teachers.index.no_headline") %></p>
           </div>
         </div>
 
         <% if @profile.bio.present? %>
           <h2 class="h5 mt-4"><%= t(".about") %></h2>
-          <%= simple_format(@profile.bio) %>
+          <div class="profile-bio"><%= simple_format(@profile.bio) %></div>
         <% end %>
 
         <%= render "availability", profile: @profile %>

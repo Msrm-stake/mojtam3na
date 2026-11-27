@@ -4,6 +4,7 @@
   <%= hidden_field_tag :step, "headline" %>
   <label class="form-label" for="teacher_profile_headline"><%= t("teacher_setup.steps.headline.label") %></label>
   <%= text_field_tag "teacher_profile[headline]", params.dig(:teacher_profile, :headline) || @profile.headline,
-        id: "teacher_profile_headline", class: "form-control", maxlength: 120, autofocus: true %>
+        id: "teacher_profile_headline", class: "form-control", maxlength: TeacherProfile::HEADLINE_MAX, autofocus: true %>
+  <div class="form-text"><%= t("teacher_setup.steps.headline.hint") %></div>
   <%= render "teacher_setup/nav" %>
 <% end %>

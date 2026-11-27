@@ -1,0 +1,6 @@
+en:
+  teacher_setup:
+    steps:
+      headline:
+        hint: "Maximum 80 characters."
+        too_long: "Your headline is too long. Please keep it to 80 characters or fewer."

@@ -1,0 +1,6 @@
+fr:
+  teacher_setup:
+    steps:
+      headline:
+        hint: "80 caractères maximum."
+        too_long: "Votre accroche est trop longue. Veuillez la limiter à 80 caractères."

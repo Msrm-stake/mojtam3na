@@ -100,6 +100,7 @@ class TeacherSetupController < ApplicationController
   def save_text(field)
     value = attrs[field].to_s.strip
     return [t("teacher_setup.steps.#{field}.error")] if value.blank?
+    return [t("teacher_setup.steps.headline.too_long")] if field == :headline && value.length > TeacherProfile::HEADLINE_MAX
 
     update_profile(field => value)
   end
