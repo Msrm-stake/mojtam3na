@@ -1,0 +1,43 @@
+<%# Shown only when CRISP_WEBSITE_ID is set on the server. Crisp is loaded after the visitor clicks. %>
+<% crisp_id = ENV["CRISP_WEBSITE_ID"].to_s %>
+<% if crisp_id.match?(/\A[0-9a-f-]{36}\z/i) %>
+  <style>
+    .chatfab { position: fixed; inset-block-end: 1rem; inset-inline-end: 1rem; z-index: 1030; display: inline-flex;
+               align-items: center; gap: .5rem; padding: .7rem 1.1rem; border: 0; border-radius: 999px;
+               background: #0B5D4B; color: #FBF7EE; font-weight: 700; box-shadow: 0 6px 18px rgba(0, 0, 0, .25); }
+    .chatfab:hover, .chatfab:focus-visible { background: #084538; }
+    .chatfab[hidden] { display: none; }
+    @media (max-width: 575.98px) { .chatfab__label { display: none; } .chatfab { padding: .85rem; font-size: 1.2rem; } }
+  </style>
+  <button type="button" id="chat-open" class="chatfab" data-website-id="<%= crisp_id %>" data-locale="<%= I18n.locale %>"
+          aria-label="<%= t("shared.chat_button.open") %>">
+    <span aria-hidden="true">💬</span>
+    <span class="chatfab__label"><%= t("shared.chat_button.open") %></span>
+  </button>
+  <script>
+    (function () {
+      var button = document.getElementById("chat-open");
+      if (!button) return;
+
+      function load(openAfter) {
+        // After the chat is loaded, pages load normally so the chat window is not removed by page changes.
+        document.body.dataset.turbo = "false";
+        if (!window.$crisp) {
+          window.$crisp = [];
+          window.CRISP_WEBSITE_ID = button.dataset.websiteId;
+          window.CRISP_RUNTIME_CONFIG = { locale: button.dataset.locale };
+          var script = document.createElement("script");
+          script.src = "https://client.crisp.chat/l.js";
+          script.async = true;
+          document.head.appendChild(script);
+        }
+        if (openAfter) window.$crisp.push(["do", "chat:open"]);
+        try { sessionStorage.setItem("mojtam3na-chat", "1"); } catch (e) {}
+        button.hidden = true;
+      }
+
+      button.addEventListener("click", function () { load(true); });
+      try { if (sessionStorage.getItem("mojtam3na-chat") === "1") load(false); } catch (e) {}
+    })();
+  </script>
+<% end %>
