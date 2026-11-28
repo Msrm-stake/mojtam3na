@@ -27,28 +27,33 @@
     <p class="text-body-secondary"><%= t(".empty") %></p>
   <% else %>
     <div class="auth-card p-0 overflow-hidden">
+      <div class="table-responsive">
       <table class="table table-hover align-middle mb-0">
         <thead>
           <tr>
             <th><%= t(".name") %></th>
-            <th><%= t(".email") %></th>
-            <th><%= t(".joined") %></th>
-            <th><%= t(".qualifications") %></th>
+            <th class="d-none d-md-table-cell"><%= t(".email") %></th>
+            <th class="d-none d-md-table-cell"><%= t(".joined") %></th>
+            <th class="d-none d-sm-table-cell"><%= t(".qualifications") %></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <% @profiles.each do |profile| %>
             <tr>
-              <td><%= profile.user.full_name %></td>
-              <td><%= profile.user.email %></td>
-              <td><%= l(profile.created_at.to_date) %></td>
-              <td><%= profile.qualifications.size %></td>
+              <td>
+                <%= link_to profile.user.full_name, admin_teacher_profile_path(profile), class: "fw-semibold text-decoration-none" %>
+                <div class="small text-body-secondary d-md-none text-break"><%= profile.user.email %></div>
+              </td>
+              <td class="d-none d-md-table-cell text-break"><%= profile.user.email %></td>
+              <td class="d-none d-md-table-cell"><%= l(profile.created_at.to_date) %></td>
+              <td class="d-none d-sm-table-cell"><%= profile.qualifications.size %></td>
               <td class="text-end"><%= link_to t(".review"), admin_teacher_profile_path(profile), class: "btn btn-outline-primary btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      </div>
     </div>
   <% end %>
 </div>
